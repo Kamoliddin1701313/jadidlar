@@ -1,0 +1,176 @@
+.container {
+  width: 100%;
+  .wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    h1 {
+      font-family: "Roboto Slab", serif;
+      margin-bottom: 10px;
+      font-size: 42px;
+      color: #203867;
+    }
+
+    .page_tab {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      button {
+        background-color: transparent;
+        border: none;
+        font-weight: 600;
+        margin-right: 35px;
+        margin-left: 0;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: "Roboto Slab", serif;
+        color: #50535d;
+        position: relative;
+        margin-bottom: 8px;
+      }
+
+      .active::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid #3f4a9e;
+        left: 0;
+        bottom: -14px;
+      }
+    }
+
+    .page_container {
+      padding: 35px 0 70px;
+
+      // home videos
+      .carusel_videos {
+        height: 400px;
+        position: relative;
+
+        .card_img {
+          width: 100%;
+          .img {
+            position: relative;
+            height: 100%;
+            cursor: pointer;
+            width: 96%;
+            margin: 0 auto;
+
+            img {
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+            }
+
+            button {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              cursor: pointer;
+              transition: all 0.2s linear;
+              transform: translate(-50%, -50%);
+              background-color: transparent;
+              border: none;
+              svg {
+                font-size: 42px;
+                color: white;
+                transition: all 0.3s linear;
+              }
+
+              &:hover svg {
+                color: #225ccfad;
+              }
+            }
+
+            &:hover button svg {
+              font-size: 52px;
+              transition: all 0.2s linear;
+            }
+          }
+        }
+
+        ul {
+          li {
+            button {
+              &::before {
+                content: "";
+              }
+            }
+          }
+        }
+      }
+
+      //   home images
+      .carusel_images {
+        height: 320px;
+        position: relative;
+
+        .card_img {
+          width: 100%;
+          .img {
+            position: relative;
+            height: 100%;
+            cursor: pointer;
+            width: 96%;
+            border-radius: 20px;
+            margin: 0 auto;
+            overflow: hidden;
+            transition: all 0.2s linear;
+
+            img {
+              width: 100%;
+              height: 320px;
+              object-fit: cover;
+              transition: all 0.2s linear;
+            }
+
+            &:hover {
+              filter: brightness(60%);
+              transition: all 0.2s linear;
+            }
+
+            &:hover img {
+              transition: all 0.2s linear;
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        ul {
+          li {
+            button {
+              &::before {
+                content: "";
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+:global {
+  .slick-dots {
+    li {
+      top: 15px;
+      button::before {
+        background-color: rgba(41, 79, 218, 0.619);
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        opacity: 1;
+      }
+
+      &.slick-active button::before {
+        background-color: rgba(0, 0, 255, 0.948);
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

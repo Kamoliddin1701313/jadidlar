@@ -1,0 +1,180 @@
+.container {
+  width: 100%;
+  .hero_slider {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 50px 0;
+
+    .carusel {
+      position: relative;
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0 30px;
+
+        .card_box {
+          box-shadow: 0 5px 10px rgb(0, 0, 0);
+          width: 92%;
+          border-radius: 12px;
+          margin: 0 auto;
+          border: none;
+          overflow: hidden;
+          .description {
+            padding: 20px;
+            background-color: #eeeeee;
+            h2 {
+              font-weight: 500;
+              color: #0e2b65;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              line-height: 28px;
+              -webkit-line-clamp: 4;
+              height: 110px;
+              font-size: 20px;
+              overflow: hidden;
+              font-family: "Roboto Slab", serif;
+            }
+
+            .box {
+              margin: 25px 0 5px;
+
+              .title {
+                display: flex;
+                flex-direction: column;
+
+                span {
+                  color: #0e2b65;
+                  font-weight: 600;
+                  font-family: "Roboto Slab", serif;
+
+                  &:last-child {
+                    color: #6b1324;
+                  }
+                }
+              }
+
+              button {
+                padding: 10px;
+                background-color: #0e2b65;
+                border: none;
+                border-radius: 30px;
+                color: white;
+                cursor: pointer;
+                letter-spacing: 1px;
+                width: 25%;
+                transition: all 0.3s linear;
+
+                &:hover {
+                  background-color: #6b1324;
+                  transition: all 0.3s linear;
+                }
+              }
+            }
+
+            .box {
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+
+          .image {
+            height: 200px;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+
+      .prev {
+        position: absolute;
+        left: -10px;
+        transform: translateY(-50%);
+        top: 45%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        display: grid;
+        cursor: pointer;
+        place-items: center;
+        background: #0e2b65;
+        transition: all 0.3s linear;
+        svg {
+          color: white;
+          font-size: 24px;
+        }
+
+        &:hover {
+          box-shadow: 0 0 12px #000;
+        }
+      }
+
+      .next {
+        position: absolute;
+        right: -10px;
+        transform: translateY(-50%);
+        top: 45%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        display: grid;
+        cursor: pointer;
+        place-items: center;
+        background: #0e2b65;
+        transition: all 0.3s linear;
+        svg {
+          color: white;
+          font-size: 24px;
+        }
+
+        &:hover {
+          box-shadow: 0 0 12px #000;
+        }
+      }
+
+      ul {
+        display: flex;
+        justify-content: center;
+
+        li {
+          display: inline-block;
+          margin: 0 4px;
+        }
+
+        button {
+          width: 18px;
+          height: 18px;
+          background: #0e2b65;
+          border-radius: 50%;
+          position: relative;
+          border: none;
+
+          &::before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #888888; // default rang
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: #223b6d;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}

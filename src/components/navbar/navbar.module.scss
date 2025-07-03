@@ -1,0 +1,196 @@
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.907);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.126);
+  height: 90px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  .header {
+    max-width: 1400px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      width: 140px;
+    }
+
+    .navbar {
+      .navbar_link {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+
+        > a {
+          text-decoration: none;
+          font-size: 12px;
+          color: white;
+          transition: all 0.3s linear;
+          text-transform: uppercase;
+          font-weight: 600;
+          font-family: "Roboto Slab", serif;
+          &:hover {
+            color: rgb(8, 227, 110);
+            transition: all 0.3s linear;
+          }
+        }
+
+        .link {
+          gap: 15px;
+
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s linear;
+            cursor: pointer;
+            text-transform: uppercase;
+            gap: 6px;
+            height: 90px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: transparent;
+            color: white;
+            border: none;
+            svg {
+              font-size: 12px;
+              transition: all 0.3s linear;
+            }
+          }
+          &:last-child button svg {
+            font-size: 14px;
+          }
+
+          ul li {
+            display: none;
+            position: absolute;
+            top: 90px;
+            background-color: rgb(251, 251, 251);
+            padding: 10px 20px;
+            list-style-type: none;
+            min-width: 150px;
+            border-radius: 8px;
+            a {
+              display: block;
+              font-size: 16px;
+              margin: 10px 0;
+              color: rgb(5, 62, 62);
+              text-decoration: none;
+              transition: all 0.2s linear;
+              font-weight: 600;
+              font-family: "Roboto Slab", serif;
+
+              &:hover {
+                color: rgba(255, 0, 0, 0.86);
+                transition: all 0.2s linear;
+              }
+            }
+          }
+
+          &:hover ul li {
+            display: block;
+          }
+
+          &:hover button svg {
+            transform: rotate(180deg);
+            transition: all 0.3s linear;
+          }
+
+          &:hover button {
+            color: rgb(8, 227, 110);
+            transition: all 0.3s linear;
+          }
+
+          .hidden {
+            display: none;
+          }
+
+          .open {
+            position: absolute;
+            background-color: rgba(84, 84, 84, 0.181);
+            border-radius: 8px;
+            overflow: hidden;
+            right: 2.5%;
+            span {
+              color: rgb(5, 62, 62);
+              font-weight: 600;
+              transition: all 0.3s linear;
+              padding: 10px 20px;
+              display: block;
+              font-family: "Roboto Slab", serif;
+              cursor: pointer;
+              &:hover {
+                background-color: rgba(84, 84, 84, 0.181);
+              }
+            }
+          }
+        }
+
+        .search_btn {
+          background-color: white;
+          width: 42px;
+          height: 42px;
+          display: grid;
+          place-items: center;
+          cursor: pointer;
+          border: none;
+          transition: all 0.3s linear;
+          border-radius: 50%;
+          font-size: 16px;
+          &:hover {
+            background-color: rgba(21, 21, 21, 0.195);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .global_search {
+    max-width: 1400px;
+    box-shadow: 0 0 15px rgb(1, 64, 73);
+    display: flex;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 16px;
+    margin: 20px auto 0;
+    align-items: center;
+    justify-content: space-between;
+
+    input {
+      height: 100%;
+      border: none;
+      outline: none;
+      padding: 0 20px;
+      font-size: 18px;
+      color: rgb(1, 52, 52);
+      width: 100%;
+      font-weight: 600;
+      font-family: "Roboto Slab", serif;
+    }
+
+    button {
+      padding: 0 20px;
+      cursor: pointer;
+      background-color: #23537d;
+      color: white;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      height: 100%;
+      border: none;
+      width: 15%;
+    }
+
+    @keyframes animbgcolor {
+      to {
+      }
+    }
+  }
+}

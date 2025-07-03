@@ -1,0 +1,107 @@
+.container {
+  width: 100%;
+  padding: 100px 0 30px;
+  background-color: black;
+
+  .hero_slider {
+    max-width: 1400px;
+    margin: 0 auto;
+    color: white;
+
+    .carusel {
+      position: relative;
+
+      .card {
+        display: flex !important;
+        height: 80vh;
+        justify-content: center;
+        align-items: flex-end;
+
+        .description {
+          padding: 100px 0 120px 100px;
+          h1 {
+            font-size: 38px;
+            font-weight: 500;
+            font-family: "Roboto Slab", serif;
+          }
+
+          h4 {
+            font-size: 20px;
+            margin: 20px 0;
+            font-family: "Roboto Slab", serif;
+          }
+
+          button {
+            padding: 10px;
+            width: 40%;
+            border: none;
+            border-radius: 20px;
+            background-color: #0e2b65;
+
+            a {
+              font-size: 18px;
+              font-weight: 500;
+              color: white;
+              text-decoration: none;
+              font-family: "Roboto Slab", serif;
+            }
+          }
+        }
+
+        .image {
+          width: 100%;
+          img {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+          }
+        }
+      }
+
+      .prev {
+        position: absolute;
+        left: 0;
+        top: 45%;
+        background-color: #0e2b65;
+        border: none;
+        outline: none;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+
+        svg {
+          font-size: 32px;
+          color: white;
+        }
+      }
+
+      .next {
+        position: absolute;
+        right: 0;
+        top: 45%;
+        background-color: #0e2b65;
+        border: none;
+        outline: none;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+
+        svg {
+          font-size: 32px;
+          color: white;
+        }
+      }
+
+      .disabled {
+        background-color: #212f5a5a !important;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.container {
+  // background-color: black;
+  width: 100%;
+  min-height: 100vh;
+  object-fit: contain;
+  background-image: url("../assets/images/home_img.jpg");
+
+  .wrapper {
+    min-height: 100vh;
+  }
+}

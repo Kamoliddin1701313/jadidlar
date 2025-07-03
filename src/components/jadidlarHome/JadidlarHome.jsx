@@ -1,0 +1,133 @@
+import style from "./jadidlarHome.module.scss";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { MdOutlineNavigateNext } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
+
+function JadidlarHome() {
+  const [datas, setDatas] = useState([]);
+  let sliderRef = useRef(null);
+
+  const getData = async () => {
+    try {
+      const respons = await axios.get("jadidlar_random/");
+
+      setDatas(respons?.data);
+    } catch (error) {
+      console.log("errpr", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const next = () => {
+    sliderRef.slickNext();
+  };
+
+  const previous = () => {
+    sliderRef.slickPrev();
+  };
+
+  var settings = {
+    // dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 5,
+    slidesToScroll: 2,
+    autoplaySpeed: 4000,
+    autoplay: true,
+    initialSlide: 0,
+    pauseOnHover: true,
+
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1080,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className={style.container}>
+      <div className={style.hero_slider}>
+        <div className="slider-container">
+          <h1 className={style.home_name}>Jadidlar</h1>
+          {datas?.length > 0 ? (
+            <div className={style.carusel}>
+              <Slider
+                ref={(slider) => {
+                  sliderRef = slider;
+                }}
+                {...settings}
+              >
+                {datas?.map((value, index) => (
+                  <div key={index} className={style.card}>
+                    <div className={style.card_box}>
+                      <div className={style.image}>
+                        <img src={value?.image} alt={value?.title} />
+                      </div>
+
+                      <div className={style.description}>
+                        <span className={style.name}>{value?.fullname}</span>
+
+                        <div className={style.data}>
+                          <span>
+                            {"("}
+                            {value.birthday.slice(0, 4)}
+                          </span>
+                          <span>-</span>
+                          <span>
+                            {value.die_day.slice(0, 4)} {")"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </Slider>
+
+              <button className={style.prev} onClick={previous}>
+                <GrFormPrevious />
+              </button>
+
+              <button className={style.next} onClick={next}>
+                <MdOutlineNavigateNext />
+              </button>
+            </div>
+          ) : (
+            <div>NO DATA</div>
+          )}
+        </div>
+        <div className={style.line}></div>
+      </div>
+    </div>
+  );
+}
+
+export default JadidlarHome;
