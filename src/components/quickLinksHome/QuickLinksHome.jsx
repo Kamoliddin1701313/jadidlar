@@ -2,6 +2,7 @@ import axios from "axios";
 import style from "./quickLinksHome.module.scss";
 import Marquee from "react-fast-marquee";
 import { useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 function QuickLinksHome() {
   const [data, setData] = useState([]);
@@ -28,9 +29,14 @@ function QuickLinksHome() {
           <Marquee pauseOnHover={true}>
             {data?.data?.results?.map((value, index) => (
               <a href={value.link} target="_blank">
-                <div key={index} className={style.slider_img}>
+                <Fade
+                  cascade
+                  damping={0.2}
+                  key={index}
+                  className={style.slider_img}
+                >
                   <img src={value.logo_image} alt={value.title} />
-                </div>
+                </Fade>
               </a>
             ))}
           </Marquee>

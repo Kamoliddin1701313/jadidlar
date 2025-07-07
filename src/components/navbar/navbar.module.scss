@@ -63,6 +63,7 @@
               transition: all 0.3s linear;
             }
           }
+
           &:last-child button svg {
             font-size: 14px;
           }
@@ -102,6 +103,10 @@
             transition: all 0.3s linear;
           }
 
+          &:hover svg:nth-of-type(2) {
+            transform: rotate(0deg);
+          }
+
           &:hover button {
             color: rgb(8, 227, 110);
             transition: all 0.3s linear;
@@ -113,8 +118,9 @@
 
           .open {
             position: absolute;
-            background-color: rgba(84, 84, 84, 0.181);
+            background-color: rgb(251, 251, 251);
             border-radius: 8px;
+            padding: 6px;
             overflow: hidden;
             right: 2.5%;
             span {
@@ -123,6 +129,7 @@
               transition: all 0.3s linear;
               padding: 10px 20px;
               display: block;
+              border-radius: 8px;
               font-family: "Roboto Slab", serif;
               cursor: pointer;
               &:hover {

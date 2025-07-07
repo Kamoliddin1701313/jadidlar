@@ -1,9 +1,6 @@
-import _default from "eslint-plugin-react-refresh";
 import style from "./languageGrammarTabHome.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { MdOutlineFileDownload } from "react-icons/md";
-import { RiShareForwardLine } from "react-icons/ri";
 
 function QuotesTabHome() {
   const [data, setData] = useState([]);

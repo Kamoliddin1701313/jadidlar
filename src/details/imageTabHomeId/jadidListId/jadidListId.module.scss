@@ -1,0 +1,524 @@
+.container {
+  width: 100%;
+  .wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 0 50px;
+
+    .menu_link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Roboto Slab", serif;
+      button {
+        font-size: 18px;
+        background-color: transparent;
+        border: none;
+        font-weight: 600;
+        font-family: "Roboto Slab", serif;
+        cursor: pointer;
+        color: #112c42;
+        text-transform: uppercase;
+      }
+
+      span {
+        font-size: 18px;
+        font-weight: 900;
+        color: #881a3b;
+      }
+    }
+
+    .tab_page {
+      display: flex;
+      align-items: center;
+
+      margin: 20px 0 0;
+      button {
+        padding: 10px;
+        margin: 20px 10px;
+        position: relative;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: #464646;
+        font-size: 18px;
+        font-weight: 600;
+        font-family: "Roboto Slab", serif;
+      }
+
+      .active::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid #3f4a9e;
+        left: 0;
+        bottom: 0;
+      }
+    }
+
+    // JadidListIdJadid style code
+    .jadidlar_container {
+      min-height: 450px;
+      margin: 10px 0;
+      .select_id_img {
+        height: 450px;
+        width: 30%;
+        float: left;
+        margin-right: 30px;
+        img {
+          height: 450px;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .jadid_info {
+        font-family: "Roboto Slab", serif;
+
+        h1 {
+          color: #1e3769;
+          font-size: 42px;
+        }
+
+        .jadid_data {
+          margin: 20px 0;
+          color: #89001a;
+          font-size: 24px;
+          font-weight: 700;
+        }
+
+        .content_text p {
+          margin-bottom: 10px !important;
+          line-height: 26px;
+        }
+      }
+    }
+
+    // JadidListIdAsarlar style code
+    .asarlar_container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin: 15px 0;
+
+      .card {
+        position: relative;
+        height: 380px;
+        border-radius: 15px;
+        cursor: pointer;
+        overflow: hidden;
+        background-color: white;
+
+        .link {
+          position: absolute;
+          right: -20%;
+          top: 12px;
+          transition: all 0.3s linear;
+          padding: 4px 12px;
+          border-radius: 8px;
+          display: flex;
+          background-color: rgba(0, 0, 0, 0.455);
+          flex-direction: column;
+          z-index: 999;
+          span svg {
+            font-size: 30px;
+            color: white;
+          }
+        }
+
+        .img {
+          width: 100%;
+          height: 100%;
+          transition: all 0.3s linear;
+
+          img {
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s linear;
+          }
+        }
+
+        .text {
+          position: absolute;
+          background-color: rgba(0, 0, 0, 0.455);
+          bottom: 0;
+          padding: 15px 10px;
+          left: 0;
+          height: 120px;
+          width: 100%;
+          transition: all 0.2s linear;
+
+          h4 {
+            text-align: center;
+            font-family: "Roboto Slab", serif;
+            font-size: 18px;
+            color: white;
+            transition: all 0.2s linear;
+            height: 26px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        }
+
+        &:hover .link {
+          right: 10px;
+        }
+
+        &:hover .img img {
+          transform: rotate(10deg);
+          transform: scale(1.1);
+          transition: all 0.3s linear;
+        }
+
+        &:hover .img {
+          transform: rotate(-4deg);
+          transition: all 0.3s linear;
+        }
+
+        &:hover .text {
+          background-color: rgba(255, 255, 255, 0.63);
+          transition: all 0.3s linear;
+          height: 160px;
+          h4 {
+            transition: all 0.3s linear;
+            color: #223b6d;
+          }
+        }
+      }
+    }
+
+    // JadidListIdMaqola style code
+    .maqolalar_container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin: 15px 0;
+
+      .card {
+        position: relative;
+        height: 380px;
+        border-radius: 15px;
+        cursor: pointer;
+        overflow: hidden;
+        background-color: white;
+
+        .link {
+          position: absolute;
+          right: -20%;
+          top: 12px;
+          transition: all 0.3s linear;
+          padding: 4px 12px;
+          border-radius: 8px;
+          display: flex;
+          background-color: rgba(0, 0, 0, 0.455);
+          flex-direction: column;
+          z-index: 999;
+          span svg {
+            font-size: 30px;
+            color: white;
+          }
+        }
+
+        .img {
+          width: 100%;
+          height: 100%;
+          transition: all 0.3s linear;
+
+          img {
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s linear;
+          }
+        }
+
+        .text {
+          position: absolute;
+          background-color: rgba(0, 0, 0, 0.455);
+          bottom: 0;
+          padding: 15px 10px;
+          left: 0;
+          height: 120px;
+          width: 100%;
+          transition: all 0.2s linear;
+
+          h4 {
+            text-align: center;
+            font-family: "Roboto Slab", serif;
+            font-size: 18px;
+            color: white;
+            transition: all 0.2s linear;
+            height: 26px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        }
+
+        &:hover .link {
+          right: 10px;
+        }
+
+        &:hover .img img {
+          transform: rotate(10deg);
+          transform: scale(1.1);
+          transition: all 0.3s linear;
+        }
+
+        &:hover .img {
+          transform: rotate(-4deg);
+          transition: all 0.3s linear;
+        }
+
+        &:hover .text {
+          background-color: rgba(255, 255, 255, 0.63);
+          transition: all 0.3s linear;
+          height: 160px;
+          h4 {
+            transition: all 0.3s linear;
+            color: #223b6d;
+          }
+        }
+      }
+    }
+
+    // JadidListIdSherlar style code
+    .sherlar_container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin: 15px 0;
+
+      .card {
+        position: relative;
+        height: 380px;
+        border-radius: 15px;
+        cursor: pointer;
+        overflow: hidden;
+        background-color: white;
+
+        .link {
+          position: absolute;
+          right: -20%;
+          top: 12px;
+          transition: all 0.3s linear;
+          padding: 4px 12px;
+          border-radius: 8px;
+          display: flex;
+          background-color: rgba(0, 0, 0, 0.455);
+          flex-direction: column;
+          z-index: 999;
+          span svg {
+            font-size: 30px;
+            color: white;
+          }
+        }
+
+        .img {
+          width: 100%;
+          height: 100%;
+          transition: all 0.3s linear;
+
+          img {
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s linear;
+          }
+        }
+
+        .text {
+          position: absolute;
+          background-color: rgba(0, 0, 0, 0.455);
+          bottom: 0;
+          padding: 15px 10px;
+          left: 0;
+          height: 120px;
+          width: 100%;
+          transition: all 0.2s linear;
+
+          h4 {
+            text-align: center;
+            font-family: "Roboto Slab", serif;
+            font-size: 18px;
+            color: white;
+            transition: all 0.2s linear;
+            height: 26px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        }
+
+        &:hover .link {
+          right: 10px;
+        }
+
+        &:hover .img img {
+          transform: rotate(10deg);
+          transform: scale(1.1);
+          transition: all 0.3s linear;
+        }
+
+        &:hover .img {
+          transform: rotate(-4deg);
+          transition: all 0.3s linear;
+        }
+
+        &:hover .text {
+          background-color: rgba(255, 255, 255, 0.63);
+          transition: all 0.3s linear;
+          height: 160px;
+          h4 {
+            transition: all 0.3s linear;
+            color: #223b6d;
+          }
+        }
+      }
+    }
+
+    // JadidListIdEsdalik style code
+    .esdalik_container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin: 15px 0;
+
+      .card {
+        position: relative;
+        height: 380px;
+        border-radius: 15px;
+        cursor: pointer;
+        overflow: hidden;
+        background-color: white;
+
+        .link {
+          position: absolute;
+          right: -20%;
+          top: 12px;
+          transition: all 0.3s linear;
+          padding: 4px 12px;
+          border-radius: 8px;
+          display: flex;
+          background-color: rgba(0, 0, 0, 0.455);
+          flex-direction: column;
+          z-index: 999;
+          span svg {
+            font-size: 30px;
+            color: white;
+          }
+        }
+
+        .img {
+          width: 100%;
+          height: 100%;
+          transition: all 0.3s linear;
+
+          img {
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s linear;
+          }
+        }
+
+        .text {
+          position: absolute;
+          background-color: rgba(0, 0, 0, 0.455);
+          bottom: 0;
+          padding: 15px 10px;
+          left: 0;
+          height: 120px;
+          width: 100%;
+          transition: all 0.2s linear;
+
+          h4 {
+            text-align: center;
+            font-family: "Roboto Slab", serif;
+            font-size: 18px;
+            color: white;
+            transition: all 0.2s linear;
+            height: 26px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        }
+
+        &:hover .link {
+          right: 10px;
+        }
+
+        &:hover .img img {
+          transform: rotate(10deg);
+          transform: scale(1.1);
+          transition: all 0.3s linear;
+        }
+
+        &:hover .img {
+          transform: rotate(-4deg);
+          transition: all 0.3s linear;
+        }
+
+        &:hover .text {
+          background-color: rgba(255, 255, 255, 0.63);
+          transition: all 0.3s linear;
+          height: 160px;
+          h4 {
+            transition: all 0.3s linear;
+            color: #223b6d;
+          }
+        }
+      }
+    }
+
+    // JadidListIdHikmatli style code
+    .hikmatli_sozlar {
+      display: flex;
+      flex-direction: column;
+      gap: 65px;
+
+      table {
+        border-collapse: collapse;
+      }
+
+      .description {
+        border: 1px solid gray;
+        box-shadow: 0 1px 2px gray;
+        border-radius: 10px;
+        min-height: 150px;
+        padding: 20px;
+        display: flex;
+        color: #000029;
+        align-items: center;
+
+        table {
+          border: none;
+        }
+      }
+
+      .card_quotes {
+        position: relative;
+        width: 100%;
+        font-size: 18px;
+        font-family: "Roboto Slab", serif;
+
+        .default_text {
+          position: absolute;
+          font-weight: 600;
+          border-radius: 5px;
+          background-color: #c4c7d0;
+          padding: 2px 10px;
+          color: black;
+          bottom: -12px;
+          right: 5%;
+        }
+      }
+    }
+  }
+}

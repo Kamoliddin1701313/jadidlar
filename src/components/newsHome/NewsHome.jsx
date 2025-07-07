@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Fade } from "react-awesome-reveal";
 import style from "./newsHome.module.scss";
 import { useEffect, useRef, useState } from "react";
 import "slick-carousel/slick/slick.css";
@@ -90,7 +91,12 @@ function NewsHome() {
                 {...settings}
               >
                 {datas?.results?.map((value, index) => (
-                  <div key={index} className={style.card}>
+                  <Fade
+                    cascade
+                    damping={0.2}
+                    key={index}
+                    className={style.card}
+                  >
                     <div className={style.card_box}>
                       <div className={style.description}>
                         <h2>{value?.title}</h2>
@@ -109,7 +115,7 @@ function NewsHome() {
                         <img src={value?.image} alt={value?.title} />
                       </div>
                     </div>
-                  </div>
+                  </Fade>
                 ))}
               </Slider>
 

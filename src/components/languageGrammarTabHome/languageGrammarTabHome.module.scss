@@ -161,6 +161,10 @@
         display: flex;
         color: #000029;
         align-items: center;
+
+        table {
+          border: none;
+        }
       }
 
       .card_quotes {

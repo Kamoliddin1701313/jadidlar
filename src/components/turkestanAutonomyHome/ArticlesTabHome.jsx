@@ -1,6 +1,7 @@
 import style from "./turkestanAutonomyHome.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { RiShareForwardLine } from "react-icons/ri";
 
@@ -43,9 +44,9 @@ function ArticlesTabHome() {
             </span>
           </div>
 
-          <div className={style.img}>
+          <Fade cascade damping={0.2} className={style.img}>
             <img src={value?.image} alt={value?.title} />
-          </div>
+          </Fade>
 
           <div className={style.text}>
             <h4>{value?.title}</h4>

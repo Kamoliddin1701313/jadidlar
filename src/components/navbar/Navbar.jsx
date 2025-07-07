@@ -4,6 +4,7 @@ import { BsFillCaretDownFill } from "react-icons/bs";
 import style from "./navbar.module.scss";
 import jadidlar_logo from "../../assets/icons/jadidlar_logo.svg";
 import { useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 function Navbar() {
   const [toggle, setToggle] = useState(false);
@@ -14,7 +15,7 @@ function Navbar() {
   };
 
   const SearchBtn = () => {
-    setGlobalSearch(false);
+    setGlobalSearch(!globalSearch);
   };
 
   return (
@@ -31,7 +32,7 @@ function Navbar() {
 
           <div className={style.navbar}>
             <nav className={style.navbar_link}>
-              <Link>Jadidlar</Link>
+              <Link to="/jadids">Jadidlar</Link>
 
               <div className={style.link}>
                 <button>
@@ -40,8 +41,8 @@ function Navbar() {
 
                 <ul>
                   <li>
-                    <Link>Arxiv hujjatlari</Link>
-                    <Link>Matbuot</Link>
+                    <Link to="/archivedDocuments/royxat">Arxiv hujjatlari</Link>
+                    <Link to="/press/tarix">Matbuot</Link>
                   </li>
                 </ul>
               </div>
@@ -54,10 +55,12 @@ function Navbar() {
 
                 <ul>
                   <li>
-                    <Link>Asarlar</Link>
-                    <Link>Maqolalar</Link>
-                    <Link>Dissertatsiyalar</Link>
-                    <Link>Esdaliklar</Link>
+                    <Link to="/research/asarlar">Asarlar</Link>
+                    <Link to="/research/maqolalar">Maqolalar</Link>
+                    <Link to="/research/dissertatsiyalar">
+                      Dissertatsiyalar
+                    </Link>
+                    <Link to="/research/esdaliklar">Esdaliklar</Link>
                   </li>
                 </ul>
               </div>
@@ -70,9 +73,9 @@ function Navbar() {
 
                 <ul>
                   <li>
-                    <Link>Asarlar</Link>
-                    <Link>Maqolalar</Link>
-                    <Link>Hikmatlar</Link>
+                    <Link to="/languageSpelling/asarlar">Asarlar</Link>
+                    <Link to="/languageSpelling/maqolalar">Maqolalar</Link>
+                    <Link to="/languageSpelling/hikmatlar">Hikmatlar</Link>
                   </li>
                 </ul>
               </div>
@@ -85,10 +88,10 @@ function Navbar() {
 
                 <ul>
                   <li>
-                    <Link>Asarlar</Link>
-                    <Link>Maqolalar</Link>
-                    <Link>Sheʼrlar</Link>
-                    <Link>Esdaliklar</Link>
+                    <Link to="/turkistan/asarlar">Asarlar</Link>
+                    <Link to="/turkistan/maqolalar">Maqolalar</Link>
+                    <Link to="/turkistan/sherlar">Sheʼrlar</Link>
+                    <Link to="/turkistan/esdaliklar">Esdaliklar</Link>
                   </li>
                 </ul>
               </div>
@@ -100,9 +103,9 @@ function Navbar() {
                 </button>
                 <ul>
                   <li>
-                    <Link>Yangiliklar</Link>
-                    <Link>Yigʻinlar</Link>
-                    <Link>Seminarlar</Link>
+                    <Link to="/eventsList/yangiliklar">Yangiliklar</Link>
+                    <Link to="/eventsList/yiginlar">Yigʻinlar</Link>
+                    <Link to="/eventsList/seminarlar">Seminarlar</Link>
                   </li>
                 </ul>
               </div>
@@ -115,14 +118,14 @@ function Navbar() {
 
                 <ul>
                   <li>
-                    <Link>Suratlar</Link>
-                    <Link>Koʻruvlar</Link>
-                    <Link>Eshituvlar</Link>
+                    <Link to="/suratlar">Suratlar</Link>
+                    <Link to="/koruvlar">Koʻruvlar</Link>
+                    <Link to="/eshituvlar">Eshituvlar</Link>
                   </li>
                 </ul>
               </div>
 
-              <Link>Biz haqimizda</Link>
+              <Link to="/about">Biz haqimizda</Link>
 
               <button className={style.search_btn} onClick={SearchBtn}>
                 <FaSearch />
@@ -131,25 +134,32 @@ function Navbar() {
               <div className={style.link}>
                 <button onClick={ToggleLanguage}>
                   <span>Uzb</span>
-                  <BsFillCaretDownFill />
+                  <BsFillCaretDownFill
+                    style={{
+                      transform: toggle ? "rotate(180deg)" : "rotate(0deg)",
+                      transition: "transform 0.3s",
+                    }}
+                  />
                 </button>
 
                 <div className={toggle ? style.open : style.hidden}>
-                  <span>O'zbek</span>
+                  <span onClick={ToggleLanguage}>O'zbek</span>
 
-                  <span>Ўзбек</span>
+                  <span onClick={ToggleLanguage}>Ўзбек</span>
 
-                  <span>English</span>
+                  <span onClick={ToggleLanguage}>English</span>
                 </div>
               </div>
             </nav>
           </div>
         </header>
       ) : (
-        <div className={style.global_search}>
-          <input type="search" placeholder="Qidiruv ..." />
-          <button>qidiruv</button>
-        </div>
+        <Fade cascade damping={0.2}>
+          <div className={style.global_search}>
+            <input type="search" placeholder="Qidiruv ..." />
+            <button onClick={SearchBtn}>qidiruv</button>
+          </div>
+        </Fade>
       )}
     </div>
   );

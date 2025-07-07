@@ -1,4 +1,5 @@
 import style from "./jadidlarHome.module.scss";
+import { Fade } from "react-awesome-reveal";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import "slick-carousel/slick/slick.css";
@@ -89,9 +90,9 @@ function JadidlarHome() {
                 {datas?.map((value, index) => (
                   <div key={index} className={style.card}>
                     <div className={style.card_box}>
-                      <div className={style.image}>
+                      <Fade cascade damping={0.2} className={style.image}>
                         <img src={value?.image} alt={value?.title} />
-                      </div>
+                      </Fade>
 
                       <div className={style.description}>
                         <span className={style.name}>{value?.fullname}</span>

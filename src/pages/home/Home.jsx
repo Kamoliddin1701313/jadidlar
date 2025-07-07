@@ -1,4 +1,3 @@
-import { useState } from "react";
 import style from "./home.module.scss";
 import HeroSliderHome from "../../components/heroSliderHome/HeroSliderHome";
 import JadidlarHome from "../../components/jadidlarHome/JadidlarHome";

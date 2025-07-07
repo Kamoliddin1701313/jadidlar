@@ -1,0 +1,141 @@
+.container {
+  width: 100%;
+  .wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 0 50px;
+
+    .menu_link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Roboto Slab", serif;
+      button {
+        font-size: 18px;
+        background-color: transparent;
+        border: none;
+        font-weight: 600;
+        font-family: "Roboto Slab", serif;
+        cursor: pointer;
+        color: #112c42;
+        text-transform: uppercase;
+      }
+
+      span {
+        font-size: 18px;
+        font-weight: 900;
+        color: #881a3b;
+      }
+    }
+
+    .page_wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      margin-top: 35px;
+
+      .page_card {
+        h1 {
+          font-size: 36px;
+          font-weight: 600;
+          text-align: center;
+          color: #1e3769;
+          margin-bottom: 20px;
+          font-family: "Roboto Slab", serif;
+        }
+
+        .item_wrapper {
+          .img {
+            width: 35%;
+            height: 340px;
+            margin-right: 25px;
+            float: left;
+
+            img {
+              width: 100%;
+              height: 340px;
+              object-fit: cover;
+            }
+          }
+
+          .text {
+            width: 100%;
+
+            p {
+              color: #89001a;
+              font-family: "Roboto Slab", serif;
+              line-height: 36px;
+              font-size: 26px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+
+    .lineX {
+      width: 100%;
+      height: 1px;
+      background-color: #1f3765;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 600;
+      color: #1e3769;
+      margin: 20px 0;
+      font-family: "Roboto Slab", serif;
+    }
+
+    .users {
+      display: grid;
+      margin: 35px 0;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+
+      .user_about {
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        overflow: hidden;
+        height: 450px;
+        background-color: white;
+
+        .user_img {
+          height: 350px;
+          width: 100%;
+
+          img {
+            width: 100%;
+            object-fit: cover;
+            height: 350px;
+          }
+        }
+
+        .user_description {
+          padding: 10px 15px;
+          height: 100%;
+          text-align: center;
+          font-family: "Roboto Slab", serif;
+          font-weight: 600;
+
+          .name {
+            color: #0e2b65;
+            font-size: 20px;
+            margin: 6px 0 10px;
+          }
+
+          .position {
+            color: #6b1324;
+            height: 23px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

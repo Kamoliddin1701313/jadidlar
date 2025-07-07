@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 function ImageTabHome() {
   const [data, setData] = useState([]);
@@ -70,8 +71,6 @@ function ImageTabHome() {
     navigate(id);
   };
 
-  console.log(data, "data data");
-
   return (
     <div className="slider-container">
       {data?.length > 0 ? (
@@ -82,9 +81,9 @@ function ImageTabHome() {
                 onClick={() => ImagesHome(`/images/${value.id}`)}
                 className={style.card_img}
               >
-                <div key={index} className={style.img}>
+                <Fade cascade damping={0.2} key={index} className={style.img}>
                   <img src={value?.image} alt={value?.title} />
-                </div>
+                </Fade>
               </div>
             ))}
           </Slider>

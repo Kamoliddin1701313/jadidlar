@@ -3,6 +3,7 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { RiShareForwardLine } from "react-icons/ri";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 function SourcesHome() {
   const [datas, setDatas] = useState([]);
@@ -25,7 +26,6 @@ function SourcesHome() {
   useEffect(() => {
     getData();
   }, []);
-
 
   return (
     <div className={style.container}>
@@ -79,9 +79,9 @@ function SourcesHome() {
                       </span>
                     </div>
 
-                    <div className={style.img}>
+                    <Fade cascade damping={0.2} className={style.img}>
                       <img src={value?.image} alt={value?.title} />
-                    </div>
+                    </Fade>
 
                     <div className={style.text}>
                       <h4>{value?.title}</h4>
@@ -112,9 +112,9 @@ function SourcesHome() {
                       </span>
                     </div>
 
-                    <div className={style.img}>
+                    <Fade cascade damping={0.2} className={style.img}>
                       <img src={value?.image} alt={value?.title} />
-                    </div>
+                    </Fade>
 
                     <div className={style.text}>
                       <h4>{value?.title}</h4>

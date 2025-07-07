@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 function WatchTabHome() {
   const [data, setData] = useState([]);
@@ -76,7 +77,7 @@ function WatchTabHome() {
         <div className={style.carusel_videos}>
           <Slider {...settings}>
             {data.map((value, index) => (
-              <div className={style.card_img}>
+              <Fade cascade damping={0.2} className={style.card_img}>
                 <div key={index} className={style.img}>
                   <img src={value?.file} alt={value?.title} />
 
@@ -84,7 +85,7 @@ function WatchTabHome() {
                     <FaRegCirclePlay />
                   </button>
                 </div>
-              </div>
+              </Fade>
             ))}
           </Slider>
         </div>

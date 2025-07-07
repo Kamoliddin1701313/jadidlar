@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  padding: 100px 0 70px;
+  .wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    .initialPages {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0 35px;
+
+      button,
+      span,
+      p {
+        background-color: transparent;
+        border: none;
+        text-transform: uppercase;
+        color: #133654;
+        font-weight: 500;
+        font-size: 18px;
+        font-family: "Roboto Slab", serif;
+      }
+
+      span {
+        color: #a52a57;
+      }
+
+      button {
+        cursor: pointer;
+      }
+    }
+
+    .detail_images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: 20px;
+
+      .img_card {
+        width: 100%;
+        height: 360px;
+        img {
+          width: 100%;
+          height: 360px;
+          object-fit: cover;
+          border-radius: 12px;
+        }
+      }
+    }
+
+    .detail_images.columns-1 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .detail_images.columns-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .detail_images.columns-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .detail_images.columns-4,
+    .detail_images.columns-default {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

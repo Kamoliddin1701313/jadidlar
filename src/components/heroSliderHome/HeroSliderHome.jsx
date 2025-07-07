@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
+import { Fade } from "react-awesome-reveal";
 
 function HeroSliderHome() {
   const [datas, setDatas] = useState([]);
@@ -100,9 +101,9 @@ function HeroSliderHome() {
                       </button>
                     </div>
 
-                    <div className={style.image}>
+                    <Fade cascade damping={0.2} className={style.image}>
                       <img src={value?.image} alt={value?.title} />
-                    </div>
+                    </Fade>
                   </div>
                 ))}
               </Slider>
