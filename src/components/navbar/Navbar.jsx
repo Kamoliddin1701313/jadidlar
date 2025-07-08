@@ -1,15 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaSearch, FaChevronDown } from "react-icons/fa";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import style from "./navbar.module.scss";
 import jadidlar_logo from "../../assets/icons/jadidlar_logo.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 
 function Navbar() {
+  const { pathname } = useLocation();
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const [toggle, setToggle] = useState(false);
   const [globalSearch, setGlobalSearch] = useState(true);
-
   const ToggleLanguage = () => {
     setToggle(!toggle);
   };
@@ -18,8 +34,18 @@ function Navbar() {
     setGlobalSearch(!globalSearch);
   };
 
+  const bgClass =
+    pathname === "/" ? style.backgroundBlack : style.backgroundBlue;
+
   return (
-    <div className={style.container}>
+    <div
+      className={`${style.container} ${bgClass}`}
+      style={
+        isScrolled
+          ? { backgroundColor: "#0e2a63", boxShadow: "0px 0px 20px #0000ffa6" }
+          : {}
+      }
+    >
       {globalSearch ? (
         <header className={style.header}>
           <Link to="/">

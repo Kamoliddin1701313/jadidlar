@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  padding: 100px 0 30px;
+  padding: 30px 0;
   background-color: black;
 
   .hero_slider {
@@ -13,7 +13,7 @@
 
       .card {
         display: flex !important;
-        height: 80vh;
+        height: 95vh;
         justify-content: center;
         align-items: flex-end;
 
@@ -32,13 +32,13 @@
           }
 
           button {
-            padding: 10px;
-            width: 40%;
             border: none;
             border-radius: 20px;
             background-color: #0e2b65;
 
             a {
+              padding: 10px 35px;
+              display: block;
               font-size: 18px;
               font-weight: 500;
               color: white;
@@ -61,7 +61,7 @@
       .prev {
         position: absolute;
         left: 0;
-        top: 45%;
+        top: 50%;
         background-color: #0e2b65;
         border: none;
         outline: none;
@@ -81,7 +81,7 @@
       .next {
         position: absolute;
         right: 0;
-        top: 45%;
+        top: 50%;
         background-color: #0e2b65;
         border: none;
         outline: none;
@@ -99,7 +99,7 @@
       }
 
       .disabled {
-        background-color: #212f5a5a !important;
+        background-color: #1d1f2494 !important;
         cursor: not-allowed;
       }
     }

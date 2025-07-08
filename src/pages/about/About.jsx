@@ -63,10 +63,10 @@ function About() {
         <div className={style.users}>
           {data?.data?.results?.map((value, index) => (
             <div key={index} className={style.user_about}>
-              <Fade cascade damping={0.3} className={style.user_img}>
+              <Fade cascade damping={0.2} className={style.user_img}>
                 <img
-                  loading="lazy"
-                  decoding="async"
+                  // loading="lazy"
+                  // decoding="async"
                   src={value?.image}
                   alt={value?.fullname}
                 />

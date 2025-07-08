@@ -8,5 +8,38 @@
 
   .wrapper {
     min-height: 100vh;
+
+    .arrow_btn {
+      display: grid;
+      place-items: center;
+      position: fixed;
+      z-index: 9;
+      bottom: 8%;
+      right: 4%;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      border: 2px solid #b3d1f3;
+      box-shadow: 0 0 5px #1f7ce6;
+      cursor: pointer;
+      background-color: #0e2b65;
+
+      svg {
+        font-size: 28px;
+        color: white;
+      }
+    }
+
+    .hidden {
+      // visibility: collapse;
+      transform: scale(0);
+      transition: all 0.2s linear;
+    }
+
+    .block {
+      // visibility: visible;
+      transform: scale(1);
+      transition: all 0.2s linear;
+    }
   }
 }

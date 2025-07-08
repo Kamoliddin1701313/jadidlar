@@ -90,6 +90,7 @@ function HeroSliderHome() {
                     <div className={style.description}>
                       <h1>{value.title}</h1>
                       <h4>{value.text}</h4>
+
                       <button>
                         <a
                           href={value?.citations}
@@ -98,7 +99,7 @@ function HeroSliderHome() {
                         >
                           To'liq
                         </a>
-                      </button>
+                      </button>  
                     </div>
 
                     <Fade cascade damping={0.2} className={style.image}>
