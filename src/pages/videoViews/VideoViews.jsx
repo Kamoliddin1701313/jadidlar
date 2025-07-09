@@ -10,9 +10,7 @@ function VideoViews() {
   const [activeVideo, setActiveVideo] = useState(null);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  console.log(pathname, "ww");
 
-  // https://backend.jadidlar.uz/api/videolar/104
   const getData = async () => {
     try {
       const respons = await axios.get("videolar/");
@@ -26,13 +24,20 @@ function VideoViews() {
     getData();
   }, []);
 
-  const ActiveVideoBtn = (id) => {
-    setActiveVideo(id);
-    navigate(`/koruvlar/id`);
+  const ActiveVideoBtn = (video) => {
+    setActiveVideo(video);
+    navigate(`/koruvlar/${video.id}`);
   };
 
   const videoItem = data.find((item) => item.id.toString() === id);
-  console.log(videoItem, "videoItem");
+
+  const getEmbedUrl = (url) => {
+    if (!url) return "";
+    if (url.includes("youtube.com/watch?v=")) {
+      return url.replace("watch?v=", "embed/");
+    }
+    return url;
+  };
 
   return (
     <div className={style.container}>
@@ -50,29 +55,45 @@ function VideoViews() {
         </div>
 
         <div className={style.video_container}>
-          {/* {pathname == `/koruvlar/${id}` ? (
-            <Fade cascade damping={0.2} className={style.video}>
-              <iframe src={videoItem?.link}></iframe>
-            </Fade>
-          ) : (
-            <Fade cascade damping={0.2} className={style.video}>
+          <Fade cascade damping={0.2} className={style.video}>
+            {pathname === `/koruvlar/${id}` ? (
+              videoItem?.link ? (
+                <iframe
+                  src={getEmbedUrl(videoItem.link)}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  width="100%"
+                  height="500"
+                  frameBorder="0"
+                ></iframe>
+              ) : videoItem?.video ? (
+                <video
+                  src={videoItem.video}
+                  controls
+                  width="100%"
+                  height="500"
+                  style={{ borderRadius: "12px" }}
+                />
+              ) : null
+            ) : activeVideo?.link ? (
               <iframe
-                src={activeVideo == null ? data[0]?.link : activeVideo?.link}
+                src={getEmbedUrl(activeVideo.link)}
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                width="100%"
+                height="500"
+                frameBorder="0"
               ></iframe>
-            </Fade>
-          )} */}
-
-          {pathname == `/koruvlar/id` ? (
-            <Fade cascade damping={0.2} className={style.video}>
-              <iframe
-                src={activeVideo == null ? data[0]?.link : activeVideo?.link}
-              ></iframe>
-            </Fade>
-          ) : (
-            <Fade cascade damping={0.2} className={style.video}>
-              <iframe src={videoItem?.link}></iframe>
-            </Fade>
-          )}
+            ) : activeVideo?.video || data[0]?.video ? (
+              <video
+                src={activeVideo?.video || data[0]?.video}
+                controls
+                width="100%"
+                height="500"
+                style={{ borderRadius: "12px" }}
+              />
+            ) : null}
+          </Fade>
 
           <div className={style.videos_wrapper}>
             <div className={style.videos_btn}>
