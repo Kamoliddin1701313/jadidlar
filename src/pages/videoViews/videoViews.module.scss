@@ -28,6 +28,10 @@
         transition: all 0.2s linear;
       }
 
+      button:last-of-type {
+        width: 75%;
+      }
+
       span {
         font-size: 18px;
         font-weight: 900;

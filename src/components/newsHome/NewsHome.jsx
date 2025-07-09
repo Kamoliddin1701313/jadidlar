@@ -107,7 +107,7 @@ function NewsHome() {
                             <span>{value?.updated_at.slice(0, 10)}</span>
                           </div>
 
-                          <button>To'liq</button>
+                          <a href={value?.link}>To'liq</a>
                         </div>
                       </div>
 
@@ -132,7 +132,7 @@ function NewsHome() {
           )}
         </div>
       </div>
-      <div className={style.line}></div>
+      {/* <div className={style.line}></div> */}
     </div>
   );
 }

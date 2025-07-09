@@ -145,7 +145,7 @@ function Navbar() {
                 <ul>
                   <li>
                     <Link to="/suratlar">Suratlar</Link>
-                    <Link to="/koruvlar">Koʻruvlar</Link>
+                    <Link to="/koruvlar/id">Koʻruvlar</Link>
                     <Link to="/eshituvlar">Eshituvlar</Link>
                   </li>
                 </ul>

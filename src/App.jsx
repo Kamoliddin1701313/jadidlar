@@ -27,7 +27,7 @@ function App() {
           <Route path="/jadids" element={<JadidList />} />
           <Route path="/about" element={<About />} />
           <Route path="/suratlar" element={<Pictures />} />
-          <Route path="/koruvlar" element={<VideoViews />} />
+          <Route path="/koruvlar/:id" element={<VideoViews />} />
           <Route path="/eshituvlar" element={<AudioListener />} />
 
           {/* DETAILS */}

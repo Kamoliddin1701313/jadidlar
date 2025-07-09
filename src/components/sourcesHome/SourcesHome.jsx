@@ -50,7 +50,7 @@ function SourcesHome() {
           </button>
         </div>
 
-        <div className={style.line}></div>
+        {/* <div className={style.line}></div> */}
 
         {datas?.length > 0 ? (
           <div className={style.wrapper}>
@@ -126,7 +126,7 @@ function SourcesHome() {
           <div>NO DATA</div>
         )}
 
-        <div className={style.line}></div>
+        {/* <div className={style.line}></div> */}
       </div>
     </div>
   );

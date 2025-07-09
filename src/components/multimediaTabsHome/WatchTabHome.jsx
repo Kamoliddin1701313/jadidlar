@@ -81,7 +81,7 @@ function WatchTabHome() {
                 <div key={index} className={style.img}>
                   <img src={value?.file} alt={value?.title} />
 
-                  <button onClick={() => WatchHome(`${value.id}`)}>
+                  <button onClick={() => WatchHome(`/koruvlar/${value.id}`)}>
                     <FaRegCirclePlay />
                   </button>
                 </div>

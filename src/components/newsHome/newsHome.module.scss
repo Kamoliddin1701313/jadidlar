@@ -11,7 +11,7 @@
       .card {
         display: flex;
         flex-direction: column;
-        padding: 10px 0 30px;
+        padding: 10px 0 15px;
 
         .card_box {
           box-shadow: 0 5px 10px rgb(0, 0, 0);
@@ -54,15 +54,18 @@
                 }
               }
 
-              button {
+              a {
                 padding: 10px;
                 background-color: #0e2b65;
                 border: none;
                 border-radius: 30px;
                 color: white;
+                display: grid;
+                place-items: center;
                 cursor: pointer;
                 letter-spacing: 1px;
                 width: 25%;
+                text-decoration: none;
                 transition: all 0.3s linear;
 
                 &:hover {

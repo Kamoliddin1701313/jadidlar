@@ -30,6 +30,7 @@ function HeroSliderHome() {
   const next = () => {
     sliderRef.slickNext();
   };
+
   const previous = () => {
     sliderRef.slickPrev();
   };
@@ -37,7 +38,8 @@ function HeroSliderHome() {
   const settings = {
     fade: true,
     // infinite: true,
-    infinite: false,
+    // autoplaySpeed: 2000,
+    autoplay: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -99,7 +101,7 @@ function HeroSliderHome() {
                         >
                           To'liq
                         </a>
-                      </button>  
+                      </button>
                     </div>
 
                     <Fade cascade damping={0.2} className={style.image}>

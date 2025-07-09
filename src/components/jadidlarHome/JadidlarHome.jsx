@@ -125,7 +125,7 @@ function JadidlarHome() {
             <div>NO DATA</div>
           )}
         </div>
-        <div className={style.line}></div>
+        {/* <div className={style.line}></div> */}
       </div>
     </div>
   );
