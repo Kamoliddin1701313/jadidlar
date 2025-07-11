@@ -9,6 +9,69 @@
   right: 0;
   z-index: 10;
 
+  .modal {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.91);
+    color: white;
+
+    .modal_box {
+      width: 40%;
+      height: 450px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.341);
+      background-color: rgba(255, 255, 255, 0.711);
+
+      svg {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        font-size: 32px;
+        cursor: pointer;
+        color: #ff0101;
+      }
+
+      .modal_card {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: 90%;
+        display: flex;
+        height: 235px;
+        flex-direction: column;
+        justify-content: space-between;
+        transform: translateX(-50%);
+        p {
+          font-size: 20px;
+          color: #0e2b65;
+          text-align: center;
+          font-weight: 500;
+          font-family: "Roboto Slab", serif;
+        }
+
+        button {
+          width: 100%;
+          height: 42px;
+          cursor: pointer;
+          background-color: transparent;
+          border: 2px solid #ff0101;
+          color: #ff0101;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
   .header {
     max-width: 1400px;
     display: flex;
@@ -152,6 +215,22 @@
           &:hover {
             background-color: rgba(21, 21, 21, 0.195);
             color: white;
+          }
+        }
+
+        .logout_icon {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          svg {
+            font-size: 20px;
+            margin-top: 4px;
+            color: white;
+            transition: all 0.2s linear;
+          }
+
+          &:hover svg {
+            color: rgba(255, 0, 0, 0.822);
           }
         }
       }

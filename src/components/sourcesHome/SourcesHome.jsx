@@ -4,11 +4,22 @@ import { RiShareForwardLine } from "react-icons/ri";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
+import { useNavigate } from "react-router-dom";
 
 function SourcesHome() {
   const [datas, setDatas] = useState([]);
   const [datas2, setDatas2] = useState([]);
   const [avtiveTab, setActiveTab] = useState(1);
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const handleClick = (value) => {
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
 
   const getData = async () => {
     try {
@@ -59,13 +70,9 @@ function SourcesHome() {
                   <div className={style.card} key={index}>
                     <div className={style.link}>
                       <span>
-                        <a
-                          href={value.file}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <button onClick={() => handleClick(value)}>
                           <MdOutlineFileDownload />
-                        </a>
+                        </button>
                       </span>
 
                       <span>
@@ -84,7 +91,9 @@ function SourcesHome() {
                     </Fade>
 
                     <div className={style.text}>
-                      <h4>{value?.title}</h4>
+                      <button onClick={() => handleClick(value)}>
+                        {value?.title}
+                      </button>
                     </div>
                   </div>
                 ))
@@ -92,13 +101,9 @@ function SourcesHome() {
                   <div className={style.card} key={index}>
                     <div className={style.link}>
                       <span>
-                        <a
-                          href={value.file}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <button onClick={() => handleClick(value)}>
                           <MdOutlineFileDownload />
-                        </a>
+                        </button>
                       </span>
 
                       <span>
@@ -117,7 +122,9 @@ function SourcesHome() {
                     </Fade>
 
                     <div className={style.text}>
-                      <h4>{value?.title}</h4>
+                      <button onClick={() => handleClick(value)}>
+                        {value?.title}
+                      </button>
                     </div>
                   </div>
                 ))}

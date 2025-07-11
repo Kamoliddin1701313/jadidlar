@@ -4,10 +4,27 @@ import { BsFillCaretDownFill } from "react-icons/bs";
 import style from "./navbar.module.scss";
 import jadidlar_logo from "../../assets/icons/jadidlar_logo.svg";
 import { useEffect, useState } from "react";
+import { IoMdLogOut } from "react-icons/io";
+import { GrClose } from "react-icons/gr";
 import { Fade } from "react-awesome-reveal";
 
 function Navbar() {
   const { pathname } = useLocation();
+
+  const token = localStorage.getItem("token");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isModalOpen]);
 
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -34,6 +51,11 @@ function Navbar() {
     setGlobalSearch(!globalSearch);
   };
 
+  const Logout = () => {
+    localStorage.removeItem("token");
+    setIsModalOpen(false);
+  };
+
   const bgClass =
     pathname === "/" ? style.backgroundBlack : style.backgroundBlue;
 
@@ -46,6 +68,18 @@ function Navbar() {
           : {}
       }
     >
+      {isModalOpen && (
+        <Fade cascade damping={0.2} className={style.modal}>
+          <div className={style.modal_box}>
+            <GrClose onClick={() => setIsModalOpen(false)} />
+            <div className={style.modal_card}>
+              <p>Hisobdan chiqmoqchimisiz?</p>
+              <button onClick={Logout}>Hisobdan Chiqish</button>
+            </div>
+          </div>
+        </Fade>
+      )}
+
       {globalSearch ? (
         <header className={style.header}>
           <Link to="/">
@@ -152,6 +186,17 @@ function Navbar() {
               </div>
 
               <Link to="/about">Biz haqimizda</Link>
+
+              {token ? (
+                <button
+                  className={style.logout_icon}
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <IoMdLogOut />
+                </button>
+              ) : (
+                ""
+              )}
 
               <button className={style.search_btn} onClick={SearchBtn}>
                 <FaSearch />

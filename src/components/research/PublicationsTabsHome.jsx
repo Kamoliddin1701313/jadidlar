@@ -27,9 +27,9 @@ function PublicationsTabsHome() {
         <div className={style.card} key={index}>
           <div className={style.link}>
             <span>
-              <a href={value.file} target="_blank" rel="noopener noreferrer">
+              <button onClick={() => handleClick(value)}>
                 <MdOutlineFileDownload />
-              </a>
+              </button>
             </span>
 
             <span>
@@ -48,7 +48,7 @@ function PublicationsTabsHome() {
           </Fade>
 
           <div className={style.text}>
-            <h4>{value?.title}</h4>
+            <button onClick={() => handleClick(value)}>{value?.title}</button>
           </div>
         </div>
       ))}

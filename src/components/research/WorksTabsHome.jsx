@@ -8,6 +8,14 @@ import { RiShareForwardLine } from "react-icons/ri";
 function WorksTabsHome() {
   const [data, setData] = useState([]);
 
+  const handleClick = (value) => {
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
   const getData = async () => {
     try {
       const respons = await axios.get("asarlar_random_izlanish/");
@@ -27,9 +35,9 @@ function WorksTabsHome() {
         <div className={style.card} key={index}>
           <div className={style.link}>
             <span>
-              <a href={value.file} target="_blank" rel="noopener noreferrer">
+              <button onClick={() => handleClick(value)}>
                 <MdOutlineFileDownload />
-              </a>
+              </button>
             </span>
 
             <span>
@@ -48,7 +56,7 @@ function WorksTabsHome() {
           </Fade>
 
           <div className={style.text}>
-            <h4>{value?.title}</h4>
+            <button onClick={() => handleClick(value)}>{value?.title}</button>
           </div>
         </div>
       ))}

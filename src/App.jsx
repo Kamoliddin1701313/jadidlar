@@ -15,12 +15,17 @@ import PressList from "./pages/pressList/PressList";
 import Pictures from "./pages/pictures/Pictures";
 import VideoViews from "./pages/videoViews/VideoViews";
 import AudioListener from "./pages/audioListening/AudioListening";
+import Login from "./pages/auth/Login";
 
 axios.defaults.baseURL = "https://backend.jadidlar.uz/api/";
 
 function App() {
   return (
     <div>
+      <Routes>
+        <Route path="login" element={<Login />} />
+      </Routes>
+
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
