@@ -8,27 +8,42 @@
     .initialPages {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
+      height: 22px;
       margin: 20px 0 35px;
 
-      button,
-      span,
-      p {
+      button {
+        min-width: 70px;
+        text-align: left;
         background-color: transparent;
+        font-size: 18px;
         border: none;
         text-transform: uppercase;
         color: #133654;
         font-weight: 500;
         font-size: 18px;
-        font-family: "Roboto Slab", serif;
-      }
-
-      span {
-        color: #a52a57;
-      }
-
-      button {
         cursor: pointer;
+        font-family: "Roboto Slab", serif;
+        height: 24px;
+        display: flex;
+        align-items: center;
+
+        span {
+          color: #a52a57;
+        }
+      }
+
+      p {
+        text-transform: uppercase;
+        color: #133654;
+        font-weight: 500;
+        font-size: 18px;
+        font-family: "Roboto Slab", serif;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        width: 75%;
+        overflow: hidden;
       }
     }
 
@@ -61,6 +76,65 @@
     .detail_images.columns-4,
     .detail_images.columns-default {
       grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    .wrapper {
+      padding: 0 15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .detail_images {
+        gap: 10px;
+      }
+
+      .initialPages p {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      .detail_images {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      .initialPages {
+        gap: 10px;
+        button,
+        span,
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      .detail_images {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+      }
+
+      .initialPages {
+        gap: 10px;
+        p {
+          width: 30%;
+        }
+      }
     }
   }
 }

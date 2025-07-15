@@ -10,6 +10,7 @@
       align-items: center;
       gap: 15px;
       font-family: "Roboto Slab", serif;
+      height: 25px;
 
       button {
         font-size: 18px;
@@ -21,7 +22,9 @@
         color: #112c42;
         text-transform: uppercase;
         text-align: left;
-        height: 26px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
       }
 
       span {
@@ -31,7 +34,6 @@
       }
 
       button:last-of-type {
-        height: 26px;
         width: 60%;
         display: -webkit-box;
         -webkit-line-clamp: 1;
@@ -133,6 +135,87 @@
                 transition: all 0.2s linear;
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        button {
+          font-size: 16px;
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .audio_container {
+        gap: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        button:last-child {
+          width: 44%;
+        }
+      }
+
+      .audio_container {
+        height: 800px;
+        grid-template-columns: 1fr;
+        gap: 0;
+
+        .active_audio {
+          height: 380px;
+          .img {
+            height: 290px;
+          }
+        }
+
+        .audio_wrapper {
+          .audio_btn {
+            .card {
+              button {
+                height: 50px;
+                svg {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        button {
+          font-size: 13px;
+
+          &:last-child {
+            width: 35%;
+            font-size: 14px;
+            text-transform: lowercase;
           }
         }
       }

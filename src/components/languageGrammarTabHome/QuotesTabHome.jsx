@@ -2,7 +2,7 @@ import style from "./languageGrammarTabHome.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function QuotesTabHome() {
+function QuotesTabHome({ handleClick }) {
   const [data, setData] = useState([]);
 
   const getData = async () => {
@@ -17,8 +17,6 @@ function QuotesTabHome() {
   useEffect(() => {
     getData();
   }, []);
-
-  console.log(data, "data");
 
   return (
     <div className={style.tab_quotes_container}>

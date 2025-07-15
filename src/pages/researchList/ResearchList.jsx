@@ -10,6 +10,27 @@ function ResearchList() {
   const { type } = useParams();
   const navigate = useNavigate();
 
+  const handleClick = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -62,13 +83,33 @@ function ResearchList() {
           </button>
         </div>
 
-        {type === "asarlar" && <ResearchListAsarlar />}
+        {type === "asarlar" && (
+          <ResearchListAsarlar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {type === "maqolalar" && <ResearchListMaqolalar />}
+        {type === "maqolalar" && (
+          <ResearchListMaqolalar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {type === "dissertatsiyalar" && <ResearchListDissertatsiya />}
+        {type === "dissertatsiyalar" && (
+          <ResearchListDissertatsiya
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {type === "esdaliklar" && <ResearchListEsdaliklar />}
+        {type === "esdaliklar" && (
+          <ResearchListEsdaliklar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
       </div>
     </div>
   );

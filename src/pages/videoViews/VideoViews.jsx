@@ -11,6 +11,11 @@ function VideoViews() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
+  console.log(
+    activeVideo,
+    "ID XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  );
+
   const getData = async () => {
     try {
       const respons = await axios.get("videolar/");
@@ -68,7 +73,7 @@ function VideoViews() {
                 ></iframe>
               ) : videoItem?.video ? (
                 <video
-                  src={videoItem.video}
+                  src={videoItem?.video}
                   controls
                   width="100%"
                   height="500"
@@ -77,7 +82,7 @@ function VideoViews() {
               ) : null
             ) : activeVideo?.link ? (
               <iframe
-                src={getEmbedUrl(activeVideo.link)}
+                src={getEmbedUrl(activeVideo?.link)}
                 allow="autoplay; encrypted-media"
                 allowFullScreen
                 width="100%"

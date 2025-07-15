@@ -25,17 +25,17 @@ function AudioListening() {
     setClickAudio(id);
   };
 
-  console.log(clickAudio, "clickAudio");
-
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.menu_link}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
-          <span>/</span>
+          <button onClick={() => navigate("/")}>
+            Bosh sahifa <span>/</span>
+          </button>
 
-          <button onClick={() => navigate("/")}>Eshituvlar</button>
-          <span>/</span>
+          <button onClick={() => navigate("/")}>
+            Eshituvlar <span>/</span>
+          </button>
 
           <button>
             {clickAudio == null

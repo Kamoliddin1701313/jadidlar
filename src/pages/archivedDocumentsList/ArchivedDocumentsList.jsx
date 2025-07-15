@@ -7,7 +7,29 @@ import ArchivedDocumentsListSkaner from "./details/ArchivedDocumentsListSkaner";
 function ArchivedDocumentsList() {
   const { pathname } = useLocation();
   const { type } = useParams();
+
   const navigate = useNavigate();
+
+  const handleClick = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className={style.container}>
@@ -51,10 +73,18 @@ function ArchivedDocumentsList() {
           </button>
         </div>
 
-        {type === "royxat" && <ArchivedDocumentsListRoyxat />}
+        {type === "royxat" && (
+          <ArchivedDocumentsListRoyxat
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
         {pathname === "/archivedDocuments/skaner" && (
-          <ArchivedDocumentsListSkaner />
+          <ArchivedDocumentsListSkaner
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
         )}
       </div>
     </div>

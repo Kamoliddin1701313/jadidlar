@@ -1,0 +1,32 @@
+{
+  "navbar": {
+    "jadidlar": "Jadidlar",
+    "manbalar": "Manbalar",
+    "izlanishlar": "Izlanishlar",
+    "tilvaimlo": "Til va imlo",
+    "turkistonmuxtoriyati": "Turkiston muxtoriyati",
+    "voqealar": "Voqealar",
+    "ko'reshito'qi": "Ko‘r-eshit-o‘qi",
+    "bizhaqimizda": "Biz haqimizda",
+    "arxivhujjatlari": "Arxiv hujjatlari",
+    "matbuot": "Matbuot",
+    "asarlar": "Asarlar",
+    "maqolalar": "Maqolalar",
+    "dissertatsiyalar": "Dissertatsiyalar",
+    "esdaliklar": "Esdaliklar",
+    "hikmatlar": "Hikmatlar",
+    "sherlar": "Sheʼrlar",
+    "yangiliklar": "Yangiliklar",
+    "yiginlar": "Yigʻinlar",
+    "seminarlar": "Seminarlar",
+    "suratlar": "Suratlar",
+    "koruvlar": "Koʻruvlar",
+    "eshituvlar": "Eshituvlar",
+    "qidiruv": "Qidiruv",
+    "chiqish": "Hisobdan chiqmoqchimisiz?",
+    "chiqish_btn": "Hisobdan Chiqish"
+  },
+  "homepage": {
+    "toliq": "To'liq"
+  }
+}

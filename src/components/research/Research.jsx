@@ -4,9 +4,32 @@ import WorksTabsHome from "./WorksTabsHome";
 import PublicationsTabsHome from "./PublicationsTabsHome";
 import ContentTabsHome from "./ContentTabsHome";
 import MemoirsTabHome from "./MemoirsTabHome";
+import { useNavigate } from "react-router-dom";
 
 function Research() {
   const [activeTab, setActiveTab] = useState(1);
+  const navigate = useNavigate();
+
+  const handleClick = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className={style.container}>
@@ -48,10 +71,30 @@ function Research() {
         </div>
 
         <div className={style.page_container}>
-          {activeTab === 1 && <WorksTabsHome />}
-          {activeTab === 2 && <PublicationsTabsHome />}
-          {activeTab === 3 && <ContentTabsHome />}
-          {activeTab === 4 && <MemoirsTabHome />}
+          {activeTab === 1 && (
+            <WorksTabsHome
+              handleClick={handleClick}
+              handleClickTelegram={handleClickTelegram}
+            />
+          )}
+          {activeTab === 2 && (
+            <PublicationsTabsHome
+              handleClick={handleClick}
+              handleClickTelegram={handleClickTelegram}
+            />
+          )}
+          {activeTab === 3 && (
+            <ContentTabsHome
+              handleClick={handleClick}
+              handleClickTelegram={handleClickTelegram}
+            />
+          )}
+          {activeTab === 4 && (
+            <MemoirsTabHome
+              handleClick={handleClick}
+              handleClickTelegram={handleClickTelegram}
+            />
+          )}
         </div>
       </div>
     </div>

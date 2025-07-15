@@ -70,17 +70,15 @@
           flex-direction: column;
           z-index: 9;
 
-          span {
-            svg {
-              font-size: 30px;
-              color: white;
-            }
+          svg {
+            font-size: 30px;
+            color: white;
+          }
 
-            button {
-              background-color: transparent;
-              border: none;
-              cursor: pointer;
-            }
+          button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
           }
         }
 
@@ -156,6 +154,67 @@
       background-color: #223b6d;
       margin-bottom: 20px;
       margin-top: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+    .hero_slider {
+      .wrapper {
+        gap: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .hero_slider {
+      .wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .hero_slider {
+      .home_name {
+        font-size: 32px;
+      }
+      .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .hero_slider {
+      .active_link {
+        button {
+          font-size: 14px;
+          margin: 0 5px;
+        }
+      }
+
+      .home_name {
+        font-size: 28px;
+      }
+      .wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        .card {
+          height: 350px;
+        }
+      }
     }
   }
 }

@@ -9,6 +9,27 @@ function LanguageSpellingList() {
   const { type } = useParams();
   const navigate = useNavigate();
 
+  const handleClick = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -53,9 +74,19 @@ function LanguageSpellingList() {
           </button>
         </div>
 
-        {type === "asarlar" && <LanguageSpellingListAsarlar />}
+        {type === "asarlar" && (
+          <LanguageSpellingListAsarlar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {type === "maqolalar" && <LanguageSpellingListMaqolalar />}
+        {type === "maqolalar" && (
+          <LanguageSpellingListMaqolalar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
         {type === "hikmatlar" && <LanguageSpellingListHikmatlar />}
       </div>

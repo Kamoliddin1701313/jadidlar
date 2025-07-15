@@ -35,3 +35,59 @@
     }
   }
 }
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .slider_container {
+        .slider_img {
+          margin: 15px;
+          width: 200px;
+          height: 90px;
+          padding: 10px;
+          img {
+            height: 70px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      h1 {
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      h1 {
+        font-size: 28px;
+      }
+
+      .slider_container {
+        margin: 0;
+        padding: 0;
+        .slider_img {
+          margin: 10px;
+          height: 80px;
+          img {
+            height: 60px;
+          }
+        }
+      }
+    }
+  }
+}

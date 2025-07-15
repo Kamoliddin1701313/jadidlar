@@ -135,3 +135,19 @@
     }
   }
 }
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .hero_slider {
+      .home_name {
+        font-size: 32px;
+      }
+    }
+  }
+}

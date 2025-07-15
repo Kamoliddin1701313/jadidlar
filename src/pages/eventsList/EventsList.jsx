@@ -7,8 +7,6 @@ import Seminars from "./details/Seminars";
 function EventsList() {
   const { type } = useParams();
 
-  console.log(type, "TYPE");
-
   return (
     <div className={style.container}>
       <div className={style.wrapper}>

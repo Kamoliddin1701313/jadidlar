@@ -1,0 +1,32 @@
+{
+  "navbar": {
+    "jadidlar": "Jadids",
+    "manbalar": "Sources",
+    "izlanishlar": "Researches",
+    "tilvaimlo": "Language and Orthography",
+    "turkistonmuxtoriyati": "Turkestan Autonomy",
+    "voqealar": "Events",
+    "ko'reshito'qi": "See-Hear-Read",
+    "bizhaqimizda": "About Us",
+    "arxivhujjatlari": "Archive Documents",
+    "matbuot": "Press",
+    "asarlar": "Works",
+    "maqolalar": "Articles",
+    "dissertatsiyalar": "Dissertations",
+    "esdaliklar": "Memoirs",
+    "hikmatlar": "Wisdoms",
+    "sherlar": "Poems",
+    "yangiliklar": "News",
+    "yiginlar": "Meetings",
+    "seminarlar": "Seminars",
+    "suratlar": "Photos",
+    "koruvlar": "Viewings",
+    "eshituvlar": "Audios",
+    "qidiruv": "Search",
+    "chiqish": "Do you want to log out?",
+    "chiqish_btn": "Sign Out"
+  },
+  "homepage": {
+    "toliq": "Full"
+  }
+}

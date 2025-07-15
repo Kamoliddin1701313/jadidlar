@@ -1,5 +1,5 @@
 import style from "../pressList.module.scss";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
@@ -8,12 +8,11 @@ import { Fade } from "react-awesome-reveal";
 import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 
-function BibliographicIndexSection() {
+function BibliographicIndexSection({ handleClick, handleClickTelegram }) {
   const [list, setList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1; // URL ga saqlash
-  const navigate = useNavigate();
 
   const getData = async (page = 1) => {
     try {
@@ -40,21 +39,13 @@ function BibliographicIndexSection() {
         {list?.results?.map((lists, index) => (
           <div className={style.card} key={index}>
             <div className={style.link}>
-              <span>
-                <a href={lists.file} target="_blank" rel="noopener noreferrer">
-                  <MdOutlineFileDownload />
-                </a>
-              </span>
+              <button onClick={() => handleClick(lists)}>
+                <MdOutlineFileDownload />
+              </button>
 
-              <span>
-                <a
-                  href="https://t.me/Kamol7602"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <RiShareForwardLine />
-                </a>
-              </span>
+              <a onClick={() => handleClickTelegram(value)}>
+                <RiShareForwardLine />
+              </a>
             </div>
 
             <Fade cascade damping={0.2} className={style.img}>
@@ -62,7 +53,7 @@ function BibliographicIndexSection() {
             </Fade>
 
             <div className={style.text}>
-              <h4>{lists?.title}</h4>
+              <button onClick={() => handleClick(lists)}>{lists?.title}</button>
             </div>
           </div>
         ))}

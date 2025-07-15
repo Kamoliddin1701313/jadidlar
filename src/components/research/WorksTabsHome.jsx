@@ -5,16 +5,8 @@ import { Fade } from "react-awesome-reveal";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { RiShareForwardLine } from "react-icons/ri";
 
-function WorksTabsHome() {
+function WorksTabsHome({ handleClick, handleClickTelegram }) {
   const [data, setData] = useState([]);
-
-  const handleClick = (value) => {
-    if (token) {
-      window.open(value?.file, "_blank");
-    } else {
-      navigate("/login");
-    }
-  };
 
   const getData = async () => {
     try {
@@ -34,21 +26,13 @@ function WorksTabsHome() {
       {data.map((value, index) => (
         <div className={style.card} key={index}>
           <div className={style.link}>
-            <span>
-              <button onClick={() => handleClick(value)}>
-                <MdOutlineFileDownload />
-              </button>
-            </span>
+            <button onClick={() => handleClick(value)}>
+              <MdOutlineFileDownload />
+            </button>
 
-            <span>
-              <a
-                href="https://t.me/Kamol7602"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <RiShareForwardLine />
-              </a>
-            </span>
+            <a onClick={() => handleClickTelegram(value)}>
+              <RiShareForwardLine />
+            </a>
           </div>
 
           <Fade cascade damping={0.2} className={style.img}>

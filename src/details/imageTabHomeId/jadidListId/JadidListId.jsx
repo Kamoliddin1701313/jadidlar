@@ -14,6 +14,27 @@ function JadidListId() {
   const [data, setData] = useState({});
   const navigate = useNavigate();
 
+  const handleClick = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
   const [tab, setTab] = useState("jadid");
 
   const tab_page = [
@@ -58,10 +79,34 @@ function JadidListId() {
         </div>
 
         {tab == "jadid" && <JadidListIdJadid data={data} />}
-        {tab == "asarlar" && <JadidListIdAsarlar data={data} />}
-        {tab == "maqolalar" && <JadidListIdMaqola data={data} />}
-        {tab == "sherlar" && <JadidListIdSherlar data={data} />}
-        {tab == "esdalik" && <JadidListIdEsdalik data={data} />}
+        {tab == "asarlar" && (
+          <JadidListIdAsarlar
+            data={data}
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
+        {tab == "maqolalar" && (
+          <JadidListIdMaqola
+            data={data}
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
+        {tab == "sherlar" && (
+          <JadidListIdSherlar
+            data={data}
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
+        {tab == "esdalik" && (
+          <JadidListIdEsdalik
+            data={data}
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
         {tab == "hikimatli" && <JadidListIdHikmatli data={data} />}
       </div>
     </div>

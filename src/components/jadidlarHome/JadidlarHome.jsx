@@ -57,7 +57,7 @@ function JadidlarHome() {
         },
       },
       {
-        breakpoint: 1080,
+        breakpoint: 1220,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -65,7 +65,7 @@ function JadidlarHome() {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 770,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -120,6 +120,7 @@ function JadidlarHome() {
               <button className={style.next} onClick={next}>
                 <MdOutlineNavigateNext />
               </button>
+              
             </div>
           ) : (
             <div>NO DATA</div>

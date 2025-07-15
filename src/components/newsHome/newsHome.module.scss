@@ -181,3 +181,44 @@
     margin-bottom: 20px;
   }
 }
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+
+    .hero_slider {
+      .carusel {
+        .card {
+          .card_box .image {
+            height: 250px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .hero_slider {
+      padding: 25px 0;
+      .carusel {
+        .card {
+          .card_box .image {
+            height: 300px;
+          }
+        }
+
+        .next {
+          right: 1%;
+          top: 48%;
+        }
+
+        .prev {
+          left: 1%;
+          top: 48%;
+        }
+      }
+    }
+  }
+}

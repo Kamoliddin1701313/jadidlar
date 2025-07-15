@@ -50,15 +50,7 @@ function WatchTabHome() {
         },
       },
       {
-        breakpoint: 1080,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 800,
+        breakpoint: 770,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

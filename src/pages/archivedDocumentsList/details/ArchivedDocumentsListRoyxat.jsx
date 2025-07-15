@@ -8,7 +8,7 @@ import { Fade } from "react-awesome-reveal";
 import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 
-function ArchivedDocumentsListRoyxat() {
+function ArchivedDocumentsListRoyxat({ handleClick, handleClickTelegram }) {
   const [list, setList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,21 +40,13 @@ function ArchivedDocumentsListRoyxat() {
         {list?.results?.map((lists, index) => (
           <div className={style.card} key={index}>
             <div className={style.link}>
-              <span>
-                <a href={lists.file} target="_blank" rel="noopener noreferrer">
-                  <MdOutlineFileDownload />
-                </a>
-              </span>
+              <button onClick={() => handleClick(lists)}>
+                <MdOutlineFileDownload />
+              </button>
 
-              <span>
-                <a
-                  href="https://t.me/Kamol7602"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <RiShareForwardLine />
-                </a>
-              </span>
+              <a onClick={() => handleClickTelegram(value)}>
+                <RiShareForwardLine />
+              </a>
             </div>
 
             <Fade cascade damping={0.2} className={style.img}>
@@ -62,7 +54,7 @@ function ArchivedDocumentsListRoyxat() {
             </Fade>
 
             <div className={style.text}>
-              <h4>{lists?.title}</h4>
+              <button onClick={() => handleClick(lists)}>{lists?.title}</button>
             </div>
           </div>
         ))}

@@ -158,3 +158,60 @@
     }
   }
 }
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+
+        .card {
+          height: 420px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        .card {
+          height: 380px;
+        }
+      }
+
+      ul {
+        gap: 5px;
+        li {
+          a {
+            height: 36px;
+            width: 40px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -23,10 +23,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="login" element={<Login />} />
-      </Routes>
-
-      <Routes>
+        <Route path="/login" element={<Login />} />
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/jadids" element={<JadidList />} />

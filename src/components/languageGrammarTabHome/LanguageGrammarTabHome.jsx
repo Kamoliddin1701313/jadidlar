@@ -3,9 +3,32 @@ import { useState } from "react";
 import WorksTabsHome from "./WorksTabHome";
 import ArticlesTabHome from "./ArticlesTabHome";
 import QuotesTabHome from "./QuotesTabHome";
+import { useNavigate } from "react-router-dom";
 
 function LanguageGrammarTabHome() {
   const [activeTab, setActiveTab] = useState(1);
+  const navigate = useNavigate();
+
+  const handleClick = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className={style.container}>
@@ -39,9 +62,19 @@ function LanguageGrammarTabHome() {
         </div>
 
         <div className={style.page_container}>
-          {activeTab === 1 && <WorksTabsHome />}
-          {activeTab === 2 && <ArticlesTabHome />}
-          {activeTab === 3 && <QuotesTabHome />}
+          {activeTab === 1 && (
+            <WorksTabsHome
+              handleClick={handleClick}
+              handleClickTelegram={handleClickTelegram}
+            />
+          )}
+          {activeTab === 2 && (
+            <ArticlesTabHome
+              handleClick={handleClick}
+              handleClickTelegram={handleClickTelegram}
+            />
+          )}
+          {activeTab === 3 && <QuotesTabHome handleClick={handleClick} />}
         </div>
       </div>
     </div>

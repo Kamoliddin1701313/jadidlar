@@ -54,7 +54,6 @@
       cursor: pointer;
       overflow: hidden;
       background-color: white;
-      filter: grayscale(100%);
 
       .link {
         position: absolute;
@@ -67,7 +66,14 @@
         background-color: rgba(0, 0, 0, 0.455);
         flex-direction: column;
         z-index: 9;
-        span svg {
+
+        button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+        }
+
+        svg {
           font-size: 30px;
           color: white;
         }
@@ -94,7 +100,10 @@
         height: 120px;
         width: 100%;
         transition: all 0.2s linear;
-        h4 {
+        button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
           text-align: center;
           font-family: "Roboto Slab", serif;
           display: -webkit-box;
@@ -127,7 +136,7 @@
         background-color: rgba(255, 255, 255, 0.63);
         transition: all 0.3s linear;
         height: 160px;
-        h4 {
+        button {
           transition: all 0.3s linear;
           color: #223b6d;
           -webkit-line-clamp: unset;
@@ -142,6 +151,74 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+    .wrapper {
+      .page_container {
+        .tab_container {
+          gap: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .page_container {
+        .tab_container {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      h1 {
+        font-size: 32px;
+      }
+      .page_container {
+        .tab_container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      h1 {
+        font-size: 28px;
+      }
+
+      .page_container {
+        .tab_container {
+          grid-template-columns: 1fr;
+
+          .card {
+            height: 350px;
+          }
+        }
+      }
+
+      .page_tab {
+        button {
+          font-size: 14px;
+          margin: 0 5px;
+        }
+      }
     }
   }
 }

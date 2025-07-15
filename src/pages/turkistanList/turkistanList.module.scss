@@ -107,7 +107,7 @@
 
       .card {
         position: relative;
-        height: 350px;
+        height: 400px;
         border-radius: 15px;
         cursor: pointer;
         overflow: hidden;
@@ -124,7 +124,14 @@
           background-color: rgba(0, 0, 0, 0.455);
           flex-direction: column;
           z-index: 9;
-          span svg {
+
+          button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+          }
+
+          svg {
             font-size: 30px;
             color: white;
           }
@@ -151,11 +158,14 @@
           height: 120px;
           width: 100%;
           transition: all 0.2s linear;
-          h4 {
+          button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
             text-align: center;
             font-family: "Roboto Slab", serif;
             display: -webkit-box;
-            font-size: 18px;
+            font-size: 20px;
             height: 52px;
             color: white;
             transition: all 0.2s linear;
@@ -184,7 +194,7 @@
           background-color: rgba(255, 255, 255, 0.63);
           transition: all 0.3s linear;
           height: 160px;
-          h4 {
+          button {
             transition: all 0.3s linear;
             color: #223b6d;
             -webkit-line-clamp: unset;
@@ -232,6 +242,99 @@
       background-color: #3642ad;
       border-radius: 2000px;
       color: white;
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        button {
+          font-size: 16px;
+        }
+      }
+
+      .search {
+        height: 48px;
+        gap: 10px;
+
+        input {
+          font-size: 16px;
+        }
+
+        svg {
+          font-size: 26px;
+        }
+      }
+
+      .jadidlar_list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        gap: 10px;
+
+        button {
+          font-size: 14px;
+
+          &:last-child {
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      .page_tab {
+        gap: 15px;
+
+        button {
+          font-size: 14px;
+          margin: 0;
+        }
+      }
+
+      .jadidlar_list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      ul {
+        gap: 5px;
+        li {
+          a {
+            height: 36px;
+            width: 40px;
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 }

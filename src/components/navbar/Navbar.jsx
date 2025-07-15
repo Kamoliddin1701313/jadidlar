@@ -5,15 +5,30 @@ import style from "./navbar.module.scss";
 import jadidlar_logo from "../../assets/icons/jadidlar_logo.svg";
 import { useEffect, useState } from "react";
 import { IoMdLogOut } from "react-icons/io";
+import { TbMenu2 } from "react-icons/tb";
+import { AiOutlineClose } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 function Navbar() {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
-
   const token = localStorage.getItem("token");
 
+  const languages = [
+    { code: "uzl", label: "O'zb" },
+    { code: "uzk", label: "Ўзб" },
+    { code: "eng", label: "Eng" },
+  ];
+
+  const [globalSearch, setGlobalSearch] = useState(true);
+  const [toggle, setToggle] = useState(false);
+  const [openicon, setOpenicon] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
@@ -26,7 +41,6 @@ function Navbar() {
     };
   }, [isModalOpen]);
 
-  const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 100) {
@@ -41,10 +55,17 @@ function Navbar() {
     };
   }, []);
 
-  const [toggle, setToggle] = useState(false);
-  const [globalSearch, setGlobalSearch] = useState(true);
+  const OpenIconBtn = () => {
+    setOpenicon((prev) => !prev);
+  };
+
   const ToggleLanguage = () => {
     setToggle(!toggle);
+  };
+
+  const changeLanguage = (langCode) => {
+    i18n.changeLanguage(langCode);
+    setToggle(false);
   };
 
   const SearchBtn = () => {
@@ -52,8 +73,8 @@ function Navbar() {
   };
 
   const Logout = () => {
-    localStorage.removeItem("token");
     setIsModalOpen(false);
+    localStorage.removeItem("token");
   };
 
   const bgClass =
@@ -64,7 +85,10 @@ function Navbar() {
       className={`${style.container} ${bgClass}`}
       style={
         isScrolled
-          ? { backgroundColor: "#0e2a63", boxShadow: "0px 0px 20px #0000ffa6" }
+          ? {
+              backgroundColor: "#0e2a63",
+              boxShadow: "0px 0px 20px #0000ffa6",
+            }
           : {}
       }
     >
@@ -73,8 +97,8 @@ function Navbar() {
           <div className={style.modal_box}>
             <GrClose onClick={() => setIsModalOpen(false)} />
             <div className={style.modal_card}>
-              <p>Hisobdan chiqmoqchimisiz?</p>
-              <button onClick={Logout}>Hisobdan Chiqish</button>
+              <p>{t("navbar.chiqish")}</p>
+              <button onClick={Logout}>{t("navbar.chiqish_btn")}</button>
             </div>
           </div>
         </Fade>
@@ -90,102 +114,127 @@ function Navbar() {
             />
           </Link>
 
-          <div className={style.navbar}>
+          <div className={style.desktop_navbar}>
             <nav className={style.navbar_link}>
-              <Link to="/jadids">Jadidlar</Link>
+              <Link to="/jadids">{t("navbar.jadidlar")}</Link>
 
               <div className={style.link}>
                 <button>
-                  <span>Manbalar</span> <FaChevronDown />
+                  <span>{t("navbar.manbalar")}</span> <FaChevronDown />
                 </button>
 
                 <ul>
                   <li>
-                    <Link to="/archivedDocuments/royxat">Arxiv hujjatlari</Link>
-                    <Link to="/press/tarix">Matbuot</Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className={style.link}>
-                <button>
-                  <span>Izlanishlar</span>
-                  <FaChevronDown />
-                </button>
-
-                <ul>
-                  <li>
-                    <Link to="/research/asarlar">Asarlar</Link>
-                    <Link to="/research/maqolalar">Maqolalar</Link>
-                    <Link to="/research/dissertatsiyalar">
-                      Dissertatsiyalar
+                    <Link to="/archivedDocuments/royxat">
+                      {t("navbar.arxivhujjatlari")}
                     </Link>
-                    <Link to="/research/esdaliklar">Esdaliklar</Link>
+                    <Link to="/press/tarix">{t("navbar.matbuot")}</Link>
                   </li>
                 </ul>
               </div>
 
               <div className={style.link}>
                 <button>
-                  <span>Til va imlo</span>
+                  <span>{t("navbar.izlanishlar")}</span>
                   <FaChevronDown />
                 </button>
 
                 <ul>
                   <li>
-                    <Link to="/languageSpelling/asarlar">Asarlar</Link>
-                    <Link to="/languageSpelling/maqolalar">Maqolalar</Link>
-                    <Link to="/languageSpelling/hikmatlar">Hikmatlar</Link>
+                    <Link to="/research/asarlar">{t("navbar.asarlar")}</Link>
+
+                    <Link to="/research/maqolalar">
+                      {t("navbar.maqolalar")}
+                    </Link>
+
+                    <Link to="/research/dissertatsiyalar">
+                      {t("navbar.dissertatsiyalar")}
+                    </Link>
+
+                    <Link to="/research/esdaliklar">
+                      {t("navbar.esdaliklar")}
+                    </Link>
                   </li>
                 </ul>
               </div>
 
               <div className={style.link}>
                 <button>
-                  <span>Turkiston muxtoriyati</span>
+                  <span>{t("navbar.tilvaimlo")}</span>
                   <FaChevronDown />
                 </button>
 
                 <ul>
                   <li>
-                    <Link to="/turkistan/asarlar">Asarlar</Link>
-                    <Link to="/turkistan/maqolalar">Maqolalar</Link>
-                    <Link to="/turkistan/sherlar">Sheʼrlar</Link>
-                    <Link to="/turkistan/esdaliklar">Esdaliklar</Link>
+                    <Link to="/languageSpelling/asarlar">
+                      {t("navbar.asarlar")}
+                    </Link>
+                    <Link to="/languageSpelling/maqolalar">
+                      {t("navbar.maqolalar")}
+                    </Link>
+                    <Link to="/languageSpelling/hikmatlar">
+                      {t("navbar.hikmatlar")}
+                    </Link>
                   </li>
                 </ul>
               </div>
 
               <div className={style.link}>
                 <button>
-                  <span>Voqealar</span>
+                  <span>{t("navbar.turkistonmuxtoriyati")}</span>
                   <FaChevronDown />
                 </button>
+
                 <ul>
                   <li>
-                    <Link to="/eventsList/yangiliklar">Yangiliklar</Link>
-                    <Link to="/eventsList/yiginlar">Yigʻinlar</Link>
-                    <Link to="/eventsList/seminarlar">Seminarlar</Link>
+                    <Link to="/turkistan/asarlar">{t("navbar.asarlar")}</Link>
+                    <Link to="/turkistan/maqolalar">
+                      {t("navbar.maqolalar")}
+                    </Link>
+                    <Link to="/turkistan/sherlar">{t("navbar.sherlar")}</Link>
+                    <Link to="/turkistan/esdaliklar">
+                      {t("navbar.esdaliklar")}
+                    </Link>
                   </li>
                 </ul>
               </div>
 
               <div className={style.link}>
                 <button>
-                  <span>Ko‘r-eshit-o‘qi</span>
+                  <span>{t("navbar.voqealar")}</span>
+                  <FaChevronDown />
+                </button>
+                <ul>
+                  <li>
+                    <Link to="/eventsList/yangiliklar">
+                      {t("navbar.yangiliklar")}
+                    </Link>
+                    <Link to="/eventsList/yiginlar">
+                      {t("navbar.yiginlar")}
+                    </Link>
+                    <Link to="/eventsList/seminarlar">
+                      {t("navbar.seminarlar")}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={style.link}>
+                <button>
+                  <span>{t("navbar.ko'reshito'qi")}</span>
                   <FaChevronDown />
                 </button>
 
                 <ul>
                   <li>
-                    <Link to="/suratlar">Suratlar</Link>
-                    <Link to="/koruvlar/id">Koʻruvlar</Link>
-                    <Link to="/eshituvlar">Eshituvlar</Link>
+                    <Link to="/suratlar">{t("navbar.suratlar")}</Link>
+                    <Link to="/koruvlar/id">{t("navbar.koruvlar")}</Link>
+                    <Link to="/eshituvlar">{t("navbar.eshituvlar")}</Link>
                   </li>
                 </ul>
               </div>
 
-              <Link to="/about">Biz haqimizda</Link>
+              <Link to="/about">{t("navbar.bizhaqimizda")}</Link>
 
               {token ? (
                 <button
@@ -204,7 +253,10 @@ function Navbar() {
 
               <div className={style.link}>
                 <button onClick={ToggleLanguage}>
-                  <span>Uzb</span>
+                  <span>
+                    {languages.find((l) => i18n.language.startsWith(l.code))
+                      ?.label || "Uzb"}
+                  </span>
                   <BsFillCaretDownFill
                     style={{
                       transform: toggle ? "rotate(180deg)" : "rotate(0deg)",
@@ -214,21 +266,223 @@ function Navbar() {
                 </button>
 
                 <div className={toggle ? style.open : style.hidden}>
-                  <span onClick={ToggleLanguage}>O'zbek</span>
-
-                  <span onClick={ToggleLanguage}>Ўзбек</span>
-
-                  <span onClick={ToggleLanguage}>English</span>
+                  <Zoom
+                    direction="up"
+                    cascade
+                    damping={0.8}
+                    duration={300}
+                    triggerOnce
+                  >
+                    {languages?.map((lang) => (
+                      <span
+                        key={lang.code}
+                        onClick={() => changeLanguage(lang.code)}
+                      >
+                        {lang?.label}
+                      </span>
+                    ))}
+                  </Zoom>
                 </div>
               </div>
             </nav>
           </div>
+
+          <div
+            style={openicon ? { left: "0" } : { left: "100%", opacity: "0" }}
+            className={style.mobile_navbar}
+          >
+            <nav className={style.navbar_link}>
+              <div className={style.navbar_toggle}>
+                <button className={style.search_btn}>
+                  <input type="search" placeholder={t("navbar.qidiruv")} />
+                  <FaSearch />
+                </button>
+
+                <button className={style.open_btn} onClick={OpenIconBtn}>
+                  <AiOutlineClose />
+                </button>
+              </div>
+
+              <div className={style.link}>
+                <button onClick={ToggleLanguage}>
+                  <span>
+                    {languages.find((l) => i18n.language.startsWith(l.code))
+                      ?.label || "Uzb"}
+                  </span>
+                  <BsFillCaretDownFill
+                    style={{
+                      transform: toggle ? "rotate(180deg)" : "rotate(0deg)",
+                      transition: "transform 0.3s",
+                    }}
+                  />
+                </button>
+
+                <div className={toggle ? style.open : style.hidden}>
+                  <Zoom
+                    direction="left"
+                    cascade
+                    damping={0.8}
+                    duration={300}
+                    triggerOnce
+                  >
+                    {languages?.map((lang) => (
+                      <span
+                        key={lang.code}
+                        onClick={() => changeLanguage(lang.code)}
+                      >
+                        {lang?.label}
+                      </span>
+                    ))}
+                  </Zoom>
+                </div>
+              </div>
+
+              <Link to="/jadids" onClick={OpenIconBtn}>
+                {t("navbar.jadidlar")}
+              </Link>
+
+              <div className={style.link}>
+                <button>
+                  <span>{t("navbar.manbalar")}</span> <FaChevronDown />
+                </button>
+
+                <ul>
+                  <li onClick={OpenIconBtn}>
+                    <Link to="/archivedDocuments/royxat">
+                      {t("navbar.arxivhujjatlari")}
+                    </Link>
+                    <Link to="/press/tarix">{t("navbar.matbuot")}</Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={style.link}>
+                <button>
+                  <span>{t("navbar.izlanishlar")}</span>
+                  <FaChevronDown />
+                </button>
+
+                <ul>
+                  <li onClick={OpenIconBtn}>
+                    <Link to="/research/asarlar">{t("navbar.asarlar")}</Link>
+
+                    <Link to="/research/maqolalar">
+                      {t("navbar.maqolalar")}
+                    </Link>
+
+                    <Link to="/research/dissertatsiyalar">
+                      {t("navbar.dissertatsiyalar")}
+                    </Link>
+
+                    <Link to="/research/esdaliklar">
+                      {t("navbar.esdaliklar")}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={style.link}>
+                <button>
+                  <span>{t("navbar.tilvaimlo")}</span>
+                  <FaChevronDown />
+                </button>
+
+                <ul>
+                  <li onClick={OpenIconBtn}>
+                    <Link to="/languageSpelling/asarlar">
+                      {t("navbar.asarlar")}
+                    </Link>
+                    <Link to="/languageSpelling/maqolalar">
+                      {t("navbar.maqolalar")}
+                    </Link>
+                    <Link to="/languageSpelling/hikmatlar">
+                      {t("navbar.hikmatlar")}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={style.link}>
+                <button>
+                  <span>{t("navbar.turkistonmuxtoriyati")}</span>
+                  <FaChevronDown />
+                </button>
+
+                <ul>
+                  <li onClick={OpenIconBtn}>
+                    <Link to="/turkistan/asarlar">{t("navbar.asarlar")}</Link>
+                    <Link to="/turkistan/maqolalar">
+                      {t("navbar.maqolalar")}
+                    </Link>
+                    <Link to="/turkistan/sherlar">{t("navbar.sherlar")}</Link>
+                    <Link to="/turkistan/esdaliklar">
+                      {t("navbar.esdaliklar")}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={style.link}>
+                <button>
+                  <span>{t("navbar.voqealar")}</span>
+                  <FaChevronDown />
+                </button>
+                <ul>
+                  <li onClick={OpenIconBtn}>
+                    <Link to="/eventsList/yangiliklar">
+                      {t("navbar.yangiliklar")}
+                    </Link>
+                    <Link to="/eventsList/yiginlar">
+                      {t("navbar.yiginlar")}
+                    </Link>
+                    <Link to="/eventsList/seminarlar">
+                      {t("navbar.seminarlar")}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={style.link}>
+                <button>
+                  <span>{t("navbar.ko'reshito'qi")}</span>
+                  <FaChevronDown />
+                </button>
+
+                <ul>
+                  <li onClick={OpenIconBtn}>
+                    <Link to="/suratlar">{t("navbar.suratlar")}</Link>
+                    <Link to="/koruvlar/id">{t("navbar.koruvlar")}</Link>
+                    <Link to="/eshituvlar">{t("navbar.eshituvlar")}</Link>
+                  </li>
+                </ul>
+              </div>
+
+              <Link onClick={OpenIconBtn} to="/about">
+                {t("navbar.bizhaqimizda")}
+              </Link>
+
+              {token ? (
+                <button
+                  className={style.logout_icon}
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <IoMdLogOut />
+                </button>
+              ) : (
+                ""
+              )}
+            </nav>
+          </div>
+
+          <button onClick={OpenIconBtn} className={style.toggle_btn}>
+            {!openicon && <TbMenu2 />}
+          </button>
         </header>
       ) : (
         <Fade cascade damping={0.2}>
           <div className={style.global_search}>
-            <input type="search" placeholder="Qidiruv ..." />
-            <button onClick={SearchBtn}>qidiruv</button>
+            <input type="search" placeholder={t("navbar.qidiruv")} />
+            <button onClick={SearchBtn}>{t("navbar.qidiruv")}</button>
           </div>
         </Fade>
       )}

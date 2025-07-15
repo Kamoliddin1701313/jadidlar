@@ -31,7 +31,6 @@ function News() {
     setSearchParams({ page: selectedPage }); // URL ga saqlash
   };
 
-
   return (
     <div className={style.card_container}>
       <div className={style.card}>

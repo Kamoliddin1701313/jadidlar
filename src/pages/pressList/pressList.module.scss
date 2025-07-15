@@ -124,9 +124,16 @@
           background-color: rgba(0, 0, 0, 0.455);
           flex-direction: column;
           z-index: 9;
-          span svg {
+
+          button {
+            background-color: transparent;
+            border: none;
+          }
+
+          svg {
             font-size: 30px;
             color: white;
+            cursor: pointer;
           }
         }
 
@@ -151,8 +158,10 @@
           height: 120px;
           width: 100%;
           transition: all 0.2s linear;
-          h4 {
+          button {
             text-align: center;
+            background-color: transparent;
+            border: none;
             font-family: "Roboto Slab", serif;
             display: -webkit-box;
             font-size: 18px;
@@ -162,6 +171,7 @@
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
             overflow: hidden;
+            cursor: pointer;
           }
         }
 
@@ -184,7 +194,8 @@
           background-color: rgba(255, 255, 255, 0.63);
           transition: all 0.3s linear;
           height: 160px;
-          h4 {
+          button {
+            cursor: pointer;
             transition: all 0.3s linear;
             color: #223b6d;
             -webkit-line-clamp: unset;

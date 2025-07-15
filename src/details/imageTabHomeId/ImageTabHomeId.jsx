@@ -22,17 +22,21 @@ function ImageTabHomeId() {
     getDataId();
   }, []);
 
-  console.log(dataId, "dataId");
-
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.initialPages}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
-          <span>/</span>
-          <button onClick={() => navigate("/suratlar")}>Suratlar</button>
-          <span>/</span>
-          <p>{dataId?.data?.title}</p>
+          <button onClick={() => navigate("/")}>
+            Bosh sahifa <span style={{ marginLeft: "4px" }}>/</span>
+          </button>
+          <button onClick={() => navigate("/suratlar")}>
+            Suratlar <span style={{ marginLeft: "4px" }}>/</span>
+          </button>
+
+          <p>
+            {dataId?.data?.title} asdasdsadasd adasdasdasdqweqw asdasdasdasd
+            awdqwdasdqw eqweqweqwdasdasdasda{" "}
+          </p>
         </div>
 
         <div

@@ -7,19 +7,23 @@ import Slider from "react-slick";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import { Fade } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 function HeroSliderHome() {
+  const { t, i18n } = useTranslation();
+
   const [datas, setDatas] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   let sliderRef = useRef(null);
 
   const getData = async () => {
-    try {
-      const respons = await axios.get("slayder/");
+    const lang = i18n.language;
 
-      setDatas(respons?.data);
+    try {
+      const response = await axios.get(`slayder/?lang=${lang}`);
+      setDatas(response?.data?.results);
     } catch (error) {
-      console.log("errpr", error);
+      console.log("Xatolik: ", error);
     }
   };
 
@@ -37,8 +41,6 @@ function HeroSliderHome() {
 
   const settings = {
     fade: true,
-    // infinite: true,
-    // autoplaySpeed: 2000,
     autoplay: true,
     speed: 500,
     slidesToShow: 1,
@@ -46,40 +48,39 @@ function HeroSliderHome() {
     waitForAnimate: false,
     arrows: false,
     afterChange: (current) => setCurrentSlide(current),
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 3,
+    //       infinite: true,
+    //       dots: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 2,
+    //       initialSlide: 2,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    // ],
   };
 
   return (
     <div className={style.container}>
       <div className={style.hero_slider}>
         <div className="slider-container">
-          {datas?.results?.length > 0 ? (
+          {datas?.length > 0 ? (
             <div className={style.carusel}>
               <Slider
                 ref={(slider) => {
@@ -87,19 +88,18 @@ function HeroSliderHome() {
                 }}
                 {...settings}
               >
-                {datas?.results?.map((value, index) => (
+                {datas?.map((value, index) => (
                   <div key={index} className={style.card}>
                     <div className={style.description}>
                       <h1>{value.title}</h1>
                       <h4>{value.text}</h4>
-
                       <button>
                         <a
                           href={value?.citations}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          To'liq
+                          {t("homepage.toliq")}
                         </a>
                       </button>
                     </div>
@@ -122,9 +122,7 @@ function HeroSliderHome() {
 
               <button
                 className={`${style.next} ${
-                  currentSlide === datas?.results?.length - 1
-                    ? style.disabled
-                    : ""
+                  currentSlide === datas?.length - 1 ? style.disabled : ""
                 }`}
                 onClick={next}
               >

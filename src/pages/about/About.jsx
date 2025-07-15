@@ -23,8 +23,6 @@ function About() {
     GetPage();
   }, []);
 
-  console.log(data, "PAGE");
-
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -64,12 +62,7 @@ function About() {
           {data?.data?.results?.map((value, index) => (
             <div key={index} className={style.user_about}>
               <Fade cascade damping={0.2} className={style.user_img}>
-                <img
-                  // loading="lazy"
-                  // decoding="async"
-                  src={value?.image}
-                  alt={value?.fullname}
-                />
+                <img src={value?.image} alt={value?.fullname} />
               </Fade>
 
               <div className={style.user_description}>

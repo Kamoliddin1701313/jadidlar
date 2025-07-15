@@ -48,7 +48,6 @@ function NewsHome() {
 
     appendDots: (dots) => <ul>{dots.slice(0, 8)}</ul>,
 
-    // customPaging: (i) => <button></button>,
 
     responsive: [
       {
@@ -61,7 +60,7 @@ function NewsHome() {
         },
       },
       {
-        breakpoint: 1080,
+        breakpoint: 1220,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -69,7 +68,7 @@ function NewsHome() {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 770,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

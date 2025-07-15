@@ -16,6 +16,27 @@ function PressList() {
   const { type } = useParams();
   const navigate = useNavigate();
 
+  const handleClick = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -143,28 +164,67 @@ function PressList() {
           </button>
         </div>
 
-        {type === "tarix" && <HistorySection />}
+        {type === "tarix" && (
+          <HistorySection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {pathname === "/press/siyosat" && <PoliticsSection />}
+        {pathname === "/press/siyosat" && (
+          <PoliticsSection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {pathname === "/press/iqtisod" && <EconomySection />}
+        {pathname === "/press/iqtisod" && (
+          <EconomySection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {pathname === "/press/madaniyat_va_sa'nat" && <CultureAndArtSection />}
+        {pathname === "/press/madaniyat_va_sa'nat" && (
+          <CultureAndArtSection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
         {pathname === "/press/ijtimoiy_masalalar_va_din" && (
-          <SocialAndReligionSection />
+          <SocialAndReligionSection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
         )}
 
-        {pathname === "/press/adabiyot" && <LiteratureSection />}
+        {pathname === "/press/adabiyot" && (
+          <LiteratureSection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
         {pathname === "/press/ta'lim_tarbiya" && (
-          <EducationAndUpbringingSection />
+          <EducationAndUpbringingSection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
         )}
 
-        {pathname === "/press/boshqa_masalalar" && <OtherTopicsSection />}
+        {pathname === "/press/boshqa_masalalar" && (
+          <OtherTopicsSection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
         {pathname === "/press/bibliografik_ko'rsatkich" && (
-          <BibliographicIndexSection />
+          <BibliographicIndexSection
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
         )}
       </div>
     </div>

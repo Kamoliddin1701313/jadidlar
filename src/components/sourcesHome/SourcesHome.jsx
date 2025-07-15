@@ -10,12 +10,25 @@ function SourcesHome() {
   const [datas, setDatas] = useState([]);
   const [datas2, setDatas2] = useState([]);
   const [avtiveTab, setActiveTab] = useState(1);
-  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
 
   const handleClick = (value) => {
+    const token = localStorage.getItem("token");
     if (token) {
       window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
     } else {
       navigate("/login");
     }
@@ -61,29 +74,19 @@ function SourcesHome() {
           </button>
         </div>
 
-        {/* <div className={style.line}></div> */}
-
         {datas?.length > 0 ? (
           <div className={style.wrapper}>
             {avtiveTab === 1
               ? datas?.map((value, index) => (
                   <div className={style.card} key={index}>
                     <div className={style.link}>
-                      <span>
-                        <button onClick={() => handleClick(value)}>
-                          <MdOutlineFileDownload />
-                        </button>
-                      </span>
+                      <button onClick={() => handleClick(value)}>
+                        <MdOutlineFileDownload />
+                      </button>
 
-                      <span>
-                        <a
-                          href="https://t.me/Kamol7602"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <RiShareForwardLine />
-                        </a>
-                      </span>
+                      <a onClick={() => handleClickTelegram(value)}>
+                        <RiShareForwardLine />
+                      </a>
                     </div>
 
                     <Fade cascade damping={0.2} className={style.img}>
@@ -100,21 +103,13 @@ function SourcesHome() {
               : datas2.map((value, index) => (
                   <div className={style.card} key={index}>
                     <div className={style.link}>
-                      <span>
-                        <button onClick={() => handleClick(value)}>
-                          <MdOutlineFileDownload />
-                        </button>
-                      </span>
+                      <button onClick={() => handleClick(value)}>
+                        <MdOutlineFileDownload />
+                      </button>
 
-                      <span>
-                        <a
-                          href="https://t.me/Kamol7602"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <RiShareForwardLine />
-                        </a>
-                      </span>
+                      <a onClick={() => handleClickTelegram(value)}>
+                        <RiShareForwardLine />
+                      </a>
                     </div>
 
                     <Fade cascade damping={0.2} className={style.img}>

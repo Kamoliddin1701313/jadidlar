@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { RiShareForwardLine } from "react-icons/ri";
 import { Fade } from "react-awesome-reveal";
-function MemoirsTabHome() {
+function MemoirsTabHome({ handleClick, handleClickTelegram }) {
   const [data, setData] = useState([]);
 
   const getData = async () => {
@@ -25,21 +25,13 @@ function MemoirsTabHome() {
       {data.map((value, index) => (
         <div className={style.card} key={index}>
           <div className={style.link}>
-            <span>
-              <button onClick={() => handleClick(value)}>
-                <MdOutlineFileDownload />
-              </button>
-            </span>
+            <button onClick={() => handleClick(value)}>
+              <MdOutlineFileDownload />
+            </button>
 
-            <span>
-              <a
-                href="https://t.me/Kamol7602"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <RiShareForwardLine />
-              </a>
-            </span>
+            <a onClick={() => handleClickTelegram(value)}>
+              <RiShareForwardLine />
+            </a>
           </div>
 
           <Fade cascade damping={0.2} className={style.img}>

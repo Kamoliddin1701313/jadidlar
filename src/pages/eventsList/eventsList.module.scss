@@ -149,3 +149,101 @@
     }
   }
 }
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+    .wrapper {
+      .card_container {
+        .card {
+          .user_box {
+            .description {
+              .video_link a {
+                height: 38px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .card_container {
+        .card {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        button {
+          font-size: 16px;
+        }
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .card_container {
+        .card {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+
+          .user_box {
+            .description {
+              h3 {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      h1 {
+        font-size: 28px;
+      }
+
+      .card_container {
+        .card {
+          grid-template-columns: 1fr;
+          gap: 20px;
+
+          .user_box {
+            .description {
+              h3 {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+
+      ul {
+        gap: 5px;
+        li {
+          a {
+            height: 36px;
+            width: 40px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

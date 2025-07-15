@@ -3,27 +3,19 @@ import { RiShareForwardLine } from "react-icons/ri";
 import style from "./jadidListId.module.scss";
 import { Fade } from "react-awesome-reveal";
 
-function JadidListIdAsarlar({ data }) {
+function JadidListIdAsarlar({ data, handleClick, handleClickTelegram }) {
   return (
     <div className={style.asarlar_container}>
       {data?.asarlar?.map((value, index) => (
         <div className={style.card} key={index}>
           <div className={style.link}>
-            <span>
-              <a href={value.file} target="_blank" rel="noopener noreferrer">
-                <MdOutlineFileDownload />
-              </a>
-            </span>
+            <button onClick={() => handleClick(value)}>
+              <MdOutlineFileDownload />
+            </button>
 
-            <span>
-              <a
-                href="https://t.me/Kamol7602"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <RiShareForwardLine />
-              </a>
-            </span>
+            <a onClick={() => handleClickTelegram(value)}>
+              <RiShareForwardLine />
+            </a>
           </div>
 
           <Fade cascade damping={0.2} className={style.img}>
@@ -36,8 +28,10 @@ function JadidListIdAsarlar({ data }) {
           </Fade>
 
           <div className={style.text}>
-            <h4>{value?.jadid_fullname}</h4>
-            <h4>{value?.title}</h4>
+            <button onClick={() => handleClick(value)}>
+              <h4>{value?.jadid_fullname}</h4>
+              <h4>{value?.title}</h4>
+            </button>
           </div>
         </div>
       ))}

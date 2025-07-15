@@ -10,6 +10,27 @@ function TurkistanList() {
   const { type } = useParams();
   const navigate = useNavigate();
 
+  const handleClick = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.open(value?.file, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleClickTelegram = (value) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
+        value?.file
+      )}`;
+      window.open(telegramURL, "_blank");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -62,13 +83,33 @@ function TurkistanList() {
           </button>
         </div>
 
-        {type === "asarlar" && <TurkistanListAsarlar />}
+        {type === "asarlar" && (
+          <TurkistanListAsarlar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {type === "maqolalar" && <TurkistanListMaqolalar />}
+        {type === "maqolalar" && (
+          <TurkistanListMaqolalar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {type === "sherlar" && <TurkistanListSherlar />}
+        {type === "sherlar" && (
+          <TurkistanListSherlar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
 
-        {type === "esdaliklar" && <TurkistanListEsdaliklar />}
+        {type === "esdaliklar" && (
+          <TurkistanListEsdaliklar
+            handleClick={handleClick}
+            handleClickTelegram={handleClickTelegram}
+          />
+        )}
       </div>
     </div>
   );

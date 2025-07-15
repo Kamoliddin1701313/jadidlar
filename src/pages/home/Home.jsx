@@ -9,9 +9,6 @@ import TurkestanAutonomyHome from "../../components/turkestanAutonomyHome/Turkes
 import MultimediaTabsHome from "../../components/multimediaTabsHome/MultimediaTabsHome";
 import QuickLinksHome from "../../components/quickLinksHome/QuickLinksHome";
 
-// balloonrterdsbbadrueteuilloonbkkferl
-
-
 function Home() {
   return (
     <div>
