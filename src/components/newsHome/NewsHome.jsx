@@ -7,14 +7,28 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
+import { useTranslation } from "react-i18next";
 
 function NewsHome() {
   const [datas, setDatas] = useState([]);
+  const { i18n } = useTranslation();
+
   let sliderRef = useRef(null);
 
   const getData = async () => {
     try {
-      const respons = await axios.get("yangiliklar/");
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get("yangiliklar/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
 
       setDatas(respons?.data);
     } catch (error) {
@@ -24,7 +38,7 @@ function NewsHome() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   const next = () => {
     sliderRef.slickNext();
@@ -47,7 +61,6 @@ function NewsHome() {
     pauseOnHover: true,
 
     appendDots: (dots) => <ul>{dots.slice(0, 8)}</ul>,
-
 
     responsive: [
       {

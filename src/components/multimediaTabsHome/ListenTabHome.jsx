@@ -3,15 +3,29 @@ import style from "./multimediaTabsHome.module.scss";
 import { FaPlay } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 function ListenTabHome() {
+  const { i18n } = useTranslation();
   const [listen, setListen] = useState([]);
   const [selectedAudio, setSelectedAudio] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get("audiolar/");
+        const langMap = {
+          uzl: "uz",
+          uzk: "ru",
+          eng: "en",
+        };
+        const lang = langMap[i18n.language] || "uz";
+
+        const res = await axios.get("audiolar/", {
+          headers: {
+            "Accept-Language": lang,
+          },
+        });
+
         setListen(res);
         if (res.data?.results?.length > 0) {
           setSelectedAudio(res.data.results[0]);
@@ -21,7 +35,7 @@ function ListenTabHome() {
       }
     };
     getData();
-  }, []);
+  }, [i18n.language]);
 
   const results = listen?.data?.results || [];
 

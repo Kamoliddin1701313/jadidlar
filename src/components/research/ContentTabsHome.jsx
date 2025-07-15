@@ -4,13 +4,27 @@ import { useEffect, useState } from "react";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { RiShareForwardLine } from "react-icons/ri";
 import { Fade } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 function ContentTabsHome({ handleClick, handleClickTelegram }) {
   const [data, setData] = useState([]);
+  const { i18n } = useTranslation();
 
   const getData = async () => {
     try {
-      const respons = await axios.get("dissertatsiya_random/");
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get("dissertatsiya_random/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
       setData(respons?.data);
     } catch (error) {
       console.log(error, "error");
@@ -19,7 +33,7 @@ function ContentTabsHome({ handleClick, handleClickTelegram }) {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   return (
     <div className={style.tab_container}>

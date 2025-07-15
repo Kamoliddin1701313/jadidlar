@@ -7,16 +7,30 @@ import axios from "axios";
 import { Fade } from "react-awesome-reveal";
 import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 function ResearchListMaqolalar({ handleClick, handleClickTelegram }) {
   const [list, setList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1; // URL ga saqlash
+  const { i18n } = useTranslation();
 
   const getData = async (page = 1) => {
     try {
-      const respons = await axios.get(`asarlar/?page=${page}&limit=15`);
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get(`asarlar/?page=${page}&limit=15`, {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
       setList(respons?.data);
       setPageCount(Math.ceil(respons.data.pagination.total / 15));
     } catch (error) {
@@ -26,7 +40,7 @@ function ResearchListMaqolalar({ handleClick, handleClickTelegram }) {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage]);
+  }, [currentPage, i18n.language]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;

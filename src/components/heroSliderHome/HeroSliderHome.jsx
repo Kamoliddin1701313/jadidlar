@@ -11,16 +11,25 @@ import { useTranslation } from "react-i18next";
 
 function HeroSliderHome() {
   const { t, i18n } = useTranslation();
-
   const [datas, setDatas] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+
   let sliderRef = useRef(null);
-
   const getData = async () => {
-    const lang = i18n.language;
-
     try {
-      const response = await axios.get(`slayder/?lang=${lang}`);
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const response = await axios.get(`slayder/?lang=${lang}`, {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
       setDatas(response?.data?.results);
     } catch (error) {
       console.log("Xatolik: ", error);
@@ -29,7 +38,7 @@ function HeroSliderHome() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   const next = () => {
     sliderRef.slickNext();

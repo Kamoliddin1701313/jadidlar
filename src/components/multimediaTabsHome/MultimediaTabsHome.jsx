@@ -3,14 +3,16 @@ import { useState } from "react";
 import WatchTabHome from "./WatchTabHome";
 import ImageTabHome from "./ImageTabHome";
 import ListenTabHome from "./ListenTabHome";
+import { useTranslation } from "react-i18next";
 
 function MultimediaTabsHome() {
   const [activeTab, setActiveTab] = useState(1);
+  const { t } = useTranslation();
 
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
-        <h1>Ko‘r-eshit-o‘qi</h1>
+        <h1>{t("navbar.ko'reshito'qi")}</h1>
 
         <div className={style.page_tab}>
           <button
@@ -18,7 +20,7 @@ function MultimediaTabsHome() {
             className={`${activeTab === 1 ? style.active : ""}`}
             onClick={() => setActiveTab(1)}
           >
-            Koʻruvlar
+            {t("navbar.koruvlar")}
           </button>
 
           <button
@@ -26,7 +28,7 @@ function MultimediaTabsHome() {
             className={`${activeTab === 2 ? style.active : ""}`}
             onClick={() => setActiveTab(2)}
           >
-            Suratlar
+            {t("navbar.suratlar")}
           </button>
 
           <button
@@ -34,7 +36,7 @@ function MultimediaTabsHome() {
             className={`${activeTab === 3 ? style.active : ""}`}
             onClick={() => setActiveTab(3)}
           >
-            Eshituvlar
+            {t("navbar.eshituvlar")}
           </button>
         </div>
 

@@ -10,11 +10,13 @@ import LiteratureSection from "./details/LiteratureSection";
 import EducationAndUpbringingSection from "./details/EducationAndUpbringingSection";
 import OtherTopicsSection from "./details/OtherTopicsSection";
 import BibliographicIndexSection from "./details/BibliographicIndexSection";
+import { useTranslation } from "react-i18next";
 
 function PressList() {
   const { pathname } = useLocation();
   const { type } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = (value) => {
     const token = localStorage.getItem("token");
@@ -41,13 +43,37 @@ function PressList() {
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.menu_link}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
+          <button onClick={() => navigate("/")}>
+            {t("eshituv.bosh_sahifa")}
+          </button>
           <span>/</span>
 
-          <button onClick={() => navigate("/")}>Matbuot</button>
+          <button onClick={() => navigate("/")}>{t("navbar.matbuot")}</button>
           <span>/</span>
+          {console.log(type, "XXXX")}
+          <button>
+            {type === "tarix" && t("eshituv.tarix")}
 
-          <button>{type.replace(/_/g, " ")}</button>
+            {pathname === "/press/siyosat" && t("eshituv.siyosat")}
+
+            {pathname === "/press/iqtisod" && t("eshituv.iqtisod")}
+
+            {pathname === "/press/madaniyat_va_sa'nat" &&
+              t("eshituv.madaniyat_va_sanat")}
+
+            {pathname === "/press/ijtimoiy_masalalar_va_din" &&
+              t("eshituv.ijtimoiy_masalalar")}
+
+            {pathname === "/press/adabiyot" && t("eshituv.adabiyot")}
+
+            {pathname === "/press/ta'lim_tarbiya" && t("eshituv.talim_tarbiya")}
+
+            {pathname === "/press/boshqa_masalalar" &&
+              t("eshituv.boshqa_masalalar")}
+
+            {pathname === "/press/bibliografik_ko'rsatkich" &&
+              t("eshituv.bibliografik_korsatkich")}
+          </button>
         </div>
 
         <div className={style.search}>
@@ -61,7 +87,7 @@ function PressList() {
             className={`${type === "tarix" ? style.active : ""}`}
             onClick={() => navigate("/press/tarix")}
           >
-            Tarix
+            {t("eshituv.tarix")}
           </button>
 
           <button
@@ -69,7 +95,7 @@ function PressList() {
             className={`${pathname === "/press/siyosat" ? style.active : ""}`}
             onClick={() => navigate("/press/siyosat")}
           >
-            Siyosat
+            {t("eshituv.siyosat")}
           </button>
 
           {/* 1 */}
@@ -78,7 +104,7 @@ function PressList() {
             className={`${pathname === "/press/iqtisod" ? style.active : ""}`}
             onClick={() => navigate("/press/iqtisod")}
           >
-            Iqtisod
+            {t("eshituv.iqtisod")}
           </button>
 
           {/* 2 */}
@@ -93,7 +119,7 @@ function PressList() {
             }`}
             onClick={() => navigate("/press/madaniyat_va_sa'nat")}
           >
-            Madaniyat va sa'nat
+            {t("eshituv.madaniyat_va_sanat")}
           </button>
 
           {/* 3 */}
@@ -110,7 +136,7 @@ function PressList() {
             }`}
             onClick={() => navigate("/press/ijtimoiy_masalalar_va_din")}
           >
-            Ijtimoiy masalalar va din
+            {t("eshituv.ijtimoiy_masalalar")}
           </button>
 
           {/* 4 */}
@@ -119,7 +145,7 @@ function PressList() {
             className={`${pathname === "/press/adabiyot" ? style.active : ""}`}
             onClick={() => navigate("/press/adabiyot")}
           >
-            Adabiyot
+            {t("eshituv.adabiyot")}
           </button>
 
           {/* 5 */}
@@ -132,7 +158,7 @@ function PressList() {
             }`}
             onClick={() => navigate("/press/ta'lim_tarbiya")}
           >
-            Ta’lim-tarbiya
+            {t("eshituv.talim_tarbiya")}
           </button>
 
           {/* 6 */}
@@ -145,7 +171,7 @@ function PressList() {
             }`}
             onClick={() => navigate("/press/boshqa_masalalar")}
           >
-            Boshqa masalalar
+            {t("eshituv.boshqa_masalalar")}
           </button>
 
           {/* 7 */}
@@ -160,7 +186,7 @@ function PressList() {
             }`}
             onClick={() => navigate("/press/bibliografik_ko'rsatkich")}
           >
-            Bibliografik ko’rsatkich
+            {t("eshituv.bibliografik_korsatkich")}
           </button>
         </div>
 

@@ -7,14 +7,27 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
+import { useTranslation } from "react-i18next";
 
 function JadidlarHome() {
   const [datas, setDatas] = useState([]);
+  const { t, i18n } = useTranslation();
   let sliderRef = useRef(null);
 
   const getData = async () => {
     try {
-      const respons = await axios.get("jadidlar_random/");
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get("jadidlar_random/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
 
       setDatas(respons?.data);
     } catch (error) {
@@ -24,7 +37,7 @@ function JadidlarHome() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   const next = () => {
     sliderRef.slickNext();
@@ -78,7 +91,7 @@ function JadidlarHome() {
     <div className={style.container}>
       <div className={style.hero_slider}>
         <div className="slider-container">
-          <h1 className={style.home_name}>Jadidlar</h1>
+          <h1 className={style.home_name}>{t("navbar.jadidlar")}</h1>
           {datas?.length > 0 ? (
             <div className={style.carusel}>
               <Slider
@@ -120,7 +133,6 @@ function JadidlarHome() {
               <button className={style.next} onClick={next}>
                 <MdOutlineNavigateNext />
               </button>
-              
             </div>
           ) : (
             <div>NO DATA</div>

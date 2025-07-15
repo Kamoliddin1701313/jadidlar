@@ -6,6 +6,7 @@ import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 function JadidList() {
   const [list, setList] = useState([]);
@@ -13,10 +14,22 @@ function JadidList() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1; // URL ga saqlash
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const getData = async (page = 1) => {
     try {
-      const respons = await axios.get(`jadidlar/?page=${page}&limit=15`);
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get(`jadidlar/?page=${page}&limit=15`, {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
       setList(respons?.data);
       setPageCount(Math.ceil(respons.data.pagination.total / 15));
     } catch (error) {
@@ -26,7 +39,7 @@ function JadidList() {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage]);
+  }, [currentPage, i18n.language]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -37,10 +50,12 @@ function JadidList() {
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.menu_link}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
+          <button onClick={() => navigate("/")}>
+            {t("eshituv.bosh_sahifa")}
+          </button>
           <span>/</span>
 
-          <button onClick={() => navigate("/")}>Jadidlar</button>
+          <button onClick={() => navigate("/")}>{t("navbar.jadidlar")}</button>
           <span>/</span>
         </div>
 

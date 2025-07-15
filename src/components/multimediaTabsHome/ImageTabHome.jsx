@@ -7,14 +7,28 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 function ImageTabHome() {
   const [data, setData] = useState([]);
+  const { i18n } = useTranslation();
   const navigate = useNavigate();
 
   const getData = async () => {
     try {
-      const respons = await axios.get("rasmlar/");
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get("rasmlar/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
       setData(respons?.data?.results);
     } catch (error) {
       console.log("error", error);
@@ -23,7 +37,7 @@ function ImageTabHome() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   var settings = {
     dots: true,

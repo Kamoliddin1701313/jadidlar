@@ -3,6 +3,7 @@ import style from "./videoViews.module.scss";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function VideoViews() {
   const { id } = useParams();
@@ -10,10 +11,23 @@ function VideoViews() {
   const [activeVideo, setActiveVideo] = useState(null);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const getData = async () => {
     try {
-      const respons = await axios.get("videolar/");
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get("videolar/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
       setData(respons?.data?.results);
     } catch (error) {
       console.log("error", error);
@@ -22,7 +36,7 @@ function VideoViews() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   const ActiveVideoBtn = (video) => {
     setActiveVideo(video);
@@ -43,10 +57,12 @@ function VideoViews() {
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.menu_link}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
+          <button onClick={() => navigate("/")}>
+            {t("eshituv.bosh_sahifa")}
+          </button>
           <span>/</span>
 
-          <button onClick={() => navigate("/")}>Koʻruvlar</button>
+          <button onClick={() => navigate("/")}>{t("eshituv.koruvlar")}</button>
           <span>/</span>
 
           <button>

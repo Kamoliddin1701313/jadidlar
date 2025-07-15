@@ -63,9 +63,16 @@ function Navbar() {
     setToggle(!toggle);
   };
 
+  // const changeLanguage = (langCode) => {
+  //   i18n.changeLanguage(langCode);
+  //   setToggle(false);
+  // };
+
   const changeLanguage = (langCode) => {
-    i18n.changeLanguage(langCode);
-    setToggle(false);
+    i18n.changeLanguage(langCode).then(() => {
+      // i18n.language endi o‘zgargan bo‘ladi
+      setToggle(false);
+    });
   };
 
   const SearchBtn = () => {

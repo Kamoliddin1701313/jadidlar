@@ -1,32 +1,56 @@
 {
   "navbar": {
     "jadidlar": "Jadids",
+    "jadidlarhaqida": "About Jadids",
     "manbalar": "Sources",
-    "izlanishlar": "Researches",
+    "izlanishlar": "Research",
     "tilvaimlo": "Language and Orthography",
     "turkistonmuxtoriyati": "Turkestan Autonomy",
     "voqealar": "Events",
-    "ko'reshito'qi": "See-Hear-Read",
+    "ko'reshito'qi": "Watch-Listen-Read",
     "bizhaqimizda": "About Us",
     "arxivhujjatlari": "Archive Documents",
+    "foydalihavola": "Useful Links",
     "matbuot": "Press",
     "asarlar": "Works",
     "maqolalar": "Articles",
     "dissertatsiyalar": "Dissertations",
     "esdaliklar": "Memoirs",
     "hikmatlar": "Wisdoms",
+    "hikmatlarsozlar": "Wise Sayings",
     "sherlar": "Poems",
     "yangiliklar": "News",
     "yiginlar": "Meetings",
     "seminarlar": "Seminars",
     "suratlar": "Photos",
     "koruvlar": "Viewings",
-    "eshituvlar": "Audios",
+    "eshituvlar": "Audio",
     "qidiruv": "Search",
-    "chiqish": "Do you want to log out?",
-    "chiqish_btn": "Sign Out"
+    "chiqish": "Are you sure you want to log out?",
+    "chiqish_btn": "Log Out",
+    "royxat": "List",
+    "skaner": "Scanner"
   },
+
   "homepage": {
     "toliq": "Full"
+  },
+
+  "eshituv": {
+    "bosh_sahifa": "Home",
+    "eshituvlar": "Audios",
+    "suratlar": "Photos",
+    "koruvlar": "Viewings",
+    "ishtirokchilar": "Participants",
+
+    "tarix": "History",
+    "siyosat": "Politics",
+    "iqtisod": "Economy",
+    "madaniyat_va_sanat": "Culture and Art",
+    "ijtimoiy_masalalar": "Social Issues and Religion",
+    "adabiyot": "Literature",
+    "talim_tarbiya": "Education",
+    "boshqa_masalalar": "Other Issues",
+    "bibliografik_korsatkich": "Bibliographic Index"
   }
 }

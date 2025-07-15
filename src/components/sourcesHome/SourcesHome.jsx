@@ -5,11 +5,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function SourcesHome() {
   const [datas, setDatas] = useState([]);
   const [datas2, setDatas2] = useState([]);
   const [avtiveTab, setActiveTab] = useState(1);
+  const { t, i18n } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -36,8 +38,24 @@ function SourcesHome() {
 
   const getData = async () => {
     try {
-      const respons = await axios.get("arxiv_random/");
-      const respons2 = await axios.get("maqolalar_random_matbuot_iqtisod/");
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get("arxiv_random/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
+      const respons2 = await axios.get("maqolalar_random_matbuot_iqtisod/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
 
       setDatas(respons?.data);
 
@@ -49,12 +67,12 @@ function SourcesHome() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   return (
     <div className={style.container}>
       <div className={style.hero_slider}>
-        <h1 className={style.home_name}>Manbalar</h1>
+        <h1 className={style.home_name}>{t("navbar.manbalar")}</h1>
 
         <div className={style.active_link}>
           <button
@@ -62,7 +80,7 @@ function SourcesHome() {
             className={`${avtiveTab === 1 ? style.active : ""}`}
             onClick={() => setActiveTab(1)}
           >
-            Arxiv hujjatlari
+            {t("navbar.arxivhujjatlari")}
           </button>
 
           <button
@@ -70,7 +88,7 @@ function SourcesHome() {
             className={`${avtiveTab === 2 ? style.active : ""}`}
             onClick={() => setActiveTab(2)}
           >
-            Matbuot
+            {t("navbar.matbuot")}
           </button>
         </div>
 

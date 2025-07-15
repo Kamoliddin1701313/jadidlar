@@ -3,22 +3,34 @@ import style from "./eventsList.module.scss";
 import News from "./details/News";
 import Meeting from "./details/Meeting";
 import Seminars from "./details/Seminars";
+import { useTranslation } from "react-i18next";
 
 function EventsList() {
   const { type } = useParams();
+  const { t } = useTranslation();
 
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.menu_link}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
+          <button onClick={() => navigate("/")}>
+            {t("eshituv.bosh_sahifa")}
+          </button>
           <span>/</span>
 
-          <button onClick={() => navigate("/")}>{type}</button>
+          <button onClick={() => navigate("/")}>
+            {type === "yangiliklar" && t("navbar.yangiliklar")}
+            {type === "yiginlar" && t("navbar.yiginlar")}
+            {type === "seminarlar" && t("navbar.seminarlar")}
+          </button>
           <span>/</span>
         </div>
 
-        <h1>{type}</h1>
+        <h1>
+          {type === "yangiliklar" && t("navbar.yangiliklar")}
+          {type === "yiginlar" && t("navbar.yiginlar")}
+          {type === "seminarlar" && t("navbar.seminarlar")}
+        </h1>
 
         {type === "yangiliklar" && <News />}
         {type === "yiginlar" && <Meeting />}

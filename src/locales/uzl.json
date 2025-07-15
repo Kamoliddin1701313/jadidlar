@@ -1,6 +1,7 @@
 {
   "navbar": {
     "jadidlar": "Jadidlar",
+    "jadidlarhaqida": "Jadid haqida",
     "manbalar": "Manbalar",
     "izlanishlar": "Izlanishlar",
     "tilvaimlo": "Til va imlo",
@@ -9,12 +10,14 @@
     "ko'reshito'qi": "Ko‘r-eshit-o‘qi",
     "bizhaqimizda": "Biz haqimizda",
     "arxivhujjatlari": "Arxiv hujjatlari",
+    "foydalihavola": "Foydali havolalar",
     "matbuot": "Matbuot",
     "asarlar": "Asarlar",
     "maqolalar": "Maqolalar",
     "dissertatsiyalar": "Dissertatsiyalar",
     "esdaliklar": "Esdaliklar",
     "hikmatlar": "Hikmatlar",
+    "hikmatlarsozlar": "Hikmatli so'zlar",
     "sherlar": "Sheʼrlar",
     "yangiliklar": "Yangiliklar",
     "yiginlar": "Yigʻinlar",
@@ -24,9 +27,36 @@
     "eshituvlar": "Eshituvlar",
     "qidiruv": "Qidiruv",
     "chiqish": "Hisobdan chiqmoqchimisiz?",
-    "chiqish_btn": "Hisobdan Chiqish"
+    "chiqish_btn": "Hisobdan Chiqish",
+    "royxat": "Ro'yxat",
+    "skaner": "Skaner"
   },
   "homepage": {
     "toliq": "To'liq"
+  },
+  "eshituv": {
+    "bosh_sahifa": "Bosh sahifa",
+    "eshituvlar": "Eshituvlar",
+    "suratlar": "Suratlar",
+    "koruvlar": "Koʻruvlar",
+    "ishtirokchilar": "Ishtirokchilar",
+
+    "tarix": "Tarix",
+
+    "siyosat": "Siyosat",
+
+    "iqtisod": "Iqtisod",
+
+    "madaniyat_va_sanat": "Madaniyat va sa'nat",
+
+    "ijtimoiy_masalalar": "Ijtimoiy masalalar va din",
+
+    "adabiyot": "Adabiyot",
+
+    "talim_tarbiya": "Ta’lim-tarbiya",
+
+    "boshqa_masalalar": "Boshqa masalalar",
+
+    "bibliografik_korsatkich": "Bibliografik ko’rsatkich"
   }
 }

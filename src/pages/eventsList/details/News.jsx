@@ -5,16 +5,30 @@ import { Fade } from "react-awesome-reveal";
 import ReactPaginate from "react-paginate";
 import { useSearchParams } from "react-router-dom";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function News() {
   const [users, setUsers] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1; // URL ga saqlash
+  const { t, i18n } = useTranslation();
 
   const getData = async (page = 1) => {
     try {
-      const respons = await axios.get(`yangiliklar/?page=${page}&limit=15`);
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get(`yangiliklar/?page=${page}&limit=15`, {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
       setUsers(respons);
       setPageCount(Math.ceil(respons.data.pagination.total / 15));
     } catch (error) {
@@ -24,7 +38,7 @@ function News() {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage]);
+  }, [currentPage, i18n.language]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -49,7 +63,7 @@ function News() {
                 </span>
 
                 <a href={value?.link} target="_blank">
-                  To'liq
+                  {t("homepage.toliq")}
                 </a>
               </div>
             </div>

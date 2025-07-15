@@ -3,14 +3,28 @@ import { FaPlay } from "react-icons/fa6";
 import style from "./audioListening.module.scss";
 import { Fade } from "react-awesome-reveal";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 function AudioListening() {
   const [data, setData] = useState([]);
   const [clickAudio, setClickAudio] = useState(null);
+  const { t, i18n } = useTranslation();
 
   const getData = async () => {
     try {
-      const respons = await axios.get("audiolar/");
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get("audiolar/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
       setData(respons);
     } catch (error) {
       console.log("error", error);
@@ -19,7 +33,7 @@ function AudioListening() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   const ClickAudio = (id) => {
     setClickAudio(id);
@@ -30,11 +44,11 @@ function AudioListening() {
       <div className={style.wrapper}>
         <div className={style.menu_link}>
           <button onClick={() => navigate("/")}>
-            Bosh sahifa <span>/</span>
+            {t("eshituv.bosh_sahifa")} <span>/</span>
           </button>
 
           <button onClick={() => navigate("/")}>
-            Eshituvlar <span>/</span>
+            {t("eshituv.eshituvlar")} <span>/</span>
           </button>
 
           <button>

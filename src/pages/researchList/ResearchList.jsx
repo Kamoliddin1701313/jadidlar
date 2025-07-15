@@ -5,10 +5,12 @@ import ResearchListAsarlar from "./details/ResearchListAsarlar";
 import ResearchListMaqolalar from "./details/ResearchListMaqolalar";
 import ResearchListDissertatsiya from "./details/ResearchListDissertatsiya";
 import ResearchListEsdaliklar from "./details/ResearchListEsdaliklar";
+import { useTranslation } from "react-i18next";
 
 function ResearchList() {
   const { type } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = (value) => {
     const token = localStorage.getItem("token");
@@ -35,13 +37,22 @@ function ResearchList() {
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.menu_link}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
+          <button onClick={() => navigate("/")}>
+            {t("eshituv.bosh_sahifa")}
+          </button>
           <span>/</span>
 
-          <button onClick={() => navigate("/")}>Izlanishlar</button>
+          <button onClick={() => navigate("/")}>
+            {t("navbar.izlanishlar")}
+          </button>
           <span>/</span>
 
-          <button>{type}</button>
+          <button>
+            {type === "asarlar" && t("navbar.asarlar")}
+            {type === "maqolalar" && t("navbar.maqolalar")}
+            {type === "dissertatsiyalar" && t("navbar.dissertatsiyalar")}
+            {type === "esdaliklar" && t("navbar.esdaliklar")}
+          </button>
         </div>
 
         <div className={style.search}>
@@ -55,7 +66,7 @@ function ResearchList() {
             className={`${type === "asarlar" ? style.active : ""}`}
             onClick={() => navigate("/research/asarlar")}
           >
-            Asarlar
+            {t("navbar.asarlar")}
           </button>
 
           <button
@@ -63,7 +74,7 @@ function ResearchList() {
             className={`${type === "maqolalar" ? style.active : ""}`}
             onClick={() => navigate("/research/maqolalar")}
           >
-            Maqolalar
+            {t("navbar.maqolalar")}
           </button>
 
           <button
@@ -71,7 +82,7 @@ function ResearchList() {
             className={`${type === "dissertatsiyalar" ? style.active : ""}`}
             onClick={() => navigate("/research/dissertatsiyalar")}
           >
-            Dissertatsiyalar
+            {t("navbar.dissertatsiyalar")}
           </button>
 
           <button
@@ -79,7 +90,7 @@ function ResearchList() {
             className={`${type === "esdaliklar" ? style.active : ""}`}
             onClick={() => navigate("/research/esdaliklar")}
           >
-            Esdaliklar
+            {t("navbar.esdaliklar")}
           </button>
         </div>
 

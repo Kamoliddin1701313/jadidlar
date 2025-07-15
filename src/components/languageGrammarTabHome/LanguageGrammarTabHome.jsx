@@ -4,9 +4,11 @@ import WorksTabsHome from "./WorksTabHome";
 import ArticlesTabHome from "./ArticlesTabHome";
 import QuotesTabHome from "./QuotesTabHome";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function LanguageGrammarTabHome() {
   const [activeTab, setActiveTab] = useState(1);
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleClick = (value) => {
@@ -33,7 +35,7 @@ function LanguageGrammarTabHome() {
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
-        <h1>Til va imlo</h1>
+        <h1>{t("navbar.tilvaimlo")}</h1>
 
         <div className={style.page_tab}>
           <button
@@ -41,7 +43,7 @@ function LanguageGrammarTabHome() {
             className={`${activeTab === 1 ? style.active : ""}`}
             onClick={() => setActiveTab(1)}
           >
-            Asarlar
+            {t("navbar.asarlar")}
           </button>
 
           <button
@@ -49,7 +51,7 @@ function LanguageGrammarTabHome() {
             className={`${activeTab === 2 ? style.active : ""}`}
             onClick={() => setActiveTab(2)}
           >
-            Maqolalar
+            {t("navbar.maqolalar")}
           </button>
 
           <button
@@ -57,7 +59,7 @@ function LanguageGrammarTabHome() {
             className={`${activeTab === 3 ? style.active : ""}`}
             onClick={() => setActiveTab(3)}
           >
-            Hikmatlar
+            {t("navbar.hikmatlar")}
           </button>
         </div>
 

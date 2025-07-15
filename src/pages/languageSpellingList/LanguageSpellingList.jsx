@@ -4,10 +4,12 @@ import LanguageSpellingListHikmatlar from "./details/LanguageSpellingListHikmatl
 import LanguageSpellingListMaqolalar from "./details/LanguageSpellingListMaqolalar";
 import style from "./languageSpellingList.module.scss";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function LanguageSpellingList() {
   const { type } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = (value) => {
     const token = localStorage.getItem("token");
@@ -34,13 +36,19 @@ function LanguageSpellingList() {
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.menu_link}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
+          <button onClick={() => navigate("/")}>
+            {t("eshituv.bosh_sahifa")}
+          </button>
           <span>/</span>
 
-          <button onClick={() => navigate("/")}>Til va imlo</button>
+          <button onClick={() => navigate("/")}>{t("navbar.tilvaimlo")}</button>
           <span>/</span>
 
-          <button>{type}</button>
+          <button>
+            {type === "asarlar" && t("navbar.asarlar")}
+            {type === "maqolalar" && t("navbar.maqolalar")}
+            {type === "hikmatlar" && t("navbar.hikmatlar")}
+          </button>
         </div>
 
         <div className={style.search}>
@@ -54,7 +62,7 @@ function LanguageSpellingList() {
             className={`${type === "asarlar" ? style.active : ""}`}
             onClick={() => navigate("/languageSpelling/asarlar")}
           >
-            Asarlar
+            {t("navbar.asarlar")}
           </button>
 
           <button
@@ -62,7 +70,7 @@ function LanguageSpellingList() {
             className={`${type === "maqolalar" ? style.active : ""}`}
             onClick={() => navigate("/languageSpelling/maqolalar")}
           >
-            Maqolalar
+            {t("navbar.maqolalar")}
           </button>
 
           <button
@@ -70,7 +78,7 @@ function LanguageSpellingList() {
             className={`${type === "hikmatlar" ? style.active : ""}`}
             onClick={() => navigate("/languageSpelling/hikmatlar")}
           >
-            Hikmatlar
+            {t("navbar.hikmatlar")}
           </button>
         </div>
 

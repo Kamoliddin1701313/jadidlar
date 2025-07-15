@@ -1,13 +1,27 @@
 import style from "../languageSpellingList.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function LanguageSpellingListHikmatlar() {
   const [data, setData] = useState([]);
+  const { i18n } = useTranslation();
 
   const getData = async () => {
     try {
-      const respons = await axios.get("hikmatli_sozlar_random/");
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get("hikmatli_sozlar_random/", {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
       setData(respons?.data);
     } catch (error) {
       console.log(error, "error");
@@ -16,7 +30,8 @@ function LanguageSpellingListHikmatlar() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
+
   return (
     <div className={style.tab_quotes_container}>
       {data.map((value, index) => (

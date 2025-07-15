@@ -3,10 +3,12 @@ import style from "./archivedDocumentsList.module.scss";
 import { FcSearch } from "react-icons/fc";
 import ArchivedDocumentsListRoyxat from "./details/ArchivedDocumentsListRoyxat";
 import ArchivedDocumentsListSkaner from "./details/ArchivedDocumentsListSkaner";
+import { useTranslation } from "react-i18next";
 
 function ArchivedDocumentsList() {
   const { pathname } = useLocation();
   const { type } = useParams();
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -35,13 +37,18 @@ function ArchivedDocumentsList() {
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.menu_link}>
-          <button onClick={() => navigate("/")}>Bosh sahifa</button>
+          <button onClick={() => navigate("/")}>
+            {t("eshituv.bosh_sahifa")}
+          </button>
           <span>/</span>
 
-          <button onClick={() => navigate("/")}>Manbalar</button>
+          <button onClick={() => navigate("/")}>{t("navbar.manbalar")}</button>
           <span>/</span>
 
-          <button>{type}</button>
+          <button>
+            {type === "royxat" && t("navbar.royxat")}
+            {pathname === "/archivedDocuments/skaner" && t("navbar.skaner")}
+          </button>
         </div>
 
         <div className={style.search}>
@@ -55,7 +62,7 @@ function ArchivedDocumentsList() {
             className={`${type === "royxat" ? style.active : ""}`}
             onClick={() => navigate("/archivedDocuments/royxat")}
           >
-            Ro'yxat
+            {t("navbar.royxat")}
           </button>
 
           <button
@@ -69,7 +76,7 @@ function ArchivedDocumentsList() {
             }`}
             onClick={() => navigate("/archivedDocuments/skaner")}
           >
-            Skaner
+            {t("navbar.skaner")}
           </button>
         </div>
 

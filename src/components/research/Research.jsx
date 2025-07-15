@@ -5,9 +5,11 @@ import PublicationsTabsHome from "./PublicationsTabsHome";
 import ContentTabsHome from "./ContentTabsHome";
 import MemoirsTabHome from "./MemoirsTabHome";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Research() {
   const [activeTab, setActiveTab] = useState(1);
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleClick = (value) => {
@@ -34,7 +36,7 @@ function Research() {
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
-        <h1>Izlanishlar</h1>
+        <h1>{t("navbar.izlanishlar")}</h1>
 
         <div className={style.page_tab}>
           <button
@@ -42,7 +44,7 @@ function Research() {
             className={`${activeTab === 1 ? style.active : ""}`}
             onClick={() => setActiveTab(1)}
           >
-            Asarlar
+            {t("navbar.asarlar")}
           </button>
 
           <button
@@ -50,7 +52,7 @@ function Research() {
             className={`${activeTab === 2 ? style.active : ""}`}
             onClick={() => setActiveTab(2)}
           >
-            Maqolalar
+            {t("navbar.maqolalar")}
           </button>
 
           <button
@@ -58,7 +60,7 @@ function Research() {
             className={`${activeTab === 3 ? style.active : ""}`}
             onClick={() => setActiveTab(3)}
           >
-            Dissertatsiyalar
+            {t("navbar.dissertatsiyalar")}
           </button>
 
           <button
@@ -66,7 +68,7 @@ function Research() {
             className={`${activeTab === 4 ? style.active : ""}`}
             onClick={() => setActiveTab(4)}
           >
-            Esdaliklar
+            {t("navbar.esdaliklar")}
           </button>
         </div>
 
