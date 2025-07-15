@@ -11,11 +11,6 @@ function VideoViews() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  console.log(
-    activeVideo,
-    "ID XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-  );
-
   const getData = async () => {
     try {
       const respons = await axios.get("videolar/");
@@ -60,7 +55,7 @@ function VideoViews() {
         </div>
 
         <div className={style.video_container}>
-          <Fade cascade damping={0.2} className={style.video}>
+          {/* <Fade cascade damping={0.2} className={style.video}>
             {pathname === `/koruvlar/${id}` ? (
               videoItem?.link ? (
                 <iframe
@@ -71,16 +66,16 @@ function VideoViews() {
                   height="500"
                   frameBorder="0"
                 ></iframe>
-              ) : videoItem?.video ? (
+              ) : videoItem?.video == null ? (
                 <video
-                  src={videoItem?.video}
+                  src={`https://your-backend.com/${activeVideo?.video}`}
                   controls
                   width="100%"
                   height="500"
                   style={{ borderRadius: "12px" }}
                 />
               ) : null
-            ) : activeVideo?.link ? (
+            ) : activeVideo?.link == null ? (
               <iframe
                 src={getEmbedUrl(activeVideo?.link)}
                 allow="autoplay; encrypted-media"
@@ -89,7 +84,7 @@ function VideoViews() {
                 height="500"
                 frameBorder="0"
               ></iframe>
-            ) : activeVideo?.video || data[0]?.video ? (
+            ) : activeVideo?.video == null || data[0]?.video == null ? (
               <video
                 src={activeVideo?.video || data[0]?.video}
                 controls
@@ -98,6 +93,37 @@ function VideoViews() {
                 style={{ borderRadius: "12px" }}
               />
             ) : null}
+          </Fade> */}
+
+          <Fade cascade damping={0.2} className={style.video}>
+            {(() => {
+              const currentVideo = videoItem || activeVideo || data[0];
+
+              if (!currentVideo) return null;
+
+              if (currentVideo.link && currentVideo.link.includes("youtube")) {
+                return (
+                  <iframe
+                    src={getEmbedUrl(currentVideo.link)}
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    width="100%"
+                    frameBorder="0"
+                  ></iframe>
+                );
+              } else if (currentVideo.video) {
+                return (
+                  <video
+                    src={currentVideo.video}
+                    controls
+                    width="100%"
+                    style={{ borderRadius: "12px" }}
+                  />
+                );
+              } else {
+                return <p>Video mavjud emas</p>;
+              }
+            })()}
           </Fade>
 
           <div className={style.videos_wrapper}>

@@ -53,6 +53,7 @@
           color: #0e2b65;
           display: flex;
           gap: 12px;
+          overflow: hidden;
 
           span {
             height: 100%;
@@ -236,6 +237,7 @@
           border: 1px solid #ccc;
           outline: none;
           font-size: 16px;
+          background-color: transparent;
           font-family: "Roboto Slab", serif;
         }
       }
@@ -279,6 +281,7 @@
               outline: none;
               font-size: 16px;
               color: #0e2b65;
+              background-color: transparent;
               font-family: "Roboto Slab", serif;
             }
           }
@@ -291,6 +294,7 @@
             outline: none;
             font-size: 16px;
             border-radius: 24px;
+            background-color: transparent;
             border: 1px solid #ccc;
           }
         }
@@ -326,6 +330,7 @@
               height: 100%;
               border: none;
               outline: none;
+              background-color: transparent;
               padding: 0 15px;
             }
 
@@ -424,6 +429,126 @@
         }
       }
     }
-    
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      width: 65%;
+      padding: 20px 30px;
+
+      .registration {
+        h1 {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      padding: 20px 35px 30px;
+      width: 75%;
+      .login {
+        h1 {
+          font-size: 26px;
+        }
+      }
+
+      .registration {
+        h1 {
+          margin-top: 0;
+        }
+
+        .input_wrapper {
+          gap: 4px;
+          input {
+            height: 38px;
+            font-size: 14px;
+          }
+        }
+
+        .input_container {
+          gap: 10px;
+          margin: 10px 0;
+          .input_wrap {
+            gap: 4px;
+
+            .phone {
+              height: 38px;
+              .input_mask,
+              span {
+                font-size: 14px;
+              }
+            }
+
+            input {
+              height: 38px;
+              font-size: 14px;
+            }
+          }
+        }
+
+        .input_parol_container {
+          gap: 10px;
+          .box {
+            gap: 4px;
+
+            .input_parol {
+              height: 38px;
+              input {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+
+        .send_btn {
+          height: 38px;
+          margin: 10px 0;
+        }
+
+        .input_container {
+          display: flex;
+          flex-direction: column;
+
+          .input_wrap {
+            width: 100%;
+          }
+        }
+
+        .input_parol_container {
+          display: flex;
+          flex-direction: column;
+          .box {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      padding: 10px 25px 25px;
+      width: 85%;
+
+      .login {
+        h1 {
+          font-size: 22px;
+        }
+      }
+
+      .registration {
+        h1 {
+          font-size: 22px;
+        }
+      }
+    }
   }
 }

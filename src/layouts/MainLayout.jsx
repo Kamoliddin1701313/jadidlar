@@ -27,6 +27,7 @@ function MainLayout() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+  
   const scrollToTop = useCallback((duration = 500) => {
     const start = window.pageYOffset;
     const startTime = performance.now();

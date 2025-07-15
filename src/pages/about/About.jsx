@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./about.module.scss";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal";
+import i18n from "../../i18n";
 
 function About() {
   const [page, setPage] = useState([]);

@@ -10,6 +10,7 @@
       align-items: center;
       gap: 15px;
       font-family: "Roboto Slab", serif;
+      height: 26px;
       button {
         font-size: 18px;
         background-color: transparent;
@@ -19,13 +20,15 @@
         cursor: pointer;
         color: #112c42;
         text-transform: uppercase;
-        height: 26px;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        text-align: left;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
         transition: all 0.2s linear;
+
+        &:last-child {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          text-align: left;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
       }
 
       button:last-of-type {
@@ -67,6 +70,7 @@
         border-radius: 12px;
         background-color: white;
         overflow-y: auto;
+        height: 488px;
 
         .videos_btn {
           margin-right: 10px;
@@ -119,6 +123,121 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        gap: 10px;
+        button {
+          &:last-child {
+            width: 60%;
+          }
+        }
+      }
+
+      .video_container {
+        gap: 10px;
+        border-radius: 10px;
+        height: 450px;
+        padding: 12px 0 12px 12px;
+
+        .video {
+          iframe {
+            height: 426px;
+          }
+        }
+
+        .videos_wrapper {
+          height: 426px;
+          .videos_btn {
+            .card {
+              button {
+                height: 90px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        gap: 8px;
+        button,
+        span {
+          font-size: 15px;
+        }
+
+        button:last-child {
+          width: 50%;
+        }
+      }
+
+      .video_container {
+        grid-template-columns: 1fr;
+        height: 700px;
+        padding: 12px;
+        margin-bottom: 0;
+
+        .video {
+          height: 300px;
+          iframe {
+            height: 100%;
+          }
+        }
+
+        .videos_wrapper {
+          height: 365px;
+          .videos_btn {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        gap: 8px;
+        button,
+        span {
+          font-size: 14px;
+        }
+
+        button:last-child {
+          width: 35%;
+          font-size: 12px;
+        }
+      }
+
+      .video_container {
+        height: 640px;
+
+        .video {
+          height: 260px; //30
+        }
+
+        .videos_wrapper {
+          height: 345px;
         }
       }
     }

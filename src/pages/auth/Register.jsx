@@ -151,6 +151,7 @@ function Register({ setRegister }) {
             <span>Hisobingiz bormi?</span>
           </button>
         </div>
+        
       </form>
     </div>
   );
