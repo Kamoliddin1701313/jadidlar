@@ -218,6 +218,17 @@
           font-size: 26px;
         }
       }
+
+      ul {
+        gap: 5px;
+        li {
+          a {
+            height: 40px;
+            width: 44px;
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 }
@@ -235,12 +246,10 @@
       }
 
       ul {
-        gap: 5px;
         li {
           a {
             height: 36px;
             width: 40px;
-            font-size: 14px;
           }
         }
       }

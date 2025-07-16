@@ -1,0 +1,224 @@
+.container {
+  width: 100%;
+}
+
+.container .wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 0 50px;
+}
+
+.container .wrapper .menu_link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+  font-family: "Roboto Slab", serif;
+  height: 25px;
+}
+
+.container .wrapper .menu_link button {
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  font-family: "Roboto Slab", serif;
+  cursor: pointer;
+  color: #112c42;
+  text-transform: uppercase;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .wrapper .menu_link span {
+  font-size: 18px;
+  font-weight: 900;
+  color: #881a3b;
+}
+
+.container .wrapper .menu_link button:last-of-type {
+  width: 60%;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.container .wrapper .audio_container {
+  margin: 25px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 3fr;
+      grid-template-columns: 2fr 3fr;
+  gap: 20px;
+  height: 450px;
+  padding: 15px;
+  overflow: hidden;
+  background-color: white;
+  -webkit-box-shadow: 0 0 8px rgba(128, 128, 128, 0.649);
+          box-shadow: 0 0 8px rgba(128, 128, 128, 0.649);
+  border-radius: 12px;
+}
+
+.container .wrapper .audio_container .active_audio {
+  width: 100%;
+  height: 420px;
+  padding: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .wrapper .audio_container .active_audio .img {
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 8px rgba(128, 128, 128, 0.649);
+          box-shadow: 0 0 8px rgba(128, 128, 128, 0.649);
+}
+
+.container .wrapper .audio_container .active_audio .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.container .wrapper .audio_container .active_audio .audio {
+  width: 100%;
+}
+
+.container .wrapper .audio_container .audio_wrapper {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  overflow-y: auto;
+}
+
+.container .wrapper .audio_container .audio_wrapper .audio_btn {
+  border-radius: 12px;
+}
+
+.container .wrapper .audio_container .audio_wrapper .audio_btn .card button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 0 4px #2f2f2f;
+          box-shadow: 0 0 4px #2f2f2f;
+  height: 65px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  gap: 15px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  padding: 8px 15px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .audio_container .audio_wrapper .audio_btn .card button svg {
+  font-size: 22px;
+}
+
+.container .wrapper .audio_container .audio_wrapper .audio_btn .card button:hover {
+  background-color: #2980b9;
+}
+
+.container .wrapper .audio_container .audio_wrapper .audio_btn .card button:hover span {
+  color: white;
+}
+
+.container .wrapper .audio_container .audio_wrapper .audio_btn .card button:hover svg {
+  color: white;
+}
+
+.container .wrapper .audio_container .audio_wrapper .audio_btn .card button span {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #444444;
+  height: 25px;
+  width: 100%;
+  text-align: left;
+  line-height: 23px;
+  font-size: 16px;
+  font-weight: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container .wrapper .menu_link button {
+    font-size: 16px;
+  }
+  .container .wrapper .menu_link button span {
+    font-size: 14px;
+  }
+  .container .wrapper .audio_container {
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container .wrapper .menu_link button:last-child {
+    width: 44%;
+  }
+  .container .wrapper .audio_container {
+    height: 800px;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .container .wrapper .audio_container .active_audio {
+    height: 380px;
+  }
+  .container .wrapper .audio_container .active_audio .img {
+    height: 290px;
+  }
+  .container .wrapper .audio_container .audio_wrapper .audio_btn .card button {
+    height: 50px;
+  }
+  .container .wrapper .audio_container .audio_wrapper .audio_btn .card button svg {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container .wrapper .menu_link button {
+    font-size: 13px;
+  }
+  .container .wrapper .menu_link button:last-child {
+    width: 35%;
+    font-size: 14px;
+    text-transform: lowercase;
+  }
+}
+/*# sourceMappingURL=audioListening.module.css.map */

@@ -1,0 +1,651 @@
+.container {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 0 30px rgba(255, 255, 255, 0.126);
+          box-shadow: 0 0 30px rgba(255, 255, 255, 0.126);
+  height: 90px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.container .modal {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.91);
+  color: white;
+}
+
+.container .modal .modal_box {
+  width: 40%;
+  height: 450px;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  padding: 25px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 35px rgba(255, 255, 255, 0.341);
+          box-shadow: 0 0 35px rgba(255, 255, 255, 0.341);
+  background-color: rgba(255, 255, 255, 0.711);
+}
+
+.container .modal .modal_box svg {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 32px;
+  cursor: pointer;
+  color: #ff0101;
+}
+
+.container .modal .modal_box .modal_card {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 235px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.container .modal .modal_box .modal_card p {
+  font-size: 20px;
+  color: #0e2b65;
+  text-align: center;
+  font-weight: 500;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .modal .modal_box .modal_card button {
+  width: 100%;
+  height: 42px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #ff0101;
+  color: #ff0101;
+  font-size: 20px;
+}
+
+.container .header {
+  max-width: 1400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .header .logo {
+  width: 140px;
+}
+
+.container .header .desktop_navbar .navbar_link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .header .desktop_navbar .navbar_link > a {
+  text-decoration: none;
+  font-size: 12px;
+  color: white;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .header .desktop_navbar .navbar_link > a:hover {
+  color: #08e36e;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .header .desktop_navbar .navbar_link .link {
+  gap: 15px;
+}
+
+.container .header .desktop_navbar .navbar_link .link button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  text-transform: uppercase;
+  gap: 6px;
+  height: 90px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+.container .header .desktop_navbar .navbar_link .link button svg {
+  font-size: 12px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .header .desktop_navbar .navbar_link .link:last-child button svg {
+  font-size: 14px;
+}
+
+.container .header .desktop_navbar .navbar_link .link ul li {
+  display: none;
+  position: absolute;
+  top: 90px;
+  background-color: #fbfbfb;
+  padding: 10px 20px;
+  list-style-type: none;
+  min-width: 150px;
+  border-radius: 8px;
+}
+
+.container .header .desktop_navbar .navbar_link .link ul li a {
+  display: block;
+  font-size: 16px;
+  margin: 10px 0;
+  color: #053e3e;
+  text-decoration: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .header .desktop_navbar .navbar_link .link ul li a:hover {
+  color: rgba(255, 0, 0, 0.86);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .header .desktop_navbar .navbar_link .link:hover ul li {
+  display: block;
+}
+
+.container .header .desktop_navbar .navbar_link .link:hover button svg {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .header .desktop_navbar .navbar_link .link:hover svg:nth-of-type(2) {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.container .header .desktop_navbar .navbar_link .link:hover button {
+  color: #08e36e;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .header .desktop_navbar .navbar_link .link .hidden {
+  display: none;
+}
+
+.container .header .desktop_navbar .navbar_link .link .open {
+  position: absolute;
+  background-color: #fbfbfb;
+  border-radius: 8px;
+  padding: 6px;
+  overflow: hidden;
+  right: 2.5%;
+}
+
+.container .header .desktop_navbar .navbar_link .link .open span {
+  color: #053e3e;
+  font-weight: 600;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  padding: 10px 20px;
+  display: block;
+  border-radius: 8px;
+  font-family: "Roboto Slab", serif;
+  cursor: pointer;
+}
+
+.container .header .desktop_navbar .navbar_link .link .open span:hover {
+  background-color: rgba(84, 84, 84, 0.181);
+}
+
+.container .header .desktop_navbar .navbar_link .search_btn {
+  background-color: white;
+  width: 42px;
+  height: 42px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border: none;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.container .header .desktop_navbar .navbar_link .search_btn:hover {
+  background-color: rgba(21, 21, 21, 0.195);
+  color: white;
+}
+
+.container .header .desktop_navbar .navbar_link .logout_icon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.container .header .desktop_navbar .navbar_link .logout_icon svg {
+  font-size: 20px;
+  margin-top: 4px;
+  color: white;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .header .desktop_navbar .navbar_link .logout_icon:hover svg {
+  color: rgba(255, 0, 0, 0.822);
+}
+
+.container .header .mobile_navbar {
+  display: none;
+}
+
+.container .header .toggle_btn {
+  display: none;
+}
+
+.container .global_search {
+  max-width: 1400px;
+  -webkit-box-shadow: 0 0 15px #014049;
+          box-shadow: 0 0 15px #014049;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin: 20px auto 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .global_search input {
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  font-size: 18px;
+  color: #013434;
+  width: 100%;
+  font-weight: 600;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .global_search button {
+  padding: 0 20px;
+  cursor: pointer;
+  background-color: #23537d;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  height: 100%;
+  border: none;
+  width: 15%;
+}
+
+.backgroundBlack {
+  background-color: rgba(0, 0, 0, 0.907);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.backgroundBlue {
+  background-color: #0e2a63;
+  -webkit-box-shadow: 0 0 30px #0000ffd6;
+          box-shadow: 0 0 30px #0000ffd6;
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 10px;
+  }
+  .container .header .logo {
+    width: 100px;
+  }
+  .container .header .desktop_navbar .navbar_link a {
+    text-transform: lowercase;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+  .container .header .desktop_navbar .navbar_link .link button {
+    text-transform: capitalize;
+    font-size: 13px;
+  }
+  .container .header .desktop_navbar .navbar_link .link ul li a {
+    font-size: 14px;
+  }
+  .container .header .desktop_navbar .navbar_link .link .open {
+    right: 1%;
+  }
+  .container .header .desktop_navbar .navbar_link .link .open span {
+    padding: 5px 16px;
+  }
+  .container .header .desktop_navbar .navbar_link .search_btn {
+    width: 32px;
+    height: 32px;
+  }
+  .container .header .desktop_navbar .navbar_link .search_btn svg {
+    font-size: 13px;
+  }
+  .container .global_search {
+    width: 96%;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container .header {
+    height: 90px;
+  }
+  .container .header .desktop_navbar {
+    display: none;
+  }
+  .container .header .mobile_navbar {
+    display: block;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 100%;
+    margin-right: 20px;
+    -webkit-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+    padding: 25px;
+    position: absolute;
+    opacity: 1;
+    background-color: white;
+  }
+  .container .header .mobile_navbar .navbar_link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 10px;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 15px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 48px;
+    width: 90%;
+    border: none;
+    padding: 0 15px;
+    border-radius: 16px;
+    background-color: transparent;
+    overflow: hidden;
+    gap: 20px;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.784);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.784);
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-family: "Roboto Slab", serif;
+    font-size: 18px;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn input::-webkit-input-placeholder {
+    color: black;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn input:-ms-input-placeholder {
+    color: black;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn input::-ms-input-placeholder {
+    color: black;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn input::placeholder {
+    color: black;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn svg {
+    font-size: 18px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn:hover {
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-box-shadow: 0 0 5px #0639f0;
+            box-shadow: 0 0 5px #0639f0;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .open_btn {
+    width: 36px;
+    background-color: black;
+    height: 36px;
+    border-radius: 50%;
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .open_btn svg {
+    color: white;
+    font-size: 18px;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .open_btn:hover {
+    background-color: #0e2a63;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+  .container .header .mobile_navbar .navbar_link > a {
+    border: none;
+    height: 36px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    cursor: pointer;
+    padding: 0 15px;
+    background-color: transparent;
+    text-decoration: none;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border-radius: 16px;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    width: 100%;
+    font-family: "Roboto Slab", serif;
+    font-size: 16px;
+    color: black;
+  }
+  .container .header .mobile_navbar .navbar_link > a:hover {
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background-color: #0e2a63;
+    color: white;
+  }
+  .container .header .mobile_navbar .navbar_link .link {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .container .header .mobile_navbar .navbar_link .link:hover button {
+    background-color: #0e2a63;
+    color: white;
+  }
+  .container .header .mobile_navbar .navbar_link .link .open {
+    padding: 0 15px;
+    font-family: "Roboto Slab", serif;
+    font-size: 16px;
+    display: block;
+    margin: 5px 0 12px;
+  }
+  .container .header .mobile_navbar .navbar_link .link .open span {
+    margin-bottom: 10px;
+    display: block;
+    cursor: pointer;
+    color: #0e2a63;
+  }
+  .container .header .mobile_navbar .navbar_link .link .hidden {
+    padding: 0 15px;
+    font-family: "Roboto Slab", serif;
+    font-size: 16px;
+    display: none;
+    margin: 5px 0 12px;
+  }
+  .container .header .mobile_navbar .navbar_link .link button {
+    border: none;
+    height: 36px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    cursor: pointer;
+    padding: 0 15px;
+    border-radius: 16px;
+    background-color: transparent;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    width: 100%;
+  }
+  .container .header .mobile_navbar .navbar_link .link button span {
+    font-size: 16px;
+  }
+  .container .header .mobile_navbar .navbar_link .link button svg {
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+  .container .header .mobile_navbar .navbar_link .link:hover {
+    background-color: rgba(153, 153, 153, 0.237);
+  }
+  .container .header .mobile_navbar .navbar_link .link:hover button svg {
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    color: white;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  .container .header .mobile_navbar .navbar_link .link ul li {
+    display: none;
+    padding: 2px 25px;
+  }
+  .container .header .mobile_navbar .navbar_link .link ul li a {
+    text-decoration: none;
+    font-family: "Roboto Slab", serif;
+    font-size: 16px;
+    margin: 4px 0 8px;
+    display: block;
+    color: black;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+  .container .header .mobile_navbar .navbar_link .link:hover ul li {
+    display: block;
+  }
+  .container .header .toggle_btn {
+    background-color: transparent;
+    border: none;
+    display: block;
+  }
+  .container .header .toggle_btn svg {
+    cursor: pointer;
+    font-size: 22px;
+    color: white;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container .header .mobile_navbar .navbar_link {
+    gap: 6px;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn {
+    height: 38px;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .search_btn input {
+    height: 100%;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .open_btn {
+    width: 30px;
+    height: 30px;
+  }
+  .container .header .mobile_navbar .navbar_link .navbar_toggle .open_btn svg {
+    font-size: 16px;
+  }
+}
+/*# sourceMappingURL=navbar.module.css.map */

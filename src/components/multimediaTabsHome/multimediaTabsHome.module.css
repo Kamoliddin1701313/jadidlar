@@ -1,0 +1,352 @@
+.container {
+  width: 100%;
+}
+
+.container .wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.container .wrapper h1 {
+  font-family: "Roboto Slab", serif;
+  margin-bottom: 10px;
+  font-size: 42px;
+  color: #203867;
+}
+
+.container .wrapper .page_tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.container .wrapper .page_tab button {
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  margin-right: 35px;
+  margin-left: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Roboto Slab", serif;
+  color: #50535d;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.container .wrapper .page_tab .active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #3f4a9e;
+  left: 0;
+  bottom: -14px;
+}
+
+.container .wrapper .page_container {
+  padding: 35px 0 70px;
+}
+
+.container .wrapper .page_container .carusel_videos {
+  height: 400px;
+  position: relative;
+}
+
+.container .wrapper .page_container .carusel_videos .card_img {
+  width: 100%;
+}
+
+.container .wrapper .page_container .carusel_videos .card_img .img {
+  position: relative;
+  height: 100%;
+  cursor: pointer;
+  width: 96%;
+  margin: 0 auto;
+}
+
+.container .wrapper .page_container .carusel_videos .card_img .img img {
+  width: 100%;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.container .wrapper .page_container .carusel_videos .card_img .img button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: none;
+}
+
+.container .wrapper .page_container .carusel_videos .card_img .img button svg {
+  font-size: 42px;
+  color: white;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .wrapper .page_container .carusel_videos .card_img .img button:hover svg {
+  color: #225ccfad;
+}
+
+.container .wrapper .page_container .carusel_videos .card_img .img:hover button svg {
+  font-size: 52px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .page_container .carusel_videos ul li button::before {
+  content: "";
+}
+
+.container .wrapper .page_container .carusel_images {
+  height: 320px;
+  position: relative;
+}
+
+.container .wrapper .page_container .carusel_images .card_img {
+  width: 100%;
+}
+
+.container .wrapper .page_container .carusel_images .card_img .img {
+  position: relative;
+  height: 100%;
+  cursor: pointer;
+  width: 96%;
+  border-radius: 20px;
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .page_container .carusel_images .card_img .img img {
+  width: 100%;
+  height: 320px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .page_container .carusel_images .card_img .img:hover {
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .page_container .carusel_images .card_img .img:hover img {
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.container .wrapper .page_container .carusel_images ul li button::before {
+  content: "";
+}
+
+.container .wrapper .page_container .listen_container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  width: 100%;
+  height: 480px;
+  padding: 20px;
+  background-color: white;
+  -webkit-box-shadow: 0 0 10px gray;
+          box-shadow: 0 0 10px gray;
+  border-radius: 12px;
+  gap: 35px;
+}
+
+.container .wrapper .page_container .listen_container .select_id {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .wrapper .page_container .listen_container .select_id .select_img {
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 10px gray;
+          box-shadow: 0 0 10px gray;
+}
+
+.container .wrapper .page_container .listen_container .select_id .select_img img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+
+.container .wrapper .page_container .listen_container .select_id .select_audio {
+  width: 100%;
+}
+
+.container .wrapper .page_container .listen_container .select_id .active_audio {
+  color: red;
+}
+
+.container .wrapper .page_container .listen_container .audios_box {
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.container .wrapper .page_container .listen_container .audios_box .select_audio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  height: 70px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 0 6px gray;
+          box-shadow: 0 0 6px gray;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  gap: 15px;
+}
+
+.container .wrapper .page_container .listen_container .audios_box .select_audio .icon {
+  width: full;
+  height: full;
+}
+
+.container .wrapper .page_container .listen_container .audios_box .select_audio .icon svg {
+  font-size: 24px;
+  padding: 0;
+  display: block;
+  margin-left: 0;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .page_container .listen_container .audios_box .select_audio span {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 20px;
+  font-family: "Roboto Slab", serif;
+  font-size: 18px;
+  text-align: left;
+  color: black;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .page_container .listen_container .audios_box .select_audio:hover {
+  background-color: rgba(0, 0, 0, 0.842);
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.842);
+          box-shadow: 0 0 6px rgba(0, 0, 0, 0.842);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .page_container .listen_container .audios_box .select_audio:hover .icon svg {
+  color: white;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .page_container .listen_container .audios_box .select_audio:hover span {
+  color: white;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+:global .slick-dots li {
+  top: 15px;
+}
+
+:global .slick-dots li button::before {
+  background-color: rgba(41, 79, 218, 0.619);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  opacity: 1;
+}
+
+:global .slick-dots li.slick-active button::before {
+  background-color: rgba(0, 0, 255, 0.948);
+  width: 16px;
+  height: 16px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container .wrapper .page_container .listen_container {
+    gap: 5px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container .wrapper h1 {
+    font-size: 32px;
+  }
+  .container .wrapper .page_container .listen_container {
+    height: 800px;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .container .wrapper .page_container .listen_container .select_id .select_img {
+    height: 300px;
+  }
+  .container .wrapper .page_container .listen_container .select_id .select_audio {
+    margin-top: 25px;
+  }
+  .container .wrapper .page_container .listen_container .audios_box .select_audio {
+    height: 55px;
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container .wrapper h1 {
+    font-size: 28px;
+  }
+  .container .wrapper .page_tab button {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+}
+/*# sourceMappingURL=multimediaTabsHome.module.css.map */

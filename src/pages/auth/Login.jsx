@@ -41,6 +41,12 @@ function Login() {
 
   return (
     <div className={style.container}>
+      <div className={style.animation_container}>
+        <div className={style.item_1}></div>
+        <div className={style.item_2}></div>
+        <div className={style.item_3}></div>
+      </div>
+
       <div className={style.wrapper}>
         {register ? (
           <div className={style.login}>

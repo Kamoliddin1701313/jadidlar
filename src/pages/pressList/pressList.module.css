@@ -1,0 +1,424 @@
+.container {
+  width: 100%;
+}
+
+.container .wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 0 50px;
+}
+
+.container .wrapper .page_tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.container .wrapper .page_tab button {
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  margin-right: 35px;
+  margin-left: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Roboto Slab", serif;
+  color: #50535d;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.container .wrapper .page_tab .active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #3f4a9e;
+  left: 0;
+  bottom: -14px;
+}
+
+.container .wrapper .menu_link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .wrapper .menu_link button {
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  font-family: "Roboto Slab", serif;
+  cursor: pointer;
+  color: #112c42;
+  text-transform: uppercase;
+}
+
+.container .wrapper .menu_link span {
+  font-size: 18px;
+  font-weight: 900;
+  color: #881a3b;
+}
+
+.container .wrapper .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid white;
+  border-radius: 30px;
+  height: 56px;
+  background-color: #c2ddfc;
+  -webkit-box-shadow: 2px 5px 10px #6ba8e2;
+          box-shadow: 2px 5px 10px #6ba8e2;
+  padding: 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 15px 0 30px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .wrapper .search input {
+  height: 100%;
+  width: 94%;
+  padding: 0 10px;
+  background-color: #d6e5f7;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  font-size: 20px;
+  color: #6ba8e2;
+}
+
+.container .wrapper .search input:active, .container .wrapper .search input:focus {
+  background-color: rgba(255, 255, 255, 0.797);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .search svg {
+  font-size: 36px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.container .wrapper .jadidlar_list {
+  display: -ms-grid;
+  display: grid;
+  margin: 30px 0 10px;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.container .wrapper .jadidlar_list .card {
+  position: relative;
+  height: 350px;
+  border-radius: 15px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: white;
+}
+
+.container .wrapper .jadidlar_list .card .link {
+  position: absolute;
+  right: -20%;
+  top: 12px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.455);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 9;
+}
+
+.container .wrapper .jadidlar_list .card .link button {
+  background-color: transparent;
+  border: none;
+}
+
+.container .wrapper .jadidlar_list .card .link svg {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.container .wrapper .jadidlar_list .card .img {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .wrapper .jadidlar_list .card .img img {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .wrapper .jadidlar_list .card .text {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.455);
+  bottom: 0;
+  padding: 25px;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .jadidlar_list .card .text button {
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  font-family: "Roboto Slab", serif;
+  font-size: 18px;
+  height: 52px;
+  color: white;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.container .wrapper .jadidlar_list .card:hover .link {
+  right: 10px;
+}
+
+.container .wrapper .jadidlar_list .card:hover .img img {
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .wrapper .jadidlar_list .card:hover .img {
+  -webkit-transform: rotate(-4deg);
+          transform: rotate(-4deg);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .wrapper .jadidlar_list .card:hover .text {
+  background-color: rgba(255, 255, 255, 0.671);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  height: 160px;
+}
+
+.container .wrapper .jadidlar_list .card:hover .text button {
+  cursor: pointer;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  color: #223b6d;
+}
+
+.container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+}
+
+.container ul li {
+  list-style-type: none;
+}
+
+.container ul li a {
+  height: 48px;
+  width: 52px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #3642ad;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border-radius: 2000px;
+  background-color: transparent;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Roboto Slab", serif;
+}
+
+.container ul li a:hover {
+  background-color: #3642ad;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  color: white;
+}
+
+.container ul .active {
+  background-color: #3642ad;
+  border-radius: 2000px;
+  color: white;
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+  .container .wrapper .jadidlar_list {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+  .container .wrapper .page_tab {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow-x: auto;
+    padding: 25px 0;
+    gap: 5px;
+  }
+  .container .wrapper .page_tab button {
+    min-width: 50px;
+    padding: 0 10px;
+    margin: 0;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
+  .container .wrapper .page_tab .active::before {
+    bottom: -8px;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .container .wrapper .jadidlar_list {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  .container .wrapper .menu_link button,
+  .container .wrapper .menu_link span {
+    font-size: 16px;
+  }
+  .container .wrapper .search {
+    height: 46px;
+  }
+  .container .wrapper .search svg {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .container .wrapper .jadidlar_list {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  .container .wrapper .jadidlar_list .card {
+    height: 300px;
+  }
+  .container .wrapper .jadidlar_list .card .text {
+    padding: 15px;
+  }
+  .container .wrapper .jadidlar_list .card:hover .text {
+    background-color: rgba(255, 255, 255, 0.671);
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    height: 130px;
+  }
+  .container .wrapper .jadidlar_list .card:hover .text button {
+    cursor: pointer;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    color: #223b6d;
+  }
+  .container .wrapper .menu_link {
+    gap: 8px;
+  }
+  .container .wrapper .menu_link button:last-child {
+    font-size: 12px;
+  }
+  .container .wrapper .search {
+    height: 46px;
+    margin-bottom: 0;
+  }
+  .container .wrapper .search input {
+    width: 90%;
+  }
+  .container .wrapper .page_tab button {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .container .wrapper .jadidlar_list {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .container .wrapper .menu_link button,
+  .container .wrapper .menu_link span {
+    font-size: 13px;
+  }
+  .container .wrapper .menu_link button:last-child {
+    font-size: 10px;
+    text-align: left;
+    width: 42%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .container .wrapper .search {
+    height: 42px;
+  }
+  .container .wrapper .search svg {
+    margin-right: 5px;
+  }
+  .container .wrapper ul {
+    gap: 5px;
+  }
+  .container .wrapper ul li a {
+    height: 36px;
+    width: 40px;
+    font-size: 14px;
+  }
+}
+/*# sourceMappingURL=pressList.module.css.map */

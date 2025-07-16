@@ -1,0 +1,274 @@
+.container {
+  width: 100%;
+}
+
+.container .wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 0 50px;
+}
+
+.container .wrapper .menu_link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .wrapper .menu_link button {
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  font-family: "Roboto Slab", serif;
+  cursor: pointer;
+  color: #112c42;
+  text-transform: uppercase;
+}
+
+.container .wrapper .menu_link span {
+  font-size: 18px;
+  font-weight: 900;
+  color: #881a3b;
+}
+
+.container .wrapper .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid white;
+  border-radius: 30px;
+  height: 56px;
+  background-color: #c2ddfc;
+  -webkit-box-shadow: 2px 5px 10px #6ba8e2;
+          box-shadow: 2px 5px 10px #6ba8e2;
+  padding: 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 15px 0 30px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .wrapper .search input {
+  height: 100%;
+  width: 94%;
+  padding: 0 10px;
+  background-color: #d6e5f7;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  font-size: 20px;
+  color: #6ba8e2;
+}
+
+.container .wrapper .search input:active, .container .wrapper .search input:focus {
+  background-color: rgba(255, 255, 255, 0.797);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .search svg {
+  font-size: 36px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.container .wrapper .jadidlar_list {
+  display: -ms-grid;
+  display: grid;
+  margin: 50px 0 10px;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.container .wrapper .jadidlar_list .card {
+  height: 460px;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.container .wrapper .jadidlar_list .card img {
+  width: 100%;
+  height: 460px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .jadidlar_list .card:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.container .wrapper .jadidlar_list .card .content {
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.444);
+  color: white;
+  font-size: 18px;
+}
+
+.container .wrapper .jadidlar_list .card .content > span {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-weight: 700 !important;
+  height: 54px;
+  overflow: hidden;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .wrapper ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+}
+
+.container .wrapper ul li {
+  list-style-type: none;
+}
+
+.container .wrapper ul li a {
+  height: 48px;
+  width: 52px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #3642ad;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border-radius: 2000px;
+  background-color: transparent;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .wrapper ul li a:hover {
+  background-color: #3642ad;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  color: white;
+}
+
+.container .wrapper ul .active {
+  background-color: #3642ad;
+  border-radius: 2000px;
+  color: white;
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+  .container .wrapper .search {
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container .wrapper .jadidlar_list {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  .container .wrapper .search {
+    height: 48px;
+  }
+  .container .wrapper .jadidlar_list {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container .wrapper .menu_link button,
+  .container .wrapper .menu_link span {
+    font-size: 16px;
+  }
+  .container .wrapper .jadidlar_list {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .container .wrapper .jadidlar_list .card {
+    height: 380px;
+  }
+  .container .wrapper .jadidlar_list .card img {
+    height: 380px;
+  }
+  .container .wrapper .search {
+    height: 42px;
+  }
+  .container .wrapper .search svg {
+    font-size: 26px;
+  }
+  .container .wrapper ul {
+    gap: 5px;
+  }
+  .container .wrapper ul li a {
+    height: 40px;
+    width: 44px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container .wrapper .jadidlar_list {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .container .wrapper .jadidlar_list .card {
+    height: 350px;
+  }
+  .container .wrapper ul li a {
+    height: 36px;
+    width: 40px;
+  }
+}
+/*# sourceMappingURL=jadidList.module.css.map */

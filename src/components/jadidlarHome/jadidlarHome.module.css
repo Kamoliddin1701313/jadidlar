@@ -1,0 +1,176 @@
+.container {
+  width: 100%;
+}
+
+.container .hero_slider {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+.container .hero_slider .home_name {
+  font-family: "Roboto Slab", serif;
+  margin-bottom: 10px;
+  font-size: 42px;
+  color: #203867;
+}
+
+.container .hero_slider .carusel {
+  position: relative;
+}
+
+.container .hero_slider .carusel .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px 0 20px;
+}
+
+.container .hero_slider .carusel .card .card_box {
+  -webkit-box-shadow: 0 5px 10px black;
+          box-shadow: 0 5px 10px black;
+  width: 94%;
+  cursor: pointer;
+  border-radius: 12px;
+  margin: 0 auto;
+  border: none;
+  overflow: hidden;
+  height: 420px;
+  position: relative;
+}
+
+.container .hero_slider .carusel .card .card_box .image {
+  height: 100%;
+}
+
+.container .hero_slider .carusel .card .card_box .image img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .hero_slider .carusel .card .card_box .description {
+  background-color: rgba(0, 0, 0, 0.619);
+  position: absolute;
+  bottom: 0;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  height: 120px;
+  text-align: center;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .hero_slider .carusel .card .card_box .description .name {
+  font-size: 18px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-weight: 500;
+  color: white;
+  height: 52px;
+}
+
+.container .hero_slider .carusel .card .card_box .description .data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 4px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  margin-top: 6px;
+}
+
+.container .hero_slider .carusel .card .card_box:hover .image img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .hero_slider .carusel .prev {
+  position: absolute;
+  left: -10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 48%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  display: -ms-grid;
+  display: grid;
+  cursor: pointer;
+  place-items: center;
+  background: #0e2b65;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .hero_slider .carusel .prev svg {
+  color: white;
+  font-size: 24px;
+}
+
+.container .hero_slider .carusel .prev:hover {
+  -webkit-box-shadow: 0 0 12px #000;
+          box-shadow: 0 0 12px #000;
+}
+
+.container .hero_slider .carusel .next {
+  position: absolute;
+  right: -10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 48%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  display: -ms-grid;
+  display: grid;
+  cursor: pointer;
+  place-items: center;
+  background: #0e2b65;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .hero_slider .carusel .next svg {
+  color: white;
+  font-size: 24px;
+}
+
+.container .hero_slider .carusel .next:hover {
+  -webkit-box-shadow: 0 0 12px #000;
+          box-shadow: 0 0 12px #000;
+}
+
+.container .hero_slider .line {
+  height: 1px;
+  background-color: #223b6d;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container .hero_slider .home_name {
+    font-size: 32px;
+  }
+}
+/*# sourceMappingURL=jadidlarHome.module.css.map */
