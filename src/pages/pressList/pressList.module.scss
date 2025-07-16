@@ -155,7 +155,7 @@
           bottom: 0;
           padding: 25px;
           left: 0;
-          height: 120px;
+          height: 100px;
           width: 100%;
           transition: all 0.2s linear;
           button {
@@ -163,11 +163,11 @@
             background-color: transparent;
             border: none;
             font-family: "Roboto Slab", serif;
-            display: -webkit-box;
             font-size: 18px;
             height: 52px;
             color: white;
             transition: all 0.2s linear;
+            display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
             overflow: hidden;
@@ -191,17 +191,13 @@
         }
 
         &:hover .text {
-          background-color: rgba(255, 255, 255, 0.63);
+          background-color: rgba(255, 255, 255, 0.671);
           transition: all 0.3s linear;
           height: 160px;
           button {
             cursor: pointer;
             transition: all 0.3s linear;
             color: #223b6d;
-            -webkit-line-clamp: unset;
-            display: block;
-            overflow: visible;
-            white-space: normal;
           }
         }
       }
@@ -243,6 +239,157 @@
       background-color: #3642ad;
       border-radius: 2000px;
       color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .page_tab {
+        display: flex;
+        overflow-x: auto;
+        padding: 25px 0;
+        gap: 5px;
+
+        button {
+          min-width: 50px;
+          padding: 0 10px;
+          margin: 0;
+          flex-shrink: 0;
+        }
+
+        .active::before {
+          bottom: -8px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .menu_link {
+        button,
+        span {
+          font-size: 16px;
+        }
+      }
+
+      .search {
+        height: 46px;
+
+        svg {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: repeat(2, 1fr);
+
+        .card {
+          height: 300px;
+
+          .text {
+            padding: 15px;
+          }
+
+          &:hover .text {
+            background-color: rgba(255, 255, 255, 0.671);
+            transition: all 0.3s linear;
+            height: 130px;
+            button {
+              cursor: pointer;
+              transition: all 0.3s linear;
+              color: #223b6d;
+            }
+          }
+        }
+      }
+
+      .menu_link {
+        gap: 8px;
+        button:last-child {
+          font-size: 12px;
+        }
+      }
+
+      .search {
+        height: 46px;
+        margin-bottom: 0;
+
+        input {
+          width: 90%;
+        }
+      }
+
+      .page_tab {
+        button {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      .jadidlar_list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .menu_link {
+        button,
+        span {
+          font-size: 13px;
+        }
+        button:last-child {
+          font-size: 10px;
+          text-align: left;
+          width: 42%;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+
+      .search {
+        height: 42px;
+
+        svg {
+          margin-right: 5px;
+        }
+      }
+
+      ul {
+        gap: 5px;
+        li {
+          a {
+            height: 36px;
+            width: 40px;
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 }

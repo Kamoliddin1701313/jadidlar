@@ -594,3 +594,195 @@
     }
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .container {
+    padding: 0 15px;
+    .wrapper {
+      .asarlar_container,
+      .maqolalar_container,
+      .sherlar_container,
+      .esdalik_container {
+        margin: 0;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .hikmatli_sozlar {
+        gap: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .tab_page {
+        margin: 10px 0 20px;
+        button {
+          font-size: 15px;
+          margin: 0 13px;
+          padding: 10px 0;
+        }
+      }
+
+      .jadidlar_container {
+        .select_id_img {
+          height: 420px;
+          width: 42%;
+          margin-right: 20px;
+
+          img {
+            height: 420px;
+          }
+        }
+
+        .jadid_info {
+          h1 {
+            font-size: 32px;
+          }
+
+          .jadid_data {
+            margin: 8px 0;
+            span {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+
+      .asarlar_container,
+      .maqolalar_container,
+      .sherlar_container,
+      .esdalik_container {
+        grid-template-columns: repeat(3, 1fr);
+
+        .card {
+          height: 340px;
+        }
+      }
+
+      .hikmatli_sozlar {
+        gap: 30px;
+
+        .card_quotes {
+          .description {
+            padding: 0 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .container {
+    .wrapper {
+      .tab_page {
+        margin: 0 0 30px;
+        display: flex;
+        overflow-x: auto;
+        padding: 25px 0;
+        gap: 5px;
+
+        button {
+          min-width: 50px;
+          padding: 0 10px;
+          margin: 0;
+          flex-shrink: 0;
+          font-size: 14px;
+        }
+
+        .active::before {
+          bottom: -8px;
+        }
+      }
+
+      .menu_link {
+        button,
+        span {
+          font-size: 16px;
+        }
+      }
+
+      .jadidlar_container {
+        .select_id_img {
+          width: 100%;
+          margin-bottom: 15px;
+          height: 460px;
+
+          img {
+            height: 460px;
+            object-fit: contain;
+          }
+        }
+
+        .jadid_info {
+          h1 {
+            font-size: 28px;
+            text-align: center;
+          }
+        }
+      }
+
+      .asarlar_container,
+      .maqolalar_container,
+      .sherlar_container,
+      .esdalik_container {
+        grid-template-columns: repeat(2, 1fr);
+        .card {
+          height: 320px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .container {
+    .wrapper {
+      .menu_link {
+        button,
+        span {
+          font-size: 14px;
+        }
+      }
+
+      .jadidlar_container {
+        .select_id_img {
+          height: 380px;
+
+          img {
+            height: 380px;
+          }
+        }
+
+        .jadid_info {
+          h1 {
+            font-size: 24px;
+          }
+        }
+      }
+
+      .asarlar_container,
+      .maqolalar_container,
+      .sherlar_container,
+      .esdalik_container {
+        grid-template-columns: 1fr;
+        .card {
+          height: 320px;
+
+          .text {
+            height: 90px;
+          }
+
+          &:hover {
+            .text {
+              height: 130px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

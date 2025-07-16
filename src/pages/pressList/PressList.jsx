@@ -46,11 +46,12 @@ function PressList() {
           <button onClick={() => navigate("/")}>
             {t("eshituv.bosh_sahifa")}
           </button>
+          
           <span>/</span>
 
           <button onClick={() => navigate("/")}>{t("navbar.matbuot")}</button>
           <span>/</span>
-          {console.log(type, "XXXX")}
+
           <button>
             {type === "tarix" && t("eshituv.tarix")}
 
