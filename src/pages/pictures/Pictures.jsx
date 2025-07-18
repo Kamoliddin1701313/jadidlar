@@ -34,6 +34,8 @@ function Pictures() {
     getData();
   }, [i18n.language]);
 
+  console.log(data, "KAMOLIDDIN");
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>

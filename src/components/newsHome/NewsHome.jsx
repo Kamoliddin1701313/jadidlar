@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 function NewsHome() {
   const [datas, setDatas] = useState([]);
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   let sliderRef = useRef(null);
 
@@ -115,11 +115,11 @@ function NewsHome() {
 
                         <div className={style.box}>
                           <div className={style.title}>
-                            <span>Yangiliklar</span>
+                            <span>{t("navbar.yangiliklar")}</span>
                             <span>{value?.updated_at.slice(0, 10)}</span>
                           </div>
 
-                          <a href={value?.link}>To'liq</a>
+                          <a href={value?.link}>{t("homepage.toliq")}</a>
                         </div>
                       </div>
 
