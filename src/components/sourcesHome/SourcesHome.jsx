@@ -108,7 +108,11 @@ function SourcesHome() {
                     </div>
 
                     <Fade cascade damping={0.2} className={style.img}>
-                      <img src={value?.image} alt={value?.title} />
+                      <img
+                        src={value?.image}
+                        alt={value?.title}
+                        loading="lazy"
+                      />
                     </Fade>
 
                     <div className={style.text}>
@@ -131,7 +135,11 @@ function SourcesHome() {
                     </div>
 
                     <Fade cascade damping={0.2} className={style.img}>
-                      <img src={value?.image} alt={value?.title} />
+                      <img
+                        loading="lazy"
+                        src={value?.image}
+                        alt={value?.title}
+                      />
                     </Fade>
 
                     <div className={style.text}>

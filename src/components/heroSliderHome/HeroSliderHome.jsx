@@ -88,7 +88,11 @@ function HeroSliderHome() {
                     </div>
 
                     <Fade cascade damping={0.2} className={style.image}>
-                      <img src={value?.image} alt={value?.title} />
+                      <img
+                        src={value?.image}
+                        loading="eager"
+                        alt={value?.title}
+                      />
                     </Fade>
                   </div>
                 ))}

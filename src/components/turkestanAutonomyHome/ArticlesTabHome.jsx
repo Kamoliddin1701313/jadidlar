@@ -50,7 +50,7 @@ function ArticlesTabHome({ handleClick, handleClickTelegram }) {
           </div>
 
           <Fade cascade damping={0.2} className={style.img}>
-            <img src={value?.image} alt={value?.title} />
+            <img src={value?.image} loading="lazy" alt={value?.title} />
           </Fade>
 
           <div className={style.text}>

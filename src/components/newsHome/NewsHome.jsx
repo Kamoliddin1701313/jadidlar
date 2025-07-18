@@ -124,7 +124,11 @@ function NewsHome() {
                       </div>
 
                       <div className={style.image}>
-                        <img src={value?.image} alt={value?.title} />
+                        <img
+                          src={value?.image}
+                          loading="eager"
+                          alt={value?.title}
+                        />
                       </div>
                     </div>
                   </Fade>

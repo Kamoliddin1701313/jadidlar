@@ -48,7 +48,11 @@ function ListenTabHome() {
       {selectedAudio && (
         <div className={style.select_id} key={selectedAudio.id}>
           <Fade cascade damping={0.2} className={style.select_img}>
-            <img src={selectedAudio.image} alt={selectedAudio.title} />
+            <img
+              src={selectedAudio.image}
+              alt={selectedAudio.title}
+              loading="eager"
+            />
           </Fade>
           <audio controls className={style.select_audio}>
             <source src={selectedAudio.audio} type="audio/mpeg" />

@@ -85,7 +85,7 @@ function WatchTabHome() {
             {data.map((value, index) => (
               <Fade cascade damping={0.2} className={style.card_img}>
                 <div key={index} className={style.img}>
-                  <img src={value?.file} alt={value?.title} />
+                  <img src={value?.file} alt={value?.title} loading="eager" />
 
                   <button onClick={() => WatchHome(`/koruvlar/${value.id}`)}>
                     <FaRegCirclePlay />

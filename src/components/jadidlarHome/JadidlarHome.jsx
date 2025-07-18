@@ -104,7 +104,11 @@ function JadidlarHome() {
                   <div key={index} className={style.card}>
                     <div className={style.card_box}>
                       <Fade cascade damping={0.2} className={style.image}>
-                        <img src={value?.image} alt={value?.title} />
+                        <img
+                          src={value?.image}
+                          loading="lazy"
+                          alt={value?.title}
+                        />
                       </Fade>
 
                       <div className={style.description}>

@@ -96,7 +96,7 @@ function ImageTabHome() {
                 className={style.card_img}
               >
                 <Fade cascade damping={0.2} key={index} className={style.img}>
-                  <img src={value?.image} alt={value?.title} />
+                  <img src={value?.image} alt={value?.title} loading="eager" />
                 </Fade>
               </div>
             ))}
