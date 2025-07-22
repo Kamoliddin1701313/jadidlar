@@ -14,6 +14,8 @@ function JadidList() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1; // URL ga saqlash
   const navigate = useNavigate();
+  const [fullSearchResults, setFullSearchResults] = useState(null);
+  const [title, setTitle] = useState("");
   const { t, i18n } = useTranslation();
 
   const getData = async (page = 1) => {
@@ -46,6 +48,104 @@ function JadidList() {
     setSearchParams({ page: selectedPage }); // URL ga saqlash
   };
 
+  // title bo'yicha qidirish codelari
+  const SearchInput = (e) => {
+    setTitle(e.target.value);
+  };
+
+  // const SearchBtn = () => {
+  //   const filtered = list?.results?.filter((item) =>
+  //     item.fullname.toLowerCase().includes(title.toLowerCase())
+  //   );
+  //   console.log(filtered, "EYEYEY");
+
+  //   setList({ ...list, results: filtered });
+  // };
+
+  // const SearchBtn = async () => {
+  //   try {
+  //     const langMap = {
+  //       uzl: "uz",
+  //       uzk: "ru",
+  //       eng: "en",
+  //     };
+  //     const lang = langMap[i18n.language] || "uz";
+
+  //     const allResults = [];
+  //     let page = 1;
+  //     let totalPages = 1;
+
+  //     do {
+  //       const response = await axios.get(`jadidlar/?page=${page}&limit=15`, {
+  //         headers: {
+  //           "Accept-Language": lang,
+  //         },
+  //       });
+
+  //       allResults.push(...response.data.results);
+  //       totalPages = Math.ceil(response.data.pagination.total / 15);
+  //       page++;
+  //     } while (page <= totalPages);
+
+  //     const filtered = allResults.filter((item) =>
+  //       item.fullname.toLowerCase().includes(title.toLowerCase())
+  //     );
+
+  //     const itemsPerPage = 15;
+  //     const paginatedResults = filtered.slice(0, itemsPerPage);
+
+  //     setList({ results: paginatedResults });
+  //     setPageCount(Math.ceil(filtered.length / itemsPerPage));
+  //     setSearchParams({ page: 1 });
+  //   } catch (error) {
+  //     console.log(error, "FULL SEARCH ERROR");
+  //   }
+  // };
+
+  const SearchBtn = async () => {
+    try {
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const allResults = [];
+      let page = 1;
+      let totalPages = 1;
+
+      do {
+        const response = await axios.get(`jadidlar/?page=${page}&limit=15`, {
+          headers: {
+            "Accept-Language": lang,
+          },
+        });
+
+        allResults.push(...response.data.results);
+        totalPages = Math.ceil(response.data.pagination.total / 15);
+        page++;
+      } while (page <= totalPages);
+
+      const filtered = allResults.filter((item) =>
+        item.fullname.toLowerCase().includes(title.toLowerCase())
+      );
+
+      setFullSearchResults(filtered); // saqlab qo‘yamiz
+      setPageCount(Math.ceil(filtered.length / 15));
+      setSearchParams({ page: 1 });
+    } catch (error) {
+      console.log(error, "FULL SEARCH ERROR");
+    }
+  };
+
+  const itemsPerPage = 15;
+  const offset = (currentPage - 1) * itemsPerPage;
+
+  const displayedList = fullSearchResults
+    ? fullSearchResults.slice(offset, offset + itemsPerPage)
+    : list?.results;
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -60,12 +160,18 @@ function JadidList() {
         </div>
 
         <div className={style.search}>
-          <input type="search" />
-          <FcSearch />
+          <input
+            type="search"
+            onChange={SearchInput}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") SearchBtn();
+            }}
+          />
+          <FcSearch onClick={SearchBtn} />
         </div>
 
         <div className={style.jadidlar_list}>
-          {list?.results?.map((lists, index) => (
+          {displayedList?.map((lists, index) => (
             <div
               key={index}
               className={style.card}

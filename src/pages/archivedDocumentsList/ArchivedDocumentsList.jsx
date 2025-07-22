@@ -4,12 +4,14 @@ import { FcSearch } from "react-icons/fc";
 import ArchivedDocumentsListRoyxat from "./details/ArchivedDocumentsListRoyxat";
 import ArchivedDocumentsListSkaner from "./details/ArchivedDocumentsListSkaner";
 import { useTranslation } from "react-i18next";
+import { useRef, useState } from "react";
 
 function ArchivedDocumentsList() {
   const { pathname } = useLocation();
   const { type } = useParams();
   const { t } = useTranslation();
-
+  const [searchValue, setSearchValue] = useState("");
+  const valueRef = useRef();
   const navigate = useNavigate();
 
   const handleClick = (value) => {
@@ -33,6 +35,10 @@ function ArchivedDocumentsList() {
     }
   };
 
+  const SearchBtn = () => {
+    setSearchValue(valueRef?.current?.value);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -52,8 +58,16 @@ function ArchivedDocumentsList() {
         </div>
 
         <div className={style.search}>
-          <input type="search" autoCapitalize="off" />
-          <FcSearch />
+          <input
+            type="search"
+            autoCapitalize="off"
+            ref={valueRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") SearchBtn();
+            }}
+          />
+
+          <FcSearch onClick={SearchBtn} />
         </div>
 
         <div className={style.page_tab}>
@@ -84,6 +98,7 @@ function ArchivedDocumentsList() {
           <ArchivedDocumentsListRoyxat
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -91,6 +106,7 @@ function ArchivedDocumentsList() {
           <ArchivedDocumentsListSkaner
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
       </div>

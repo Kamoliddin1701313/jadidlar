@@ -11,12 +11,15 @@ import EducationAndUpbringingSection from "./details/EducationAndUpbringingSecti
 import OtherTopicsSection from "./details/OtherTopicsSection";
 import BibliographicIndexSection from "./details/BibliographicIndexSection";
 import { useTranslation } from "react-i18next";
+import { useRef, useState } from "react";
 
 function PressList() {
   const { pathname } = useLocation();
   const { type } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState("");
+  const valueRef = useRef();
 
   const handleClick = (value) => {
     const token = localStorage.getItem("token");
@@ -39,6 +42,10 @@ function PressList() {
     }
   };
 
+  const SearchBtn = () => {
+    setSearchValue(valueRef?.current?.value);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -46,7 +53,7 @@ function PressList() {
           <button onClick={() => navigate("/")}>
             {t("eshituv.bosh_sahifa")}
           </button>
-          
+
           <span>/</span>
 
           <button onClick={() => navigate("/")}>{t("navbar.matbuot")}</button>
@@ -78,8 +85,15 @@ function PressList() {
         </div>
 
         <div className={style.search}>
-          <input type="search" autoCapitalize="off" />
-          <FcSearch />
+          <input
+            type="search"
+            autoCapitalize="off"
+            ref={valueRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") SearchBtn();
+            }}
+          />
+          <FcSearch onClick={SearchBtn} />
         </div>
 
         <div className={style.page_tab}>
@@ -195,6 +209,7 @@ function PressList() {
           <HistorySection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -202,6 +217,7 @@ function PressList() {
           <PoliticsSection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -209,6 +225,7 @@ function PressList() {
           <EconomySection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -216,6 +233,7 @@ function PressList() {
           <CultureAndArtSection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -223,6 +241,7 @@ function PressList() {
           <SocialAndReligionSection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -230,6 +249,7 @@ function PressList() {
           <LiteratureSection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -237,6 +257,7 @@ function PressList() {
           <EducationAndUpbringingSection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -244,6 +265,7 @@ function PressList() {
           <OtherTopicsSection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -251,6 +273,7 @@ function PressList() {
           <BibliographicIndexSection
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
       </div>

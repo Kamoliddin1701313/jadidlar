@@ -1,3 +1,4 @@
+import React from "react";
 import style from "../researchList.module.scss";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -9,7 +10,11 @@ import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
-function ResearchListDissertatsiya({ handleClick, handleClickTelegram }) {
+function ResearchListDissertatsiya({
+  handleClick,
+  handleClickTelegram,
+  searchValue,
+}) {
   const [list, setList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,11 +30,14 @@ function ResearchListDissertatsiya({ handleClick, handleClickTelegram }) {
       };
       const lang = langMap[i18n.language] || "uz";
 
-      const respons = await axios.get(`asarlar/?page=${page}&limit=15`, {
-        headers: {
-          "Accept-Language": lang,
-        },
-      });
+      const respons = await axios.get(
+        `dissertatsiya/?page=${page}&limit=15&search=${searchValue}`,
+        {
+          headers: {
+            "Accept-Language": lang,
+          },
+        }
+      );
 
       setList(respons?.data);
       setPageCount(Math.ceil(respons.data.pagination.total / 15));
@@ -40,7 +48,7 @@ function ResearchListDissertatsiya({ handleClick, handleClickTelegram }) {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage, i18n.language]);
+  }, [currentPage, i18n.language, searchValue]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -88,4 +96,4 @@ function ResearchListDissertatsiya({ handleClick, handleClickTelegram }) {
   );
 }
 
-export default ResearchListDissertatsiya;
+export default React.memo(ResearchListDissertatsiya);

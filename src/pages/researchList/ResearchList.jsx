@@ -6,11 +6,14 @@ import ResearchListMaqolalar from "./details/ResearchListMaqolalar";
 import ResearchListDissertatsiya from "./details/ResearchListDissertatsiya";
 import ResearchListEsdaliklar from "./details/ResearchListEsdaliklar";
 import { useTranslation } from "react-i18next";
+import { useRef, useState } from "react";
 
 function ResearchList() {
   const { type } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState("");
+  const valueRef = useRef();
 
   const handleClick = (value) => {
     const token = localStorage.getItem("token");
@@ -31,6 +34,10 @@ function ResearchList() {
     } else {
       navigate("/login");
     }
+  };
+
+  const SearchBtn = () => {
+    setSearchValue(valueRef?.current?.value);
   };
 
   return (
@@ -56,8 +63,15 @@ function ResearchList() {
         </div>
 
         <div className={style.search}>
-          <input type="search" autoCapitalize="off" />
-          <FcSearch />
+          <input
+            type="search"
+            autoCapitalize="off"
+            ref={valueRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") SearchBtn();
+            }}
+          />
+          <FcSearch onClick={SearchBtn} />
         </div>
 
         <div className={style.page_tab}>
@@ -98,6 +112,7 @@ function ResearchList() {
           <ResearchListAsarlar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -105,6 +120,7 @@ function ResearchList() {
           <ResearchListMaqolalar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -112,6 +128,7 @@ function ResearchList() {
           <ResearchListDissertatsiya
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -119,6 +136,7 @@ function ResearchList() {
           <ResearchListEsdaliklar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
       </div>

@@ -1,6 +1,6 @@
-import style from "../languageSpellingList.module.scss";
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import style from "../languageSpellingList.module.scss";
+import React, { useEffect, useState } from "react";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
@@ -9,7 +9,11 @@ import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
-function LanguageSpellingListMaqolalar({ handleClick, handleClickTelegram }) {
+function LanguageSpellingListMaqolalar({
+  handleClick,
+  handleClickTelegram,
+  searchValue,
+}) {
   const [list, setList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,11 +29,14 @@ function LanguageSpellingListMaqolalar({ handleClick, handleClickTelegram }) {
       };
       const lang = langMap[i18n.language] || "uz";
 
-      const respons = await axios.get(`asarlar/?page=${page}&limit=15`, {
-        headers: {
-          "Accept-Language": lang,
-        },
-      });
+      const respons = await axios.get(
+        `maqolalar/?til_va_imlo=true&page=${page}&limit=15&search=${searchValue}`,
+        {
+          headers: {
+            "Accept-Language": lang,
+          },
+        }
+      );
 
       setList(respons?.data);
       setPageCount(Math.ceil(respons.data.pagination.total / 15));
@@ -40,7 +47,7 @@ function LanguageSpellingListMaqolalar({ handleClick, handleClickTelegram }) {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage, i18n.language]);
+  }, [currentPage, i18n.language, searchValue]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -57,7 +64,7 @@ function LanguageSpellingListMaqolalar({ handleClick, handleClickTelegram }) {
                 <MdOutlineFileDownload />
               </button>
 
-              <a onClick={() => handleClickTelegram(value)}>
+              <a onClick={() => handleClickTelegram(lists)}>
                 <RiShareForwardLine />
               </a>
             </div>
@@ -88,4 +95,4 @@ function LanguageSpellingListMaqolalar({ handleClick, handleClickTelegram }) {
   );
 }
 
-export default LanguageSpellingListMaqolalar;
+export default React.memo(LanguageSpellingListMaqolalar);

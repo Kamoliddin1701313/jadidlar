@@ -16,7 +16,7 @@ function LanguageSpellingListHikmatlar() {
       };
       const lang = langMap[i18n.language] || "uz";
 
-      const respons = await axios.get("hikmatli_sozlar_random/", {
+      const respons = await axios.get("hikmatli_sozlar/", {
         headers: {
           "Accept-Language": lang,
         },
@@ -32,9 +32,11 @@ function LanguageSpellingListHikmatlar() {
     getData();
   }, [i18n.language]);
 
+  console.log(data, "sss");
+
   return (
     <div className={style.tab_quotes_container}>
-      {data.map((value, index) => (
+      {data?.results?.map((value, index) => (
         <div className={style.card_quotes} key={index}>
           <div
             className={style.description}

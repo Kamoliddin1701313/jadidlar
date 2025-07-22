@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import style from "./turkistanList.module.scss";
 import { FcSearch } from "react-icons/fc";
@@ -11,6 +12,8 @@ function TurkistanList() {
   const { type } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState("");
+  const valueRef = useRef();
 
   const handleClick = (value) => {
     const token = localStorage.getItem("token");
@@ -31,6 +34,10 @@ function TurkistanList() {
     } else {
       navigate("/login");
     }
+  };
+
+  const SearchBtn = () => {
+    setSearchValue(valueRef?.current?.value);
   };
 
   return (
@@ -56,8 +63,15 @@ function TurkistanList() {
         </div>
 
         <div className={style.search}>
-          <input type="search" autoCapitalize="off" />
-          <FcSearch />
+          <input
+            type="search"
+            autoCapitalize="off"
+            ref={valueRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") SearchBtn();
+            }}
+          />
+          <FcSearch onClick={SearchBtn} />
         </div>
 
         <div className={style.page_tab}>
@@ -98,6 +112,7 @@ function TurkistanList() {
           <TurkistanListAsarlar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -105,6 +120,7 @@ function TurkistanList() {
           <TurkistanListMaqolalar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -112,6 +128,7 @@ function TurkistanList() {
           <TurkistanListSherlar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -119,6 +136,7 @@ function TurkistanList() {
           <TurkistanListEsdaliklar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
       </div>

@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import style from "../turkistanList.module.scss";
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
@@ -9,7 +9,11 @@ import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
-function TurkistanListEsdaliklar({ handleClick, handleClickTelegram }) {
+function TurkistanListEsdaliklar({
+  handleClick,
+  handleClickTelegram,
+  searchValue,
+}) {
   const [list, setList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,11 +29,14 @@ function TurkistanListEsdaliklar({ handleClick, handleClickTelegram }) {
       };
       const lang = langMap[i18n.language] || "uz";
 
-      const respons = await axios.get(`asarlar/?page=${page}&limit=15`, {
-        headers: {
-          "Accept-Language": lang,
-        },
-      });
+      const respons = await axios.get(
+        `hotiralar/?type=Turkiston_muxtoriyati&page=${page}&limit=15&search=${searchValue}`,
+        {
+          headers: {
+            "Accept-Language": lang,
+          },
+        }
+      );
 
       setList(respons?.data);
       setPageCount(Math.ceil(respons.data.pagination.total / 15));
@@ -40,7 +47,7 @@ function TurkistanListEsdaliklar({ handleClick, handleClickTelegram }) {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage, i18n.language]);
+  }, [currentPage, i18n.language, searchValue]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -57,7 +64,7 @@ function TurkistanListEsdaliklar({ handleClick, handleClickTelegram }) {
                 <MdOutlineFileDownload />
               </button>
 
-              <a onClick={() => handleClickTelegram(value)}>
+              <a onClick={() => handleClickTelegram(lists)}>
                 <RiShareForwardLine />
               </a>
             </div>
@@ -88,4 +95,4 @@ function TurkistanListEsdaliklar({ handleClick, handleClickTelegram }) {
   );
 }
 
-export default TurkistanListEsdaliklar;
+export default React.memo(TurkistanListEsdaliklar);

@@ -1,22 +1,42 @@
 import style from "../turkistanList.module.scss";
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal";
 import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
-function TurkistanListAsarlar({ handleClick, handleClickTelegram }) {
+function TurkistanListAsarlar({
+  handleClick,
+  handleClickTelegram,
+  searchValue,
+}) {
   const [list, setList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentPage = Number(searchParams.get("page")) || 1; // URL ga saqlash
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const { i18n } = useTranslation();
 
   const getData = async (page = 1) => {
     try {
-      const respons = await axios.get(`asarlar/?page=${page}&limit=15`);
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get(
+        `asarlar/?page=${page}&limit=15&turkiston_muxtoriyati=true&search=${searchValue}`,
+        {
+          headers: {
+            "Accept-Language": lang,
+          },
+        }
+      );
       setList(respons?.data);
       setPageCount(Math.ceil(respons.data.pagination.total / 15));
     } catch (error) {
@@ -26,7 +46,7 @@ function TurkistanListAsarlar({ handleClick, handleClickTelegram }) {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage]);
+  }, [currentPage, i18n.language, searchValue]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -43,9 +63,9 @@ function TurkistanListAsarlar({ handleClick, handleClickTelegram }) {
                 <MdOutlineFileDownload />
               </button>
 
-              <a onClick={() => handleClickTelegram(value)}>
-              <RiShareForwardLine />
-            </a>
+              <a onClick={() => handleClickTelegram(lists)}>
+                <RiShareForwardLine />
+              </a>
             </div>
 
             <Fade cascade damping={0.2} className={style.img}>
@@ -74,4 +94,4 @@ function TurkistanListAsarlar({ handleClick, handleClickTelegram }) {
   );
 }
 
-export default TurkistanListAsarlar;
+export default React.memo(TurkistanListAsarlar);

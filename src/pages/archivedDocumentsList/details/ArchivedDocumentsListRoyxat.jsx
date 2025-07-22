@@ -1,3 +1,4 @@
+import React from "react";
 import style from "../archivedDocumentsList.module.scss";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -9,7 +10,11 @@ import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
-function ArchivedDocumentsListRoyxat({ handleClick, handleClickTelegram }) {
+function ArchivedDocumentsListRoyxat({
+  handleClick,
+  handleClickTelegram,
+  searchValue,
+}) {
   const [list, setList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,12 +30,14 @@ function ArchivedDocumentsListRoyxat({ handleClick, handleClickTelegram }) {
         eng: "en",
       };
       const lang = langMap[i18n.language] || "uz";
-
-      const respons = await axios.get(`asarlar/?page=${page}&limit=15`, {
-        headers: {
-          "Accept-Language": lang,
-        },
-      });
+      const respons = await axios.get(
+        `arxiv_hujjatlar/?page=${page}&limit=15&type=ARXIV&search=${searchValue}`,
+        {
+          headers: {
+            "Accept-Language": lang,
+          },
+        }
+      );
 
       setList(respons?.data);
       setPageCount(Math.ceil(respons.data.pagination.total / 15));
@@ -41,7 +48,7 @@ function ArchivedDocumentsListRoyxat({ handleClick, handleClickTelegram }) {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage, i18n.language]);
+  }, [currentPage, i18n.language, searchValue]);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -58,7 +65,7 @@ function ArchivedDocumentsListRoyxat({ handleClick, handleClickTelegram }) {
                 <MdOutlineFileDownload />
               </button>
 
-              <a onClick={() => handleClickTelegram(value)}>
+              <a onClick={() => handleClickTelegram(lists)}>
                 <RiShareForwardLine />
               </a>
             </div>
@@ -89,4 +96,4 @@ function ArchivedDocumentsListRoyxat({ handleClick, handleClickTelegram }) {
   );
 }
 
-export default ArchivedDocumentsListRoyxat;
+export default React.memo(ArchivedDocumentsListRoyxat);

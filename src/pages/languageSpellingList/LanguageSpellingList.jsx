@@ -5,11 +5,14 @@ import LanguageSpellingListMaqolalar from "./details/LanguageSpellingListMaqolal
 import style from "./languageSpellingList.module.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useRef, useState } from "react";
 
 function LanguageSpellingList() {
   const { type } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState("");
+  const valueRef = useRef();
 
   const handleClick = (value) => {
     const token = localStorage.getItem("token");
@@ -32,6 +35,10 @@ function LanguageSpellingList() {
     }
   };
 
+  const SearchBtn = () => {
+    setSearchValue(valueRef?.current?.value);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -52,8 +59,15 @@ function LanguageSpellingList() {
         </div>
 
         <div className={style.search}>
-          <input type="search" autoCapitalize="off" />
-          <FcSearch />
+          <input
+            type="search"
+            autoCapitalize="off"
+            ref={valueRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") SearchBtn();
+            }}
+          />
+          <FcSearch onClick={SearchBtn} />
         </div>
 
         <div className={style.page_tab}>
@@ -86,6 +100,7 @@ function LanguageSpellingList() {
           <LanguageSpellingListAsarlar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
@@ -93,6 +108,7 @@ function LanguageSpellingList() {
           <LanguageSpellingListMaqolalar
             handleClick={handleClick}
             handleClickTelegram={handleClickTelegram}
+            searchValue={searchValue}
           />
         )}
 
