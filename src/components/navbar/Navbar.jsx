@@ -1,9 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaSearch, FaChevronDown } from "react-icons/fa";
 import { BsFillCaretDownFill } from "react-icons/bs";
+import { GrFormNextLink } from "react-icons/gr";
 import style from "./navbar.module.scss";
 import jadidlar_logo from "../../assets/icons/jadidlar_logo.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IoMdLogOut } from "react-icons/io";
 import { TbMenu2 } from "react-icons/tb";
 import { AiOutlineClose } from "react-icons/ai";
@@ -11,11 +12,15 @@ import { GrClose } from "react-icons/gr";
 import { Fade, Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
+import { getPageLink } from "../../mockdata/data";
 
 function Navbar() {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const pagelink = useMemo(() => getPageLink(t), [i18n.language]);
 
   const languages = [
     { code: "uzl", label: "O'zb" },
@@ -28,6 +33,7 @@ function Navbar() {
   const [openicon, setOpenicon] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (isModalOpen) {
@@ -63,20 +69,29 @@ function Navbar() {
     setToggle(!toggle);
   };
 
-  // const changeLanguage = (langCode) => {
-  //   i18n.changeLanguage(langCode);
-  //   setToggle(false);
-  // };
-
   const changeLanguage = (langCode) => {
     i18n.changeLanguage(langCode).then(() => {
-      // i18n.language endi o‘zgargan bo‘ladi
       setToggle(false);
     });
   };
 
+  const pagelinksearch = pagelink.filter((text) =>
+    text.searchname.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+  );
+
+  const GlobalSearchInput = (e) => {
+    setSearch(e.target.value);
+  };
+
   const SearchBtn = () => {
+    setSearch("");
     setGlobalSearch(!globalSearch);
+  };
+
+  const NavigateLink = (value) => {
+    setOpenicon((prev) => !prev);
+    navigate(value);
+    setSearch("");
   };
 
   const Logout = () => {
@@ -301,7 +316,11 @@ function Navbar() {
             <nav className={style.navbar_link}>
               <div className={style.navbar_toggle}>
                 <button className={style.search_btn}>
-                  <input type="search" placeholder={t("navbar.qidiruv")} />
+                  <input
+                    type="search"
+                    placeholder={t("navbar.qidiruv")}
+                    onChange={GlobalSearchInput}
+                  />
                   <FaSearch />
                 </button>
 
@@ -309,6 +328,33 @@ function Navbar() {
                   <AiOutlineClose />
                 </button>
               </div>
+
+              {search.length > 0 && pagelinksearch.length > 0 && (
+                <div className={style.mobile_search_container}>
+                  <div className={style.mobile_search_wrapper}>
+                    <div className={style.mobile_text_number}>
+                      <span>
+                        {pagelinksearch.length} {t("dataname.natija")}
+                      </span>
+                    </div>
+
+                    <div className={style.mobile_search_card}>
+                      {pagelinksearch?.map((value, index) => (
+                        <button
+                          onClick={() => NavigateLink(`/${value.link}`)}
+                          className={style.mobile_search_link}
+                        >
+                          <span>"{value?.name}"</span>
+                          <div className={style.mobile_icon_btn}>
+                            <span>{value?.searchname}</span>
+                            <GrFormNextLink />
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div className={style.link}>
                 <button onClick={ToggleLanguage}>
@@ -362,7 +408,6 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.izlanishlar")}</span>
@@ -387,7 +432,6 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.tilvaimlo")}</span>
@@ -408,7 +452,6 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.turkistonmuxtoriyati")}</span>
@@ -428,7 +471,6 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.voqealar")}</span>
@@ -448,7 +490,6 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.ko'reshito'qi")}</span>
@@ -463,11 +504,9 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-
               <Link onClick={OpenIconBtn} to="/about">
                 {t("navbar.bizhaqimizda")}
               </Link>
-
               {token ? (
                 <button
                   className={style.logout_icon}
@@ -488,9 +527,40 @@ function Navbar() {
       ) : (
         <Fade cascade damping={0.2}>
           <div className={style.global_search}>
-            <input type="search" placeholder={t("navbar.qidiruv")} />
-            <button onClick={SearchBtn}>{t("navbar.qidiruv")}</button>
+            <input
+              type="search"
+              placeholder={t("navbar.qidiruv")}
+              onChange={GlobalSearchInput}
+            />
+            <button onClick={SearchBtn}>{t("navbar.yopish")}</button>
           </div>
+
+          {search.length && pagelinksearch.length > 0 && (
+            <div className={style.search_container}>
+              <div className={style.search_wrapper}>
+                <div className={style.text_number}>
+                  <span>
+                    {pagelinksearch.length} {t("dataname.natija")}
+                  </span>
+                </div>
+
+                <div className={style.search_card}>
+                  {pagelinksearch?.map((value, index) => (
+                    <button
+                      onClick={() => NavigateLink(`/${value.link}`)}
+                      className={style.search_link}
+                    >
+                      <span>"{value?.name}"</span>
+                      <div className={style.icon_btn}>
+                        <span>{value?.searchname}</span>
+                        <GrFormNextLink />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </Fade>
       )}
     </div>

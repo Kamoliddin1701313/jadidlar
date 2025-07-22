@@ -29,11 +29,14 @@
     "chiqish": "Hisobdan chiqmoqchimisiz?",
     "chiqish_btn": "Hisobdan Chiqish",
     "royxat": "Ro'yxat",
-    "skaner": "Skaner"
+    "skaner": "Skaner",
+    "yopish": "Yopish"
   },
+
   "homepage": {
     "toliq": "To'liq"
   },
+
   "eshituv": {
     "bosh_sahifa": "Bosh sahifa",
     "eshituvlar": "Eshituvlar",
@@ -58,5 +61,29 @@
     "boshqa_masalalar": "Boshqa masalalar",
 
     "bibliografik_korsatkich": "Bibliografik ko’rsatkich"
+  },
+
+  "dataname": {
+    "manbalar": "Manbalar",
+    "izlanishlar": "Izlanishlar",
+    "til_va_imlo": "Til va Imlo",
+    "turkiston_muxtoriyati": "Turkiston Muxtoriyati",
+    "voqealar": "Voqealar",
+    "kor_eshit_oqi": "Ko'r-eshit-o'qi",
+    "arxivhujjatlari": "Arxiv hujjatlari",
+    "matbuot": "Matbuot",
+    "asarlar": "Asarlar",
+    "maqolalar": "Maqolalar",
+    "dissertatsiyalar": "Dissertatsiyalar",
+    "esdaliklar": "Esdaliklar",
+    "hikmatlar": "Hikmatlar",
+    "sherlar": "Sheʼrlar",
+    "yangiliklar": "Yangiliklar",
+    "yiginlar": "Yigʻinlar",
+    "seminarlar": "Seminarlar",
+    "suratlar": "Suratlar",
+    "koruvlar": "Koʻruvlar",
+    "eshituvlar": "Eshituvlar",
+    "natija":"ta natija topildi"
   }
 }

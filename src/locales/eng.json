@@ -29,7 +29,8 @@
     "chiqish": "Are you sure you want to log out?",
     "chiqish_btn": "Log Out",
     "royxat": "List",
-    "skaner": "Scanner"
+    "skaner": "Scanner",
+    "yopish": "Closes"
   },
 
   "homepage": {
@@ -42,7 +43,6 @@
     "suratlar": "Photos",
     "koruvlar": "Viewings",
     "ishtirokchilar": "Participants",
-
     "tarix": "History",
     "siyosat": "Politics",
     "iqtisod": "Economy",
@@ -52,5 +52,28 @@
     "talim_tarbiya": "Education",
     "boshqa_masalalar": "Other Issues",
     "bibliografik_korsatkich": "Bibliographic Index"
+  },
+  "dataname": {
+    "manbalar": "Sources",
+    "izlanishlar": "Research",
+    "til_va_imlo": "Language and Spelling",
+    "turkiston_muxtoriyati": "Turkestan Autonomy",
+    "voqealar": "Events",
+    "kor_eshit_oqi": "See-Hear-Read",
+    "arxivhujjatlari": "Archive Documents",
+    "matbuot": "Press",
+    "asarlar": "Works",
+    "maqolalar": "Articles",
+    "dissertatsiyalar": "Dissertations",
+    "esdaliklar": "Memoirs",
+    "hikmatlar": "Sayings",
+    "sherlar": "Poems",
+    "yangiliklar": "News",
+    "yiginlar": "Meetings",
+    "seminarlar": "Seminars",
+    "suratlar": "Photos",
+    "koruvlar": "Views",
+    "eshituvlar": "Audio",
+    "natija": "results found"
   }
 }

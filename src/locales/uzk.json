@@ -29,7 +29,8 @@
     "chiqish": "Ҳисобдан чиқмоқчимисиз?",
     "chiqish_btn": "Ҳисобдан чиқиш",
     "royxat": "Рўйхат",
-    "skaner": "Сканер"
+    "skaner": "Сканер",
+    "yopish": "Ёпиш"
   },
   "homepage": {
     "toliq": "Тўлиқ"
@@ -50,5 +51,28 @@
     "talim_tarbiya": "Таълим-тарбия",
     "boshqa_masalalar": "Бошқа масалалар",
     "bibliografik_korsatkich": "Библиографик кўрсаткич"
+  },
+  "dataname": {
+    "manbalar": "Манбалар",
+    "izlanishlar": "Изланишлар",
+    "til_va_imlo": "Тил ва имло",
+    "turkiston_muxtoriyati": "Туркистон мухторияти",
+    "voqealar": "Воқеалар",
+    "kor_eshit_oqi": "Кўр-ешит-ўқи",
+    "arxivhujjatlari": "Архив ҳужжатлари",
+    "matbuot": "Матбуот",
+    "asarlar": "Асарлар",
+    "maqolalar": "Мақолалар",
+    "dissertatsiyalar": "Диссертациялар",
+    "esdaliklar": "Эсдаликлар",
+    "hikmatlar": "Ҳикматлар",
+    "sherlar": "Шеърлар",
+    "yangiliklar": "Янгиликлар",
+    "yiginlar": "Йиғинлар",
+    "seminarlar": "Семинарлар",
+    "suratlar": "Суратлар",
+    "koruvlar": "Кўрувлар",
+    "eshituvlar": "Ешитувлар",
+    "natija": "та натижа топилди"
   }
 }
