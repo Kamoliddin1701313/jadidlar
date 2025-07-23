@@ -149,8 +149,8 @@
 
     .tab_container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
     }
   }
 }
@@ -173,8 +173,19 @@
     .wrapper {
       .page_container {
         .tab_container {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .container {
+    .wrapper {
+      .page_container {
+        .tab_container {
           grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
         }
       }
     }
@@ -206,6 +217,7 @@
       .page_container {
         .tab_container {
           grid-template-columns: 1fr;
+          gap: 20px;
 
           .card {
             height: 350px;

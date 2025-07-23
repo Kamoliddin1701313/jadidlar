@@ -13,12 +13,16 @@ import { Fade, Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
 import { getPageLink } from "../../mockdata/data";
+import { useContext } from "react";
+import { UseContext } from "../../layouts/MainLayout";
 
 function Navbar() {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  const { globalSearch, setGlobalSearch } = useContext(UseContext);
 
   const pagelink = useMemo(() => getPageLink(t), [i18n.language]);
 
@@ -28,7 +32,7 @@ function Navbar() {
     { code: "eng", label: "Eng" },
   ];
 
-  const [globalSearch, setGlobalSearch] = useState(true);
+  // const [globalSearch, setGlobalSearch] = useState(true);
   const [toggle, setToggle] = useState(false);
   const [openicon, setOpenicon] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

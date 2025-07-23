@@ -3,7 +3,9 @@ import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 import style from "./mainLayout.module.scss";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
-import { useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
+
+export const UseContext = createContext();
 
 function MainLayout() {
   const { pathname } = useLocation();
@@ -40,25 +42,27 @@ function MainLayout() {
       }
     };
     requestAnimationFrame(animateScroll);
-  }, []);
-  // scroll bo'lganida tepaga degan button chiqishi uchun yaratilgan code
+  }, []); // scroll bo'lganida tepaga degan button chiqishi uchun yaratilgan code
+
+  const [globalSearch, setGlobalSearch] = useState(true); //useContext uchun ishlatilayabdi
 
   return (
     <div className={style.container}>
-      <Navbar />
+      <UseContext.Provider value={{ globalSearch, setGlobalSearch }}>
+        <Navbar />
+        <div className={style.wrapper} onClick={() => setGlobalSearch(true)}>
+          <Outlet />
 
-      <div className={style.wrapper}>
-        <Outlet />
-
-        <button
-          onClick={() => scrollToTop(500)}
-          className={`${style.arrow_btn} ${
-            isScrolled ? style.block : style.hidden
-          }`}
-        >
-          <MdKeyboardDoubleArrowUp />
-        </button>
-      </div>
+          <button
+            onClick={() => scrollToTop(500)}
+            className={`${style.arrow_btn} ${
+              isScrolled ? style.block : style.hidden
+            }`}
+          >
+            <MdKeyboardDoubleArrowUp />
+          </button>
+        </div>
+      </UseContext.Provider>
 
       <Footer />
     </div>

@@ -3,7 +3,7 @@ import style from "../eventsList.module.scss";
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import ReactPaginate from "react-paginate";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
@@ -64,9 +64,7 @@ function Seminars() {
                   {new Date(value?.updated_at).toLocaleDateString("ru-RU")}
                 </span>
 
-                <a href={value?.link} target="_blank">
-                  {t("homepage.toliq")}
-                </a>
+                <Link to={`${value.id}`}>{t("homepage.toliq")}</Link>
               </div>
             </div>
           </div>

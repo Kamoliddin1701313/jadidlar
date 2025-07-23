@@ -150,8 +150,8 @@
 
     .tab_container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
     }
   }
 }
@@ -171,8 +171,19 @@
   .container {
     .wrapper {
       .tab_container {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .container {
+    .hero_slider {
+      .wrapper {
+        .tab_container {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
     }
   }

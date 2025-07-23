@@ -62,11 +62,15 @@
             width: 100%;
 
             p {
-              color: #89001a;
               font-family: "Roboto Slab", serif;
               line-height: 36px;
+              text-align: justify;
               font-size: 26px;
               font-weight: 500;
+
+              span {
+                color: #89001a !important;
+              }
             }
           }
         }

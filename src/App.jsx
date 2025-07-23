@@ -16,6 +16,7 @@ import Pictures from "./pages/pictures/Pictures";
 import VideoViews from "./pages/videoViews/VideoViews";
 import AudioListener from "./pages/audioListening/AudioListening";
 import Login from "./pages/auth/Login";
+import EventsListDetails from "./details/EventsListDetails/EventsListDetails";
 
 axios.defaults.baseURL = "https://backend.jadidlar.uz/api/";
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/turkistan/:type" element={<TurkistanList />} />
 
           <Route path="/eventsList/:type" element={<EventsList />} />
+          <Route path="/eventsList/:type/:id" element={<EventsListDetails />} />
 
           <Route
             path="/archivedDocuments/:type"
