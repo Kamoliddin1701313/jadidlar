@@ -5,7 +5,7 @@ import LanguageSpellingListMaqolalar from "./details/LanguageSpellingListMaqolal
 import style from "./languageSpellingList.module.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function LanguageSpellingList() {
   const { type } = useParams();
@@ -38,6 +38,13 @@ function LanguageSpellingList() {
   const SearchBtn = () => {
     setSearchValue(valueRef?.current?.value);
   };
+
+  useEffect(() => {
+    setSearchValue("");
+    if (valueRef.current) {
+      valueRef.current.value = "";
+    }
+  }, [type]);
 
   return (
     <div className={style.container}>

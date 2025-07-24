@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import style from "./turkistanList.module.scss";
 import { FcSearch } from "react-icons/fc";
@@ -39,6 +39,13 @@ function TurkistanList() {
   const SearchBtn = () => {
     setSearchValue(valueRef?.current?.value);
   };
+
+  useEffect(() => {
+    setSearchValue("");
+    if (valueRef.current) {
+      valueRef.current.value = "";
+    }
+  }, [type]);
 
   return (
     <div className={style.container}>

@@ -4,7 +4,7 @@ import { FcSearch } from "react-icons/fc";
 import ArchivedDocumentsListRoyxat from "./details/ArchivedDocumentsListRoyxat";
 import ArchivedDocumentsListSkaner from "./details/ArchivedDocumentsListSkaner";
 import { useTranslation } from "react-i18next";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function ArchivedDocumentsList() {
   const { pathname } = useLocation();
@@ -38,6 +38,13 @@ function ArchivedDocumentsList() {
   const SearchBtn = () => {
     setSearchValue(valueRef?.current?.value);
   };
+
+  useEffect(() => {
+    setSearchValue("");
+    if (valueRef.current) {
+      valueRef.current.value = "";
+    }
+  }, [type]);
 
   return (
     <div className={style.container}>
