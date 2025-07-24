@@ -8,6 +8,7 @@ import { Fade } from "react-awesome-reveal";
 import { RiShareForwardLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import NotFoundSearch from "../../../components/notFound/NotFoundSearch";
 
 function LanguageSpellingListMaqolalar({
   handleClick,
@@ -56,41 +57,49 @@ function LanguageSpellingListMaqolalar({
 
   return (
     <div>
-      <div className={style.jadidlar_list}>
-        {list?.results?.map((lists, index) => (
-          <div className={style.card} key={index}>
-            <div className={style.link}>
-              <button onClick={() => handleClick(lists)}>
-                <MdOutlineFileDownload />
-              </button>
+      {list?.results?.length > 0 ? (
+        <div>
+          <div className={style.jadidlar_list}>
+            {list?.results?.map((lists, index) => (
+              <div className={style.card} key={index}>
+                <div className={style.link}>
+                  <button onClick={() => handleClick(lists)}>
+                    <MdOutlineFileDownload />
+                  </button>
 
-              <a onClick={() => handleClickTelegram(lists)}>
-                <RiShareForwardLine />
-              </a>
-            </div>
+                  <a onClick={() => handleClickTelegram(lists)}>
+                    <RiShareForwardLine />
+                  </a>
+                </div>
 
-            <Fade cascade damping={0.2} className={style.img}>
-              <img src={lists?.image} alt={lists?.title} />
-            </Fade>
+                <Fade cascade damping={0.2} className={style.img}>
+                  <img loading="lazy" src={lists?.image} alt={lists?.title} />
+                </Fade>
 
-            <div className={style.text}>
-              <button onClick={() => handleClick(lists)}>{lists?.title}</button>
-            </div>
+                <div className={style.text}>
+                  <button onClick={() => handleClick(lists)}>
+                    {lists?.title}
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      <ReactPaginate
-        previousLabel={<FaAngleDoubleLeft />}
-        nextLabel={<FaAngleDoubleRight />}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={1}
-        pageRangeDisplayed={2}
-        onPageChange={handlePageClick}
-        activeClassName={style.active}
-        forcePage={currentPage - 1}
-      />
+          <ReactPaginate
+            previousLabel={<FaAngleDoubleLeft />}
+            nextLabel={<FaAngleDoubleRight />}
+            breakLabel={"..."}
+            pageCount={pageCount}
+            marginPagesDisplayed={1}
+            pageRangeDisplayed={2}
+            onPageChange={handlePageClick}
+            activeClassName={style.active}
+            forcePage={currentPage - 1}
+          />
+        </div>
+      ) : (
+        <NotFoundSearch />
+      )}
     </div>
   );
 }

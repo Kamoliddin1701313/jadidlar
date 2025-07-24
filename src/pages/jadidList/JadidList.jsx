@@ -177,7 +177,7 @@ function JadidList() {
               className={style.card}
               onClick={() => navigate(`${lists.id}`)}
             >
-              <Fade cascade damping={0.2}>
+              <Fade cascade damping={0.2} triggerOnce>
                 <img src={lists.image} alt={lists.fullname} />
               </Fade>
               <div className={style.content}>

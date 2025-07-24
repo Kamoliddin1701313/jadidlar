@@ -17,6 +17,7 @@ import VideoViews from "./pages/videoViews/VideoViews";
 import AudioListener from "./pages/audioListening/AudioListening";
 import Login from "./pages/auth/Login";
 import EventsListDetails from "./details/EventsListDetails/EventsListDetails";
+import NotFound from "./components/notFound/NotFound";
 
 axios.defaults.baseURL = "https://backend.jadidlar.uz/api/";
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/suratlar" element={<Pictures />} />
           <Route path="/koruvlar/:id" element={<VideoViews />} />
           <Route path="/eshituvlar" element={<AudioListener />} />
+          <Route path="*" element={<NotFound />} />
 
           {/* DETAILS */}
           <Route path="/images/:id" element={<ImageTabHomeId />} />

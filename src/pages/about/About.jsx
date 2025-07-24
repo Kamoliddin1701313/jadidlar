@@ -64,7 +64,7 @@ function About() {
 
                 <div className={style.item_wrapper}>
                   <div className={style.img}>
-                    <img src={value.image} alt={value.title} />
+                    <img loading="lazy" src={value.image} alt={value.title} />
                   </div>
 
                   <div
@@ -83,8 +83,13 @@ function About() {
         <div className={style.users}>
           {data?.data?.results?.map((value, index) => (
             <div key={index} className={style.user_about}>
-              <Fade cascade damping={0.2} className={style.user_img}>
-                <img src={value?.image} alt={value?.fullname} />
+              <Fade
+                cascade
+                damping={0.2}
+                triggerOnce
+                className={style.user_img}
+              >
+                <img loading="lazy" src={value?.image} alt={value?.fullname} />
               </Fade>
 
               <div className={style.user_description}>
