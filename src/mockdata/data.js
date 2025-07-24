@@ -15,7 +15,7 @@ export const getPageLink = (t) => [
     id: 3,
     searchname: t("dataname.asarlar"),
     link: "research/asarlar",
-    name: t("dataname.maqolalar"),
+    name: t("dataname.izlanishlar"),
   },
   {
     id: 4,
