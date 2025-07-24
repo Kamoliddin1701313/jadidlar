@@ -10,15 +10,17 @@
 
     .carusel {
       position: relative;
+      padding-bottom: 50px;
 
       .card {
-        display: flex !important;
-        height: 700px;
-        justify-content: center;
-        align-items: flex-end;
+        height: 850px;
 
         .description {
           padding: 100px 0 120px 100px;
+          position: absolute;
+          top: 35%;
+          left: 0;
+          z-index: 2;
           h1 {
             font-size: 38px;
             font-weight: 500;
@@ -50,11 +52,10 @@
 
         .image {
           width: 100%;
-          height: 700px;
+          height: 850px;
           img {
             width: 100%;
-            object-fit: cover;
-            height: 100%;
+            height: 850px;
           }
         }
       }
@@ -179,7 +180,7 @@
   }
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 990px) {
   .container {
     .hero_slider {
       .carusel {
