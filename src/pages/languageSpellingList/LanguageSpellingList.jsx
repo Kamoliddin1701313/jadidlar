@@ -112,7 +112,9 @@ function LanguageSpellingList() {
           />
         )}
 
-        {type === "hikmatlar" && <LanguageSpellingListHikmatlar />}
+        {type === "hikmatlar" && (
+          <LanguageSpellingListHikmatlar searchValue={searchValue} />
+        )}
       </div>
     </div>
   );

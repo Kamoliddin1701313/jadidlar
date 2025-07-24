@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-function LanguageSpellingListHikmatlar() {
+function LanguageSpellingListHikmatlar({ searchValue }) {
   const [data, setData] = useState([]);
   const { i18n } = useTranslation();
 
@@ -16,7 +16,7 @@ function LanguageSpellingListHikmatlar() {
       };
       const lang = langMap[i18n.language] || "uz";
 
-      const respons = await axios.get("hikmatli_sozlar/", {
+      const respons = await axios.get(`hikmatli_sozlar/?search=${searchValue}`, {
         headers: {
           "Accept-Language": lang,
         },
@@ -30,7 +30,7 @@ function LanguageSpellingListHikmatlar() {
 
   useEffect(() => {
     getData();
-  }, [i18n.language]);
+  }, [i18n.language, searchValue]);
 
   console.log(data, "sss");
 
