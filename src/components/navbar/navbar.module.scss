@@ -326,20 +326,6 @@
     .toggle_btn {
       display: none;
     }
-
-    .logout_icon2 {
-      background-color: transparent;
-      border: none;
-      display: none;
-      cursor: pointer;
-      position: absolute;
-      right: 10%;
-      z-index: 9;
-      svg {
-        color: white;
-        font-size: 20px;
-      }
-    }
   }
 
   .global_search {
@@ -715,6 +701,20 @@
               }
             }
           }
+
+          > .logout_icon {
+            border: none;
+            height: 36px;
+            background-color: gray;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+
+            svg {
+              font-size: 20px;
+            }
+          }
         }
       }
 
@@ -728,10 +728,6 @@
           font-size: 22px;
           color: white;
         }
-      }
-
-      .logout_icon2 {
-        display: block;
       }
     }
 

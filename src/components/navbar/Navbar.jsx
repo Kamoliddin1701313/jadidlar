@@ -531,7 +531,7 @@ function Navbar() {
             </nav>
           </div>
 
-          {token ? (
+          {/* {token ? (
             <button
               className={style.logout_icon2}
               onClick={() => setIsModalOpen(true)}
@@ -540,7 +540,7 @@ function Navbar() {
             </button>
           ) : (
             ""
-          )}
+          )} */}
           <button onClick={OpenIconBtn} className={style.toggle_btn}>
             {!openicon && <TbMenu2 />}
           </button>
