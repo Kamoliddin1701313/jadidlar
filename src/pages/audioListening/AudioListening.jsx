@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaPlay } from "react-icons/fa6";
 import style from "./audioListening.module.scss";
 import { Fade } from "react-awesome-reveal";
@@ -9,6 +9,7 @@ function AudioListening() {
   const [data, setData] = useState([]);
   const [clickAudio, setClickAudio] = useState(null);
   const { t, i18n } = useTranslation();
+  const audioRef = useRef(); // audio element uchun ref
 
   const getData = async () => {
     try {
@@ -35,9 +36,18 @@ function AudioListening() {
     getData();
   }, [i18n.language]);
 
-  const ClickAudio = (id) => {
-    setClickAudio(id);
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+      // audioRef.current.play();
+    }
+  }, [clickAudio]);
+
+  const ClickAudio = (item) => {
+    setClickAudio(item);
   };
+
+  const currentAudio = clickAudio || data?.data?.results?.[0];
 
   return (
     <div className={style.container}>
@@ -46,42 +56,22 @@ function AudioListening() {
           <button onClick={() => navigate("/")}>
             {t("eshituv.bosh_sahifa")} <span>/</span>
           </button>
-
           <button onClick={() => navigate("/")}>
             {t("eshituv.eshituvlar")} <span>/</span>
           </button>
-
-          <button>
-            {clickAudio == null
-              ? data?.data?.results[0]?.title
-              : clickAudio.title}
-          </button>
+          <button>{currentAudio?.title}</button>
         </div>
 
         <div className={style.audio_container}>
           <div className={style.active_audio}>
             <Fade cascade damping={0.2}>
               <div className={style.img}>
-                <img
-                  src={
-                    clickAudio == null
-                      ? data?.data?.results[0]?.image
-                      : clickAudio.image
-                  }
-                  alt={
-                    clickAudio == null
-                      ? data?.data?.results[0]?.title
-                      : clickAudio.title
-                  }
-                />
+                <img src={currentAudio?.image} alt={currentAudio?.title} />
               </div>
 
-              {data?.data?.results[0]?.audio && (
-                <audio controls className={style.audio}>
-                  <source
-                    src={data?.data?.results[0]?.audio}
-                    type="audio/mpeg"
-                  />
+              {currentAudio?.audio && (
+                <audio ref={audioRef} controls className={style.audio}>
+                  <source src={currentAudio.audio} type="audio/mpeg" />
                 </audio>
               )}
             </Fade>
