@@ -412,6 +412,7 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
+
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.izlanishlar")}</span>
@@ -436,6 +437,7 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
+
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.tilvaimlo")}</span>
@@ -456,6 +458,7 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
+
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.turkistonmuxtoriyati")}</span>
@@ -475,6 +478,7 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
+
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.voqealar")}</span>
@@ -494,6 +498,7 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
+
               <div className={style.link}>
                 <button>
                   <span>{t("navbar.ko'reshito'qi")}</span>
@@ -508,9 +513,11 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
+
               <Link onClick={OpenIconBtn} to="/about">
                 {t("navbar.bizhaqimizda")}
               </Link>
+
               {token ? (
                 <button
                   className={style.logout_icon}
@@ -524,6 +531,16 @@ function Navbar() {
             </nav>
           </div>
 
+          {token ? (
+            <button
+              className={style.logout_icon2}
+              onClick={() => setIsModalOpen(true)}
+            >
+              <IoMdLogOut />
+            </button>
+          ) : (
+            ""
+          )}
           <button onClick={OpenIconBtn} className={style.toggle_btn}>
             {!openicon && <TbMenu2 />}
           </button>

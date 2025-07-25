@@ -326,6 +326,20 @@
     .toggle_btn {
       display: none;
     }
+
+    .logout_icon2 {
+      background-color: transparent;
+      border: none;
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      right: 10%;
+      z-index: 9;
+      svg {
+        color: white;
+        font-size: 20px;
+      }
+    }
   }
 
   .global_search {
@@ -715,6 +729,36 @@
           color: white;
         }
       }
+
+      .logout_icon2 {
+        display: block;
+      }
+    }
+
+    .modal {
+      .modal_box {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    .modal {
+      .modal_box {
+        width: 65%;
+
+        svg {
+          font-size: 24px;
+        }
+
+        .modal_card {
+          button {
+            font-size: 16px;
+          }
+        }
+      }
     }
   }
 }
@@ -754,6 +798,16 @@
             }
           }
         }
+      }
+
+      .logout_icon {
+        right: 12%;
+      }
+    }
+
+    .modal {
+      .modal_box {
+        width: 75%;
       }
     }
   }

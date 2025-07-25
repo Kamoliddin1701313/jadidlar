@@ -42,8 +42,11 @@ function Footer() {
           </div>
         </div>
 
-        <div></div>
-        <div></div>
+        <div className={style.footer_line}></div>
+        <div className={style.footer_text}>
+          <h3>«Jadidlar» Barcha huquqlar himoyalangan</h3>
+          <h3>© Copyright 2024 -</h3>
+        </div>
       </div>
     </div>
   );
