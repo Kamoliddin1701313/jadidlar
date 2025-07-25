@@ -138,6 +138,8 @@
 @media only screen and (max-width: 1220px) {
   .container {
     .wrapper {
+      padding-top: 120px;
+
       .menu_link {
         gap: 10px;
         button {
@@ -193,7 +195,7 @@
         grid-template-columns: 1fr;
         height: 700px;
         padding: 12px;
-        margin-bottom: 0;
+        margin: 15px 0 0;
 
         .video {
           height: 300px;
