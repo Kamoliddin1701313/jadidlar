@@ -50,7 +50,11 @@ function WorksTabHome({ handleClick, handleClickTelegram }) {
           </div>
 
           <Fade cascade damping={0.2} className={style.img}>
-            <img src={value?.image} alt={value?.title} />
+            <img
+              onClick={() => handleClick(value)}
+              src={value?.image}
+              alt={value?.title}
+            />
           </Fade>
 
           <div className={style.text}>

@@ -109,6 +109,7 @@ function SourcesHome() {
 
                     <Fade cascade damping={0.2} className={style.img}>
                       <img
+                        onClick={() => handleClick(value)}
                         src={value?.image}
                         alt={value?.title}
                         loading="lazy"
@@ -136,6 +137,7 @@ function SourcesHome() {
 
                     <Fade cascade damping={0.2} className={style.img}>
                       <img
+                        onClick={() => handleClick(value)}
                         loading="lazy"
                         src={value?.image}
                         alt={value?.title}

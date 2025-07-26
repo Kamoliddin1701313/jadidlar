@@ -19,11 +19,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .container .wrapper .page_tab button {
@@ -79,8 +79,8 @@
   background-color: rgba(0, 0, 0, 0.455);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   z-index: 9;
 }
 
@@ -144,16 +144,16 @@
 
 .container .wrapper .card:hover .img img {
   -webkit-transform: rotate(10deg);
-          transform: rotate(10deg);
+  transform: rotate(10deg);
   -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
 
 .container .wrapper .card:hover .img {
   -webkit-transform: rotate(-4deg);
-          transform: rotate(-4deg);
+  transform: rotate(-4deg);
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
@@ -175,14 +175,6 @@
   white-space: normal;
 }
 
-.container .wrapper .tab_container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
 @media only screen and (max-width: 1400px) {
   .container {
     padding: 0 15px;
@@ -194,20 +186,12 @@
 
 @media only screen and (max-width: 1220px) {
   .container .wrapper .tab_container {
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
   }
 }
 
 @media only screen and (max-width: 770px) {
   .container .wrapper h1 {
     font-size: 32px;
-  }
-  .container .wrapper .tab_container {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
   }
 }
 
@@ -218,17 +202,18 @@
   .container .wrapper h1 {
     font-size: 28px;
   }
+
   .container .wrapper .page_tab button {
     margin: 0 5px;
     font-size: 14px;
   }
+
   .container .wrapper .tab_container {
     -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
     gap: 20px;
   }
   .container .wrapper .tab_container .card {
     height: 350px;
   }
 }
-/*# sourceMappingURL=research.module.css.map */

@@ -7,6 +7,7 @@ import ReactPaginate from "react-paginate";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
+import NotFoundSearch from "../../components/notFound/NotFoundSearch";
 
 function JadidList() {
   const [list, setList] = useState([]);
@@ -170,41 +171,47 @@ function JadidList() {
           <FcSearch onClick={SearchBtn} />
         </div>
 
-        <div className={style.jadidlar_list}>
-          {displayedList?.map((lists, index) => (
-            <div
-              key={index}
-              className={style.card}
-              onClick={() => navigate(`${lists.id}`)}
-            >
-              <Fade cascade damping={0.2} triggerOnce>
-                <img src={lists.image} alt={lists.fullname} />
-              </Fade>
-              <div className={style.content}>
-                <span>{lists.fullname}</span>
-                <div>
-                  {"("}
-                  <span>{lists.birthday?.slice(0, 4)}</span>
-                  <span>-</span>
-                  <span>{lists.die_day?.slice(0, 4)}</span>
-                  {")"}
+        {displayedList?.length > 0 ? (
+          <div>
+            <div className={style.jadidlar_list}>
+              {displayedList?.map((lists, index) => (
+                <div
+                  key={index}
+                  className={style.card}
+                  onClick={() => navigate(`${lists.id}`)}
+                >
+                  <Fade cascade damping={0.2} triggerOnce>
+                    <img src={lists.image} alt={lists.fullname} />
+                  </Fade>
+                  <div className={style.content}>
+                    <span>{lists.fullname}</span>
+                    <div>
+                      {"("}
+                      <span>{lists.birthday?.slice(0, 4)}</span>
+                      <span>-</span>
+                      <span>{lists.die_day?.slice(0, 4)}</span>
+                      {")"}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <ReactPaginate
-          previousLabel={<FaAngleDoubleLeft />}
-          nextLabel={<FaAngleDoubleRight />}
-          breakLabel={"..."}
-          pageCount={pageCount}
-          marginPagesDisplayed={1}
-          pageRangeDisplayed={2}
-          onPageChange={handlePageClick}
-          activeClassName={style.active}
-          forcePage={currentPage - 1}
-        />
+            <ReactPaginate
+              previousLabel={<FaAngleDoubleLeft />}
+              nextLabel={<FaAngleDoubleRight />}
+              breakLabel={"..."}
+              pageCount={pageCount}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={2}
+              onPageChange={handlePageClick}
+              activeClassName={style.active}
+              forcePage={currentPage - 1}
+            />
+          </div>
+        ) : (
+          <NotFoundSearch />
+        )}
       </div>
     </div>
   );
