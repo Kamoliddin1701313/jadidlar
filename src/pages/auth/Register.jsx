@@ -5,12 +5,14 @@ import { AiTwotoneEye, AiTwotoneEyeInvisible } from "react-icons/ai";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Register({ setRegister }) {
   const navigate = useNavigate();
   const [parolToggl, setParolToggl] = useState(true);
   const [confirmParolToggl, setConfirmParolToggl] = useState(true);
   const [formdata, setFormdata] = useState({});
+  const { t } = useTranslation();
 
   const [users, setUsers] = useState({
     full_name: "",
@@ -44,10 +46,10 @@ function Register({ setRegister }) {
   return (
     <div className={style.registration}>
       <form onSubmit={LoginHandle}>
-        <h1>Roʻyxatdan oʻtish</h1>
+        <h1>{t("auth.register")}</h1>
 
         <div className={style.input_wrapper}>
-          <label>F.I.SH</label>
+          <label>{t("auth.full_name")}</label>
           <input
             autoComplete="off"
             required
@@ -59,11 +61,12 @@ function Register({ setRegister }) {
 
         <div className={style.input_container}>
           <div className={style.input_wrap}>
-            <label>Telefon raqam</label>
+            <label>{t("auth.phone")}</label>
             <div className={style.phone}>
               <span className={style.prefix}>+998</span>
               <InputMask
                 autoComplete="off"
+                type="tel"
                 required
                 name="phone"
                 mask="(99)-999-99-99"
@@ -74,7 +77,7 @@ function Register({ setRegister }) {
           </div>
 
           <div className={style.input_wrap}>
-            <label>Email</label>
+            <label>{t("auth.email")}</label>
             <input
               autoComplete="off"
               required
@@ -87,7 +90,7 @@ function Register({ setRegister }) {
 
         <div className={style.input_parol_container}>
           <div className={style.box}>
-            <label>Oʻron</label>
+            <label>{t("auth.password")}</label>
 
             <div className={style.input_parol}>
               <input
@@ -108,7 +111,7 @@ function Register({ setRegister }) {
           </div>
 
           <div className={style.box}>
-            <label>Oʻronni tasdiqlash</label>
+            <label> {t("auth.confirm_password")}</label>
 
             <div className={style.input_parol}>
               <input
@@ -134,24 +137,23 @@ function Register({ setRegister }) {
         </div>
 
         <button className={style.send_btn}>
-          <span>Roʻyxatdan oʻtish</span>
+          <span>{t("auth.register")}</span>
           <div className={style.bg}></div>
         </button>
 
         <div className={style.navigate_link}>
-          <button className={style.home_link}>
+          <button className={style.home_link} onClick={() => navigate("/")}>
             <FaHome />
-            <span>qaytish</span>
+            <span>{t("auth.back")}</span>
           </button>
 
           <button
             className={style.register_link}
             onClick={() => setRegister((prev) => !prev)}
           >
-            <span>Hisobingiz bormi?</span>
+            <span> {t("auth.have_account")}</span>
           </button>
         </div>
-        
       </form>
     </div>
   );

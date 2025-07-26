@@ -88,8 +88,6 @@ function Navbar() {
     setSearch(e.target.value);
   };
 
-  console.log(search, "KAMOLIDDIN");
-
   const SearchBtn = () => {
     setGlobalSearch(!globalSearch);
   };

@@ -164,6 +164,11 @@
     .hero_slider {
       .wrapper {
         gap: 10px;
+        .card {
+          .link {
+            right: -25%;
+          }
+        }
       }
     }
   }

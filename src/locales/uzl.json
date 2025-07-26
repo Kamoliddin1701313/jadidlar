@@ -84,7 +84,20 @@
     "suratlar": "Suratlar",
     "koruvlar": "Koʻruvlar",
     "eshituvlar": "Eshituvlar",
-    "natija":"ta natija topildi",
-    "ulashish":"Ulashish"
+    "natija": "ta natija topildi",
+    "ulashish": "Ulashish"
+  },
+  "auth": {
+    "register": "Roʻyxatdan oʻtish",
+    "full_name": "F.I.SH",
+    "phone": "Telefon raqam",
+    "email": "Email",
+    "password": "Oʻron",
+    "confirm_password": "Oʻronni tasdiqlash",
+    "back": "Qaytish",
+    "have_account": "Hisobingiz bormi?",
+    "login": "Kirish",
+    "home": "Uy",
+    "register_now": "Hozir roʻyxatdan oʻtish"
   }
 }

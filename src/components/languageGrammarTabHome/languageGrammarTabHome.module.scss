@@ -223,12 +223,24 @@
   }
 }
 
-@media only screen and (max-width: 1220px) {
+@media only screen and (max-width: 990px) {
   .container {
     .wrapper {
       .page_container {
         .tab_container {
           grid-template-columns: repeat(3, 1fr);
+
+          .card {
+            .link {
+              right: -25%;
+            }
+
+            &:hover {
+              .link {
+                right: 10px;
+              }
+            }
+          }
         }
       }
     }

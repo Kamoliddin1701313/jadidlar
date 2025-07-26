@@ -160,8 +160,10 @@
   .container {
     padding: 0 15px;
     .wrapper {
-      .tab_container {
-        gap: 10px;
+      .page_container {
+        .tab_container {
+          gap: 10px;
+        }
       }
     }
   }
@@ -170,8 +172,10 @@
 @media only screen and (max-width: 1220px) {
   .container {
     .wrapper {
-      .tab_container {
-        grid-template-columns: repeat(4, 1fr);
+      .page_container {
+        .tab_container {
+          grid-template-columns: repeat(4, 1fr);
+        }
       }
     }
   }
@@ -179,10 +183,21 @@
 
 @media only screen and (max-width: 990px) {
   .container {
-    .hero_slider {
-      .wrapper {
+    .wrapper {
+      .page_container {
         .tab_container {
           grid-template-columns: repeat(3, 1fr);
+          .card {
+            .link {
+              right: -25%;
+            }
+
+            &:hover {
+              .link {
+                right: 10px;
+              }
+            }
+          }
         }
       }
     }
@@ -195,9 +210,12 @@
       h1 {
         font-size: 32px;
       }
-      .tab_container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+
+      .page_container {
+        .tab_container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
       }
     }
   }
@@ -219,12 +237,14 @@
         }
       }
 
-      .tab_container {
-        grid-template-columns: 1fr;
-        gap: 20px;
+      .page_container {
+        .tab_container {
+          grid-template-columns: 1fr;
+          gap: 20px;
 
-        .card {
-          height: 350px;
+          .card {
+            height: 350px;
+          }
         }
       }
     }

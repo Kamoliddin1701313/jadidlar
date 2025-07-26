@@ -45,8 +45,6 @@ function Seminars() {
     setSearchParams({ page: selectedPage }); // URL ga saqlash
   };
 
-  console.log(users, "users");
-
   return (
     <div className={style.card_container}>
       <div className={style.card}>

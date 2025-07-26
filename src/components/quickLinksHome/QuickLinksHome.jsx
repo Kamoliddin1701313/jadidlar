@@ -42,14 +42,18 @@ function QuickLinksHome() {
         <div className={style.slider_container}>
           <Marquee pauseOnHover={true}>
             {data?.data?.results?.map((value, index) => (
-              <a href={value.link} target="_blank">
+              <a href={value.link}>
                 <Fade
                   cascade
                   damping={0.2}
                   key={index}
                   className={style.slider_img}
                 >
-                  <img src={value.logo_image} alt={value.title} />
+                  <img
+                    loading="lazy"
+                    src={value.logo_image}
+                    alt={value.title}
+                  />
                 </Fade>
               </a>
             ))}

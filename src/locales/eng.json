@@ -76,5 +76,18 @@
     "eshituvlar": "Audio",
     "natija": "results found",
     "ulashish": "Share"
+  },
+  "auth": {
+    "register": "Register",
+    "full_name": "Full Name",
+    "phone": "Phone Number",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "back": "Back",
+    "have_account": "Already have an account?",
+    "login": "Login",
+    "home": "Home",
+    "register_now": "Register Now"
   }
 }

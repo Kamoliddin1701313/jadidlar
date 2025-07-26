@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Register from "./Register";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 function Login() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function Login() {
   const [register, setRegister] = useState(true);
   const [loginFormData, setLoginFormData] = useState({});
   const [loginData, setLoginData] = useState({ phone: "", password: "" });
+  const { t } = useTranslation();
   // const token=localStorage.getItem("token")
 
   const LoginUser = async (e) => {
@@ -51,14 +53,15 @@ function Login() {
         {register ? (
           <div className={style.login}>
             <form onSubmit={LoginUser}>
-              <h1>Kirish</h1>
+              <h1>{t("auth.login")}</h1>
 
               <div className={style.input_box}>
-                <label>Telefon raqam</label>
+                <label>{t("auth.phone")}</label>
                 <div className={style.input_wrapper}>
                   <span className={style.prefix}>+998</span>
                   <InputMask
                     autoComplete="off"
+                    type="tel"
                     required
                     mask="(99)-999-99-99"
                     name="phone"
@@ -68,7 +71,7 @@ function Login() {
               </div>
 
               <div className={style.input_box}>
-                <label>Oʻron</label>
+                <label>{t("auth.password")}</label>
 
                 <div className={style.input_parol}>
                   <input
@@ -89,7 +92,7 @@ function Login() {
               </div>
 
               <button className={style.send_btn}>
-                <span>Kirish</span>
+                <span>{t("auth.login")}</span>
                 <div className={style.bg}></div>
               </button>
 
@@ -99,11 +102,11 @@ function Login() {
                   onClick={() => navigate("/")}
                 >
                   <FaHome />
-                  <span>home</span>
+                  <span>{t("auth.home")}</span>
                 </button>
 
                 <button className={style.login_link} onClick={RegistrationPage}>
-                  Hozir ro'yxatdan o'tish
+                  {t("auth.register_now")}
                 </button>
               </div>
             </form>
