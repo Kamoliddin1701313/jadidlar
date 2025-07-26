@@ -92,6 +92,11 @@ function PressList() {
             onKeyDown={(e) => {
               if (e.key === "Enter") SearchBtn();
             }}
+            onInput={(e) => {
+              if (e.target.value === "") {
+                SearchBtn();
+              }
+            }}
           />
           <FcSearch onClick={SearchBtn} />
         </div>

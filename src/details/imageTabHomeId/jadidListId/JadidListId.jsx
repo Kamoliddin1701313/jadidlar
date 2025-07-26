@@ -83,6 +83,7 @@ function JadidListId() {
         </div>
 
         {tab == "jadid" && <JadidListIdJadid data={data} />}
+
         {tab == "asarlar" && (
           <JadidListIdAsarlar
             data={data}
@@ -90,6 +91,7 @@ function JadidListId() {
             handleClickTelegram={handleClickTelegram}
           />
         )}
+
         {tab == "maqolalar" && (
           <JadidListIdMaqola
             data={data}
@@ -97,6 +99,7 @@ function JadidListId() {
             handleClickTelegram={handleClickTelegram}
           />
         )}
+
         {tab == "sherlar" && (
           <JadidListIdSherlar
             data={data}
@@ -104,6 +107,7 @@ function JadidListId() {
             handleClickTelegram={handleClickTelegram}
           />
         )}
+
         {tab == "esdalik" && (
           <JadidListIdEsdalik
             data={data}
@@ -111,6 +115,7 @@ function JadidListId() {
             handleClickTelegram={handleClickTelegram}
           />
         )}
+
         {tab == "hikimatli" && <JadidListIdHikmatli data={data} />}
       </div>
     </div>

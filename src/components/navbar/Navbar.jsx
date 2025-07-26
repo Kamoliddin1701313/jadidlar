@@ -66,6 +66,7 @@ function Navbar() {
   }, []);
 
   const OpenIconBtn = () => {
+    setSearch("");
     setOpenicon((prev) => !prev);
   };
 
@@ -87,8 +88,9 @@ function Navbar() {
     setSearch(e.target.value);
   };
 
+  console.log(search, "KAMOLIDDIN");
+
   const SearchBtn = () => {
-    setSearch("");
     setGlobalSearch(!globalSearch);
   };
 
@@ -324,10 +326,11 @@ function Navbar() {
                     type="search"
                     placeholder={t("navbar.qidiruv")}
                     onChange={GlobalSearchInput}
+                    value={search}
                   />
                   <FaSearch />
                 </button>
-
+                {/* xxxx */}
                 <button className={style.open_btn} onClick={OpenIconBtn}>
                   <AiOutlineClose />
                 </button>
@@ -345,6 +348,7 @@ function Navbar() {
                     <div className={style.mobile_search_card}>
                       {pagelinksearch?.map((value, index) => (
                         <button
+                          key={index}
                           onClick={() => NavigateLink(`/${value.link}`)}
                           className={style.mobile_search_link}
                         >
@@ -541,6 +545,7 @@ function Navbar() {
           ) : (
             ""
           )} */}
+
           <button onClick={OpenIconBtn} className={style.toggle_btn}>
             {!openicon && <TbMenu2 />}
           </button>

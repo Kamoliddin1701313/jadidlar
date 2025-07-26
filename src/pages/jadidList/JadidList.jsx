@@ -1,6 +1,6 @@
 import style from "./jadidList.module.scss";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
@@ -18,6 +18,7 @@ function JadidList() {
   const [fullSearchResults, setFullSearchResults] = useState(null);
   const [title, setTitle] = useState("");
   const { t, i18n } = useTranslation();
+  const valueRef = useRef();
 
   const getData = async (page = 1) => {
     try {
@@ -40,10 +41,6 @@ function JadidList() {
     }
   };
 
-  useEffect(() => {
-    getData(currentPage);
-  }, [currentPage, i18n.language]);
-
   const handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
     setSearchParams({ page: selectedPage }); // URL ga saqlash
@@ -54,56 +51,19 @@ function JadidList() {
     setTitle(e.target.value);
   };
 
-  // const SearchBtn = () => {
-  //   const filtered = list?.results?.filter((item) =>
-  //     item.fullname.toLowerCase().includes(title.toLowerCase())
-  //   );
-  //   console.log(filtered, "EYEYEY");
-
-  //   setList({ ...list, results: filtered });
-  // };
-
-  // const SearchBtn = async () => {
-  //   try {
-  //     const langMap = {
-  //       uzl: "uz",
-  //       uzk: "ru",
-  //       eng: "en",
-  //     };
-  //     const lang = langMap[i18n.language] || "uz";
-
-  //     const allResults = [];
-  //     let page = 1;
-  //     let totalPages = 1;
-
-  //     do {
-  //       const response = await axios.get(`jadidlar/?page=${page}&limit=15`, {
-  //         headers: {
-  //           "Accept-Language": lang,
-  //         },
-  //       });
-
-  //       allResults.push(...response.data.results);
-  //       totalPages = Math.ceil(response.data.pagination.total / 15);
-  //       page++;
-  //     } while (page <= totalPages);
-
-  //     const filtered = allResults.filter((item) =>
-  //       item.fullname.toLowerCase().includes(title.toLowerCase())
-  //     );
-
-  //     const itemsPerPage = 15;
-  //     const paginatedResults = filtered.slice(0, itemsPerPage);
-
-  //     setList({ results: paginatedResults });
-  //     setPageCount(Math.ceil(filtered.length / itemsPerPage));
-  //     setSearchParams({ page: 1 });
-  //   } catch (error) {
-  //     console.log(error, "FULL SEARCH ERROR");
-  //   }
-  // };
-
   const SearchBtn = async () => {
+    const searchText = valueRef.current?.value || "";
+    if (!searchText.trim()) {
+      // 🔁 Bo‘sh bo‘lsa: tozalaymiz
+      setFullSearchResults(null);
+
+      // ✅ TO‘G‘RILANGAN QATOR: umumiy element soni asosida sahifani qayta hisoblash
+      setPageCount(Math.ceil((list?.pagination?.total || 0) / itemsPerPage));
+
+      setSearchParams({ page: 1 });
+      return;
+    }
+
     try {
       const langMap = {
         uzl: "uz",
@@ -118,9 +78,7 @@ function JadidList() {
 
       do {
         const response = await axios.get(`jadidlar/?page=${page}&limit=15`, {
-          headers: {
-            "Accept-Language": lang,
-          },
+          headers: { "Accept-Language": lang },
         });
 
         allResults.push(...response.data.results);
@@ -129,11 +87,11 @@ function JadidList() {
       } while (page <= totalPages);
 
       const filtered = allResults.filter((item) =>
-        item.fullname.toLowerCase().includes(title.toLowerCase())
+        item.fullname.toLowerCase().includes(searchText.toLowerCase())
       );
 
-      setFullSearchResults(filtered); // saqlab qo‘yamiz
-      setPageCount(Math.ceil(filtered.length / 15));
+      setFullSearchResults(filtered);
+      setPageCount(Math.ceil(filtered.length / itemsPerPage));
       setSearchParams({ page: 1 });
     } catch (error) {
       console.log(error, "FULL SEARCH ERROR");
@@ -146,6 +104,10 @@ function JadidList() {
   const displayedList = fullSearchResults
     ? fullSearchResults.slice(offset, offset + itemsPerPage)
     : list?.results;
+
+  useEffect(() => {
+    getData(currentPage);
+  }, [currentPage, i18n.language]);
 
   return (
     <div className={style.container}>
@@ -163,9 +125,15 @@ function JadidList() {
         <div className={style.search}>
           <input
             type="search"
-            onChange={SearchInput}
+            autoCapitalize="off"
+            ref={valueRef}
             onKeyDown={(e) => {
               if (e.key === "Enter") SearchBtn();
+            }}
+            onInput={(e) => {
+              if (e.target.value === "") {
+                SearchBtn();
+              }
             }}
           />
           <FcSearch onClick={SearchBtn} />

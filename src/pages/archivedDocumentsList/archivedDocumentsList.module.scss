@@ -261,6 +261,10 @@
       .jadidlar_list {
         grid-template-columns: repeat(3, 1fr);
       }
+
+      .search {
+        gap: 20px;
+      }
     }
   }
 }
@@ -268,8 +272,43 @@
 @media only screen and (max-width: 770px) {
   .container {
     .wrapper {
+      .menu_link {
+        button {
+          font-size: 16px;
+        }
+
+        span {
+          font-size: 16px;
+        }
+      }
+
+      .search {
+        height: 50px;
+        gap: 10px;
+
+        input {
+          width: 90%;
+        }
+
+        svg {
+          font-size: 32px;
+        }
+      }
+
       .jadidlar_list {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      ul {
+        gap: 5px;
+        overflow: hidden;
+        li {
+          a {
+            height: 40px;
+            width: 44px;
+            font-size: 15px;
+          }
+        }
       }
     }
   }
@@ -278,13 +317,34 @@
 @media only screen and (max-width: 520px) {
   .container {
     .wrapper {
+      .menu_link {
+        gap: 10px;
+
+        button {
+          font-size: 14px;
+        }
+
+        span {
+          font-size: 14px;
+        }
+      }
+
+      .search {
+        gap: 10px;
+        height: 46px;
+
+        svg {
+          font-size: 28px;
+        }
+      }
+
       .jadidlar_list {
         grid-template-columns: 1fr;
         gap: 20px;
       }
 
       ul {
-        gap: 5px;
+        overflow: hidden;
         li {
           a {
             height: 36px;
