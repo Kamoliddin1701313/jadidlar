@@ -11,7 +11,7 @@ import EducationAndUpbringingSection from "./details/EducationAndUpbringingSecti
 import OtherTopicsSection from "./details/OtherTopicsSection";
 import BibliographicIndexSection from "./details/BibliographicIndexSection";
 import { useTranslation } from "react-i18next";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 function PressList() {
   const { pathname } = useLocation();
@@ -45,6 +45,13 @@ function PressList() {
   const SearchBtn = useCallback(() => {
     setSearchValue(valueRef?.current?.value);
   }, []);
+
+  useEffect(() => {
+    setSearchValue("");
+    if (valueRef.current) {
+      valueRef.current.value = "";
+    }
+  }, [type]);
 
   return (
     <div className={style.container}>
