@@ -6,7 +6,7 @@ import ResearchListMaqolalar from "./details/ResearchListMaqolalar";
 import ResearchListDissertatsiya from "./details/ResearchListDissertatsiya";
 import ResearchListEsdaliklar from "./details/ResearchListEsdaliklar";
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 function ResearchList() {
   const { type } = useParams();
@@ -15,16 +15,16 @@ function ResearchList() {
   const [searchValue, setSearchValue] = useState("");
   const valueRef = useRef();
 
-  const handleClick = (value) => {
+  const handleClick = useCallback((value) => {
     const token = localStorage.getItem("token");
     if (token) {
       window.open(value?.file, "_blank");
     } else {
       navigate("/login");
     }
-  };
+  }, []);
 
-  const handleClickTelegram = (value) => {
+  const handleClickTelegram = useCallback((value) => {
     const token = localStorage.getItem("token");
     if (token) {
       const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
@@ -34,11 +34,11 @@ function ResearchList() {
     } else {
       navigate("/login");
     }
-  };
+  }, []);
 
-  const SearchBtn = () => {
+  const SearchBtn = useCallback(() => {
     setSearchValue(valueRef?.current?.value);
-  };
+  }, []);
 
   useEffect(() => {
     setSearchValue("");

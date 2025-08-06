@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import style from "./turkistanList.module.scss";
 import { FcSearch } from "react-icons/fc";
@@ -15,16 +15,16 @@ function TurkistanList() {
   const [searchValue, setSearchValue] = useState("");
   const valueRef = useRef();
 
-  const handleClick = (value) => {
+  const handleClick = useCallback((value) => {
     const token = localStorage.getItem("token");
     if (token) {
       window.open(value?.file, "_blank");
     } else {
       navigate("/login");
     }
-  };
+  }, []);
 
-  const handleClickTelegram = (value) => {
+  const handleClickTelegram = useCallback((value) => {
     const token = localStorage.getItem("token");
     if (token) {
       const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
@@ -34,11 +34,11 @@ function TurkistanList() {
     } else {
       navigate("/login");
     }
-  };
+  }, []);
 
-  const SearchBtn = () => {
+  const SearchBtn = useCallback(() => {
     setSearchValue(valueRef?.current?.value);
-  };
+  }, []);
 
   useEffect(() => {
     setSearchValue("");

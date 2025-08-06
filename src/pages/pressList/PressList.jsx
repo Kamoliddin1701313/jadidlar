@@ -11,7 +11,7 @@ import EducationAndUpbringingSection from "./details/EducationAndUpbringingSecti
 import OtherTopicsSection from "./details/OtherTopicsSection";
 import BibliographicIndexSection from "./details/BibliographicIndexSection";
 import { useTranslation } from "react-i18next";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 function PressList() {
   const { pathname } = useLocation();
@@ -21,16 +21,16 @@ function PressList() {
   const [searchValue, setSearchValue] = useState("");
   const valueRef = useRef();
 
-  const handleClick = (value) => {
+  const handleClick = useCallback((value) => {
     const token = localStorage.getItem("token");
     if (token) {
       window.open(value?.file, "_blank");
     } else {
       navigate("/login");
     }
-  };
+  }, []);
 
-  const handleClickTelegram = (value) => {
+  const handleClickTelegram = useCallback((value) => {
     const token = localStorage.getItem("token");
     if (token) {
       const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
@@ -40,11 +40,11 @@ function PressList() {
     } else {
       navigate("/login");
     }
-  };
+  }, []);
 
-  const SearchBtn = () => {
+  const SearchBtn = useCallback(() => {
     setSearchValue(valueRef?.current?.value);
-  };
+  }, []);
 
   return (
     <div className={style.container}>
