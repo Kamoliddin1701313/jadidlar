@@ -4,7 +4,7 @@ import { FcSearch } from "react-icons/fc";
 import ArchivedDocumentsListRoyxat from "./details/ArchivedDocumentsListRoyxat";
 import ArchivedDocumentsListSkaner from "./details/ArchivedDocumentsListSkaner";
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 function ArchivedDocumentsList() {
   const { pathname } = useLocation();
@@ -14,16 +14,16 @@ function ArchivedDocumentsList() {
   const valueRef = useRef();
   const navigate = useNavigate();
 
-  const handleClick = (value) => {
+  const handleClick = useCallback((value) => {
     const token = localStorage.getItem("token");
     if (token) {
       window.open(value?.file, "_blank");
     } else {
       navigate("/login");
     }
-  };
+  }, []);
 
-  const handleClickTelegram = (value) => {
+  const handleClickTelegram = useCallback((value) => {
     const token = localStorage.getItem("token");
     if (token) {
       const telegramURL = `https://t.me/share/url?url=${encodeURIComponent(
@@ -33,11 +33,11 @@ function ArchivedDocumentsList() {
     } else {
       navigate("/login");
     }
-  };
+  }, []);
 
-  const SearchBtn = () => {
+  const SearchBtn = useCallback(() => {
     setSearchValue(valueRef?.current?.value);
-  };
+  }, []);
 
   useEffect(() => {
     setSearchValue("");

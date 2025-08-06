@@ -14,7 +14,7 @@ function JadidListId() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleClick = (value) => {
     const token = localStorage.getItem("token");
@@ -49,13 +49,29 @@ function JadidListId() {
   ];
 
   const getData = async () => {
-    const respons = await axios.get(`jadidlar/${id}`);
-    setData(respons?.data);
+    try {
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get(`jadidlar/${id}`, {
+        headers: {
+          "Accept-Language": lang,
+        },
+      });
+
+      setData(respons?.data);
+    } catch (error) {
+      console.log("Xatolik: ", error);
+    }
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
 
   return (
     <div className={style.container}>

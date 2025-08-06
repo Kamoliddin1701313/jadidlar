@@ -94,7 +94,9 @@ function About() {
 
               <div className={style.user_description}>
                 <p className={style.name}>{value?.fullname}</p>
-                <p className={style.position}>{value?.position}</p>
+                <p className={style.position}>
+                  {value?.position} {value?.degree}
+                </p>
               </div>
             </div>
           ))}

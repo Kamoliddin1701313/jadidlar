@@ -533,17 +533,6 @@ function Navbar() {
             </nav>
           </div>
 
-          {/* {token ? (
-            <button
-              className={style.logout_icon2}
-              onClick={() => setIsModalOpen(true)}
-            >
-              <IoMdLogOut />
-            </button>
-          ) : (
-            ""
-          )} */}
-
           <button onClick={OpenIconBtn} className={style.toggle_btn}>
             {!openicon && <TbMenu2 />}
           </button>

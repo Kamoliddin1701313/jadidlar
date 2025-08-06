@@ -173,13 +173,13 @@
         align-items: center;
 
         > a {
+          font-family: "Roboto Slab", serif;
           text-decoration: none;
           font-size: 12px;
           color: white;
           transition: all 0.3s linear;
           text-transform: uppercase;
           font-weight: 600;
-          font-family: "Roboto Slab", serif;
           &:hover {
             color: rgb(8, 227, 110);
             transition: all 0.3s linear;
@@ -203,6 +203,7 @@
             background-color: transparent;
             color: white;
             border: none;
+            font-family: "Roboto Slab", serif;
             svg {
               font-size: 12px;
               transition: all 0.3s linear;
