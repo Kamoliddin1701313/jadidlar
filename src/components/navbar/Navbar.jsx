@@ -281,7 +281,7 @@ function Navbar() {
                 <button onClick={ToggleLanguage}>
                   <span>
                     {languages.find((l) => i18n.language.startsWith(l.code))
-                      ?.label || "Uzb"}
+                      ?.label || "Uzb"}{" "}
                   </span>
                   <BsFillCaretDownFill
                     style={{

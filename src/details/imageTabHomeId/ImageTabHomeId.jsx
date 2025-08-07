@@ -3,15 +3,26 @@ import style from "./imageTabHomeId.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 function ImageTabHomeId() {
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const [dataId, setDataId] = useState([]);
 
   const getDataId = async () => {
     try {
-      const respons = await axios.get(`rasmlar/${id}`);
+      const langMap = {
+        uzl: "uz",
+        uzk: "ru",
+        eng: "en",
+      };
+      const lang = langMap[i18n.language] || "uz";
+
+      const respons = await axios.get(`rasmlar/${id}`, {
+        headers: { "Accept-Language": lang },
+      });
       setDataId(respons);
     } catch (error) {
       console.log(error, "ERROR BERAYABDI ImageTabHomeId");
@@ -20,23 +31,21 @@ function ImageTabHomeId() {
 
   useEffect(() => {
     getDataId();
-  }, []);
+  }, [i18n.language]);
 
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.initialPages}>
           <button onClick={() => navigate("/")}>
-            Bosh sahifa <span style={{ marginLeft: "4px" }}>/</span>
+            {t("eshituv.bosh_sahifa")}{" "}
+            <span style={{ marginLeft: "4px" }}>/</span>
           </button>
           <button onClick={() => navigate("/suratlar")}>
-            Suratlar <span style={{ marginLeft: "4px" }}>/</span>
+            {t("eshituv.suratlar")} <span style={{ marginLeft: "4px" }}>/</span>
           </button>
 
-          <p>
-            {dataId?.data?.title} asdasdsadasd adasdasdasdqweqw asdasdasdasd
-            awdqwdasdqw eqweqweqwdasdasdasda{" "}
-          </p>
+          <p>{dataId?.data?.title}</p>
         </div>
 
         <div
