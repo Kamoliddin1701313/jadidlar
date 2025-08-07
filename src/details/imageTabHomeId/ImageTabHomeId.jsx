@@ -41,6 +41,7 @@ function ImageTabHomeId() {
             {t("eshituv.bosh_sahifa")}{" "}
             <span style={{ marginLeft: "4px" }}>/</span>
           </button>
+          
           <button onClick={() => navigate("/suratlar")}>
             {t("eshituv.suratlar")} <span style={{ marginLeft: "4px" }}>/</span>
           </button>

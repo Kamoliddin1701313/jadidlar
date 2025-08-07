@@ -151,6 +151,7 @@
 @media only screen and (max-width: 1220px) {
   .container {
     .wrapper {
+      padding-top: 15%;
       .menu_link {
         button {
           font-size: 16px;
@@ -170,6 +171,8 @@
 @media only screen and (max-width: 770px) {
   .container {
     .wrapper {
+      padding-top: 20%;
+
       .menu_link {
         button:last-child {
           width: 44%;
@@ -208,7 +211,9 @@
 @media only screen and (max-width: 520px) {
   .container {
     .wrapper {
+      padding-top: 30%;
       .menu_link {
+        gap: 6px;
         button {
           font-size: 13px;
 
